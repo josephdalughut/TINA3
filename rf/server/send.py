@@ -55,11 +55,12 @@ while(retry < 5):
         print ("Callback received:")
         print string
         radio.stopListening()
+        radio.write("")
         radio.powerDown()
         sys.exit(0)
     radio.stopListening()
     retry = retry + 1
-    time.sleep(1)
+    time.sleep(1/100)
 print ("Error: Timed out")
 radio.stopListening()
 radio.powerDown()
