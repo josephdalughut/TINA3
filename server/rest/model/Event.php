@@ -6,11 +6,14 @@
  * Date: 10/12/16
  * Time: 6:19 PM
  */
+
+require_once 'Entity.php';
+
 class Event extends Entity
 {
 
     public static $database_tableName = "events";
-    public static $database_tableColumn_deviceId = "deviceId";
+    public static $database_tableColumn_userId = "userId";
     public static $database_tableColumn_outlet = "outletId";
     public static $database_tableColumn_year = "year";
     public static $database_tableColumn_monthOfYear = "monthOfYear";
@@ -21,10 +24,10 @@ class Event extends Entity
     public static $database_tableColumn_secOfMin = "secOfMin";
 
     public static function _getDatabaseTableCreateStatement(){
-        return "create table if not exists ".Event::$database_tableName." ( "
+        return "create table if not exists ".Event::$database_tableName." ("
             .Entity::$database_tableColumn_id." int unsigned auto_increment primary key, "
-            .Event::$database_tableColumn_deviceId." varchar(max), "
-            .Event::$database_tableColumn_outlet." varchar(max), "
+            .Event::$database_tableColumn_userId." int, "
+            .Event::$database_tableColumn_outlet." varchar(255), "
             .Event::$database_tableColumn_year." int(4), "
             .Event::$database_tableColumn_monthOfYear." int(2), "
             .Event::$database_tableColumn_dayOfMonth." int(2), "
@@ -32,12 +35,12 @@ class Event extends Entity
             .Event::$database_tableColumn_hourOfDay." int(2), "
             .Event::$database_tableColumn_minOfHour." int(2), "
             .Event::$database_tableColumn_secOfMin." int(2), "
-            .Entity::$database_tableColumn_createdAt." datetime, "
-            .Entity::$database_tableColumn_updatedAt." datetime )";
+            .Entity::$database_tableColumn_createdAt." float, "
+            .Entity::$database_tableColumn_updatedAt." float)";
     }
 
-    /*** @var string */
-    public $deviceId = Null;
+    /*** @var integer */
+    public $userId = Null;
     /*** @var string */
     public $outletId = Null;
     /*** @var integer */
@@ -57,20 +60,20 @@ class Event extends Entity
     public $secOfMin = Null;
 
     /**
-     * @return string
+     * @return integer
      */
-    public function getDeviceId()
+    public function getUserId()
     {
-        return $this->deviceId;
+        return $this->userId;
     }
 
     /**
-     * @param string $deviceId
+     * @param integer $userId
      * @return Event
      */
-    public function setDeviceId($deviceId)
+    public function setUserId($userId)
     {
-        $this->deviceId = $deviceId;
+        $this->userId = $userId;
         return $this;
     }
 

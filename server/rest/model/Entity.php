@@ -6,7 +6,7 @@
  * Date: 10/12/16
  * Time: 5:57 PM
  */
-class Entity
+abstract class Entity
 {
 
     /**
@@ -15,11 +15,11 @@ class Entity
      * @return string
      */
     public static function _createDatabaseTableCreateStatementPad($tableName, $statement){
-        return "create table if not exists ".$tableName." ( "
-        .Entity::$database_tableColumn_id." varchar(max) primary key, "
+        return "create table if not exists ".$tableName." ("
+        .Entity::$database_tableColumn_id." varchar(255) primary key, "
         .$statement
-        .Entity::$database_tableColumn_createdAt." datetime, "
-        .Entity::$database_tableColumn_updatedAt." datetime )";
+        .Entity::$database_tableColumn_createdAt." float, "
+        .Entity::$database_tableColumn_updatedAt." float)";
     }
 
     public static $database_tableColumn_id = "id";
@@ -29,10 +29,10 @@ class Entity
     /*** @var string */
     private $id = Null;
 
-    /*** @var DateTime */
+    /*** @var float */
     private $createdAt = Null;
 
-    /*** @var DateTime */
+    /*** @var float */
     private $updatedAt = Null;
 
     /**
@@ -54,7 +54,7 @@ class Entity
     }
 
     /**
-     * @return DateTime
+     * @return float
      */
     public function getCreatedAt()
     {
@@ -62,7 +62,7 @@ class Entity
     }
 
     /**
-     * @param DateTime $createdAt
+     * @param float $createdAt
      * @return Entity
      */
     public function setCreatedAt($createdAt)
@@ -72,7 +72,7 @@ class Entity
     }
 
     /**
-     * @return DateTime
+     * @return float
      */
     public function getUpdatedAt()
     {
@@ -80,7 +80,7 @@ class Entity
     }
 
     /**
-     * @param DateTime $updatedAt
+     * @param float $updatedAt
      * @return Entity
      */
     public function setUpdatedAt($updatedAt)

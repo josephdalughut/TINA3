@@ -57,12 +57,13 @@ while(retry < 5):
         radio.stopListening()
         radio.write("")
         radio.powerDown()
+        sys.stdout.write(string);
         sys.exit(0)
     radio.stopListening()
     retry = retry + 1
     time.sleep(1/100)
 print ("Error: Timed out")
+sys.stdout.write("ERROR");
 radio.stopListening()
 radio.powerDown()
 sys.exit(1)
-

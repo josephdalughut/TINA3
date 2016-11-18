@@ -13,9 +13,9 @@ if ($conn->connect_error) {
 }
 
 //create database tables
-$conn->query(Device::_getDatabaseTableCreateStatement());
+$conn->query(User::_getDatabaseTableCreateStatement());
 $conn->query(Event::_getDatabaseTableCreateStatement());
-$conn->query(Outlet::_getDatabaseTableCreateStatement());
+$conn->query(SmartPlug::_getDatabaseTableCreateStatement());
 
 
 echo "Connected successfully";
