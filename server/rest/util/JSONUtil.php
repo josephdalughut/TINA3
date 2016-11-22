@@ -36,7 +36,9 @@ class JSONUtil
      */
     private function serializeInternal($object)
     {
-        if (is_array($object)) {
+        if (is_string($object)){
+            $result = $object;
+        }elseif (is_array($object)) {
             $result = $this->serializeArray($object);
         } elseif (is_object($object)) {
             $result = $this->serializeObject($object);
