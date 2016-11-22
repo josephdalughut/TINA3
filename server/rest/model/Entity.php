@@ -35,6 +35,9 @@ abstract class Entity
     /*** @var float */
     private $updatedAt = Null;
 
+    /*** @var array */
+    private $accompanyingData;
+
     /**
      * @return string
      */
@@ -87,6 +90,22 @@ abstract class Entity
     {
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAccompanyingData()
+    {
+        return $this->accompanyingData;
+    }
+
+    /**
+     * @param array $accompanyingData
+     */
+    public function setAccompanyingData($accompanyingData)
+    {
+        $this->accompanyingData = $accompanyingData;
     }
 
 

@@ -41,7 +41,7 @@ class AuthApi extends AbstractApi
         $row = mysqli_fetch_row($res);
         $pass = $row[2];
         $hash = password_hash($user->getPassword(), PASSWORD_BCRYPT);
-        if(!$hash == $pass){
+        if($hash != $pass){
             return $this->_response("Conflict", HTTPStatusCode::$CONFLICT);
         }
         $user = User::fromSQL($row);
@@ -51,11 +51,11 @@ class AuthApi extends AbstractApi
         $refresh_token = new Token(true);
         $access_token = $access_token->createAccessToken($this, $this->_getDatabase(), $user);
         $refresh_token = $refresh_token->createAccessToken($this, $this->_getDatabase(), $user);
-        $arr["user"] = $user;
-        $arr["access_token"] = $access_token->getId();
-        $arr["refresh_token"] = $refresh_token->getId();
-        $arr["expiresAt"] = $access_token->getExpiresAt();
-        return $this->_response(json_encode($arr), HTTPStatusCode::$OK);
+        $arr["access_token"] = "".$access_token->getId();
+        $arr["refresh_token"] = "".$refresh_token->getId();
+        $arr["expiresAt"] = "".$access_token->getExpiresAt();
+        $user->setAccompanyingData($arr);
+        return $this->_response(json_encode($user), HTTPStatusCode::$OK);
     }
 
     /**
@@ -79,11 +79,11 @@ class AuthApi extends AbstractApi
         $refresh_token = new Token(true);
         $access_token = $access_token->createAccessToken($this, $this->_getDatabase(), $user);
         $refresh_token = $refresh_token->createAccessToken($this, $this->_getDatabase(), $user);
-        $arr["user"] = $user;
-        $arr["access_token"] = $access_token->getId();
-        $arr["refresh_token"] = $refresh_token->getId();
-        $arr["expiresAt"] = $access_token->getExpiresAt();
-        return $this->_response(json_encode($arr), HTTPStatusCode::$OK);
+        $arr["access_token"] = "".$access_token->getId();
+        $arr["refresh_token"] = "".$refresh_token->getId();
+        $arr["expiresAt"] = "".$access_token->getExpiresAt();
+        $user->setAccompanyingData($arr);
+        return $this->_response(json_encode($user), HTTPStatusCode::$OK);
     }
 
 }
