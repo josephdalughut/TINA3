@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">TINA3</string>
+    <string name="account_type">tina3</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="welcome">Welcome</string>
+    <string name="info_tina_splash">TINA</string>
+    <string name="info_welcome_to_tina">Welcome to TINA3</string>
+    <string name="info_welcome_to_tina_info">The platform that lets you control your AUN appliances wirelessly.</string>
+    <string name="welcome_learn_more"><a href="">Learn more</a> about TINA3</string>
+    <string name="next">Next</string>
+    <string name="hint_aun_id">AUN ID</string>
+    <string name="hint_password">Password</string>
+    <string name="error_empty_aun_id">AUN ID?</string>
+    <string name="error_invalid_aun_id">That\'s not a valid AUN ID.</string>
+    <string name="error_empty_password">Password?</string>
+    <string name="error_invalid_password">Your password should be at least 6 characters and should contain at least one digit.</string>
+    <string name="logging_in">logging in</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="error_internet_unavailable">No internet connection</string>
+    <string name="error_login_not_found">You need to signup with your ID first.</string>
+    <string name="error_login_conflict">Your password is incorrect.</string>
+    <string name="error_service_unavailable">Something went wrong, please try again.</string>
 </resources>
