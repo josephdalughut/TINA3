@@ -40,8 +40,7 @@ class AuthApi extends AbstractApi
         }
         $row = mysqli_fetch_row($res);
         $pass = $row[2];
-        $hash = password_hash($user->getPassword(), PASSWORD_BCRYPT);
-        if($hash != $pass){
+        if(!password_verify($password, $pass)){
             return $this->_response("Conflict", HTTPStatusCode::$CONFLICT);
         }
         $user = User::fromSQL($row);

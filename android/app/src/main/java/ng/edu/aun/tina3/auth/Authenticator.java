@@ -199,7 +199,7 @@ public class Authenticator extends AbstractAccountAuthenticator {
         Account[] accounts = accountManager.getAccountsByType(Application.getInstance().getString(R.string.account_type));
         if(Value.IS.emptyValue(accounts))
             throw new NotFoundException("no accounts");
-        user.setPassword(null).setAccompanyingData(null);
+        user.setPassword(null).setData(null);
         Account account = toAccount(user);
         accountManager.setUserData(account, "json", Crypto.AES.encrypt(Constants.DATA_ENCRYPTION_KEY, JsonUtils.toJson(user)));
         Authenticator.user = user;
@@ -289,19 +289,26 @@ public class Authenticator extends AbstractAccountAuthenticator {
 
     private void refreshToken(final Account account, final AccountManager accountManager, final String refreshToken) {
         Log.d("Refreshing token with token: "+refreshToken);
-        AuthApi.refreshTokens(refreshToken, new DoubleReceiver<Map<String, String>, LitigyException>() {
+        AuthApi.refreshTokens(refreshToken, new DoubleReceiver<User, LitigyException>() {
             @Override
-            public void onReceive(Map<String, String> stringStringMap, LitigyException e) {
+            public void onReceive(User user, LitigyException e) {
 
             }
 
             @Override
-            public void onReceive1(Map<String, String> stringStringMap) {
-                String access_token = stringStringMap.get("access_token");
-                String refresh_token = stringStringMap.get("refresh_token");
-                Long expiresAt = Value.TO.longValue(stringStringMap.get("expiresAt"));
+            public void onReceive1(User user) {
+                String access_token = null, refresh_token = null;
+                Long expiresAt = null;
+                try{
+                    access_token = user.getData().get("access_token");
+                    refresh_token = user.getData().get("refresh_token");
+                    expiresAt = Value.TO.longValue(user.getData().get("expiresAt"));
+                }catch (Exception ignored){
+
+                }
                 try {
                     saveTokens(account, accountManager, access_token, refresh_token, expiresAt);
+                    dispatchToken(access_token);
                 } catch (Exception e) {
                     dispatchError(new LitigyException(e.getMessage()));
                 }

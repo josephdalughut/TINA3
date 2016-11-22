@@ -31,7 +31,7 @@ class UserApi extends AbstractApi
         if ($res->num_rows > 0){
             return $this->_response("conflict: user", HTTPStatusCode::$CONFLICT);
         }
-        $pass = password_hash($user->getPassword(), PASSWORD_BCRYPT);
+        $pass = password_hash($password, PASSWORD_BCRYPT);
         $now = Time::now();
         $user->setPassword($pass)->setCreatedAt($now)->setUpdatedAt($now);
         $insertSQL = User::wrapToInsertSQL($user);

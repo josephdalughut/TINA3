@@ -22,4 +22,5 @@
     <string name="error_login_conflict">Your password is incorrect.</string>
     <string name="error_service_unavailable">Something went wrong, please try again.</string>
     <string name="signing_up">signing up</string>
+    <string name="error_signup_conflict">This AUN ID already has an account.</string>
 </resources>
