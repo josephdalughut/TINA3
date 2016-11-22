@@ -10,6 +10,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Tina" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
@@ -46,7 +47,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TINA3Request.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TINA3Request.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/utils/TINA3Request.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
@@ -139,7 +140,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthApi.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AuthApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/api/AuthApi.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
@@ -2024,7 +2025,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1600" />
+    <option name="x" value="-1600" />
     <option name="y" value="18" />
     <option name="width" value="1600" />
     <option name="height" value="882" />
@@ -2947,7 +2948,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1600" y="18" width="1600" height="882" extended-state="6" />
+    <frame x="-1600" y="18" width="1600" height="882" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3347,17 +3348,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/api/AuthApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#697#703#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/api/UserApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -3476,6 +3466,17 @@
             <element signature="e#1258#1288#0" expanded="true" />
             <element signature="e#1312#1313#0" expanded="true" />
             <element signature="e#1390#1391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/api/AuthApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#697#703#0" expanded="true" />
           </folding>
         </state>
       </provider>
