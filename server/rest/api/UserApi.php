@@ -17,7 +17,7 @@ class UserApi extends AbstractApi
             return $this->_response("only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
         if(!self::checkParams($args, "username", "password")){
-            return $this->_response("required parameter not found", HTTPStatusCode::$NOT_FOUND);
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
         }
         $username = $args["username"];
         $password = $args["password"];

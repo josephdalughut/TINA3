@@ -20,7 +20,7 @@ class AuthApi extends AbstractApi
      */
     public function login($args){
         if(!self::checkParams($args, "username", "password")){
-            return $this->_response("Required parameter not found", HTTPStatusCode::$NOT_FOUND);
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
         }
         $username = $args["username"];
         $password = $args["password"];
@@ -67,7 +67,7 @@ class AuthApi extends AbstractApi
             return $this->_response("Only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
         if(!self::checkParams($args, "refresh_token")){
-            return $this->_response("Required parameter not found", HTTPStatusCode::$NOT_FOUND);
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
         }
         $refresh_token = Token::getToken($args["refresh_token"], $this, $this->_getDatabase(), $_COOKIE);
         if(!$refresh_token instanceof Token){
