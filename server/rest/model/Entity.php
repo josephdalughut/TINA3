@@ -27,16 +27,16 @@ abstract class Entity
     public static $database_tableColumn_updatedAt = "updatedAt";
 
     /*** @var string */
-    private $id = Null;
+    public $id = Null;
 
     /*** @var float */
-    private $createdAt = Null;
+    public $createdAt = Null;
 
     /*** @var float */
-    private $updatedAt = Null;
+    public $updatedAt = Null;
 
     /*** @var array */
-    private $data;
+    public $data;
 
     /**
      * @return string
