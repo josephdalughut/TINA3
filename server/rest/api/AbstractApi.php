@@ -38,7 +38,7 @@ class AbstractApi
     /**
      * @param object $data
      * @param $status
-     * @return false|string
+     * @return string
      */
     public function _response($data, $status) {
         header("HTTP/1.1 " . $status . " " . HTTPStatusCode::requestStatus($status));

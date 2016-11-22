@@ -23,7 +23,7 @@ class JSONUtil
 
     /**
      * @param mixed $object
-     * @return string|false
+     * @return string
      */
     public function serialize($object){
         if (is_string($object)){
@@ -54,6 +54,7 @@ class JSONUtil
      */
     private function getClassPropertyGetters($object){
         $className = get_class($object);
+        $parentClassName = get_parent_class($object);
         if (!isset($this->classPropertyGetters[$className])) {
             $reflector = new \ReflectionClass($className);
             $properties = $reflector->getProperties();
@@ -67,6 +68,20 @@ class JSONUtil
                     $getters[$name] = $getter;
                 } catch (\Exception $e) {
                     // if no getter for a specific property - ignore it
+                }
+            }
+            if ($parentClassName == "Entity"){
+                $parentProperties = new \ReflectionClass($parentClassName);
+                foreach ($parentProperties as $property)
+                {
+                    $name = $property->getName();
+                    $getter = "get" . ucfirst($name);
+                    try {
+                        $reflector->getMethod($getter);
+                        $getters[$name] = $getter;
+                    } catch (\Exception $e) {
+                        // if no getter for a specific property - ignore it
+                    }
                 }
             }
             $this->classPropertyGetters[$className] = $getters;
