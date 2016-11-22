@@ -49,7 +49,7 @@ class UserApi extends AbstractApi
         $arr["access_token"] = "".$access_token->getId();
         $arr["refresh_token"] = "".$refresh_token->getId();
         $arr["expiresAt"] = "".$access_token->getExpiresAt();
-        $user->setAccompanyingData($arr);
+        $user->setData($arr);
         return $this->_response(json_encode($user), HTTPStatusCode::$OK);
     }
 }

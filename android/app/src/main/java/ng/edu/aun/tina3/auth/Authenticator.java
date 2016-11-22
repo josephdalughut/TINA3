@@ -141,13 +141,22 @@ public class Authenticator extends AbstractAccountAuthenticator {
         }.execute();
     }
 
-    public User setUser(User user, String access_token, String refresh_token, Long expiresAt) throws Exception {
+    public User setUser(User user) throws Exception {
         Log.d("Setting user");
         AccountManager accountManager = AccountManager.get(Application.getInstance());
         Account[] accounts = accountManager.getAccountsByType(Application.getInstance().getString(R.string.account_type));
         if(!Value.IS.emptyValue(accounts))
             throw new ConflictException("accounts found, only one allowed");
-        user.setPassword(null).setAccompanyingData(null);
+        String access_token = null, refresh_token = null;
+        Long expiresAt = null;
+        try{
+            access_token = user.getData().get("access_token");
+            refresh_token = user.getData().get("refresh_token");
+            expiresAt = Value.TO.longValue(user.getData().get("expiresAt"));
+        }catch (Exception ignored){
+
+        }
+        user.setPassword(null).setData(null);
         Bundle bundle = new Bundle();
         bundle.putString("json", Crypto.AES.encrypt(Constants.DATA_ENCRYPTION_KEY, JsonUtils.toJson(user)));
         Account account = toAccount(user);
@@ -158,13 +167,13 @@ public class Authenticator extends AbstractAccountAuthenticator {
         throw new LitigyException("error");
     }
 
-    public AsyncTask setUserAsync(User user, final String access_token, final String refresh_token, final Long expiresAt, final DoubleReceiver<User, LitigyException> callbackReceiver){
+    public AsyncTask setUserAsync(User user, final DoubleReceiver<User, LitigyException> callbackReceiver){
         Log.d("Setting user async");
         return new AsyncTask<User, Void, Object>(){
             @Override
             protected Object doInBackground(User... params) {
                 try {
-                    return setUser(params[0], access_token, refresh_token, expiresAt);
+                    return setUser(params[0]);
                 } catch (Exception e) {
                     return new LitigyException(e.getMessage());
                 }
@@ -348,7 +357,7 @@ public class Authenticator extends AbstractAccountAuthenticator {
 
     private void saveTokens(Account account, AccountManager accountManager, String accessToken, String refreshToken, Long expiresAt) throws Exception {
         Log.d("Saving tokens");
-        if(Value.IS.ANY.nullValue(accessToken, refreshToken))
+        if(Value.IS.ANY.nullValue(accessToken, refreshToken, expiresAt))
             return;
         accountManager.setUserData(account, "expiresAt", Value.TO.stringValue(expiresAt));
         accountManager.setAuthToken(account, "access_token", Crypto.AES.encrypt(Constants.TOKEN_ENCRYPTION_KEY, accessToken));

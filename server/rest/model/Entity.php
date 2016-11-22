@@ -36,7 +36,7 @@ abstract class Entity
     private $updatedAt = Null;
 
     /*** @var array */
-    private $accompanyingData;
+    private $data;
 
     /**
      * @return string
@@ -95,17 +95,17 @@ abstract class Entity
     /**
      * @return array
      */
-    public function getAccompanyingData()
+    public function getData()
     {
-        return $this->accompanyingData;
+        return $this->data;
     }
 
     /**
-     * @param array $accompanyingData
+     * @param array $data
      */
-    public function setAccompanyingData($accompanyingData)
+    public function setData($data)
     {
-        $this->accompanyingData = $accompanyingData;
+        $this->data = $data;
     }
 
 
