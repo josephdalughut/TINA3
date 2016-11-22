@@ -23,7 +23,7 @@ class User extends Entity
         $sql = "create table if not exists ".User::$database_tableName." ("
             .Entity::$database_tableColumn_id." int unsigned auto_increment primary key, "
             .User::$database_tableColumn_username." varchar(20), "
-            .User::$database_tableColumn_password." varchar(30), "
+            .User::$database_tableColumn_password." char(60), "
             .Entity::$database_tableColumn_createdAt." float, "
             .Entity::$database_tableColumn_updatedAt." float)";
         return $sql;
