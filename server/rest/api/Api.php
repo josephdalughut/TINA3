@@ -107,7 +107,7 @@ class Api
 
     public function _response($data, $status) {
         header("HTTP/1.1 " . $status . " " . HTTPStatusCode::requestStatus($status));
-        return json_encode($data);
+        return utf8_encode($data);
     }
 
     private function _cleanInputs($data) {
