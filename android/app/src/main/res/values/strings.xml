@@ -23,4 +23,11 @@
     <string name="error_service_unavailable">Something went wrong, please try again.</string>
     <string name="signing_up">signing up</string>
     <string name="error_signup_conflict">This AUN ID already has an account.</string>
+    <string name="plugs">Plugs</string>
+    <string name="appliances">Appliances</string>
+    <string name="hint_no_smart_plugs">When you add a Smart Plug, \nit\'ll always be here</string>
+    <string name="error_swipe_to_refresh">Something\'s wrong, \nswipe here to refresh</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
 </resources>

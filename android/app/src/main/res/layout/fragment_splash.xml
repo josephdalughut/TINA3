@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    >
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_tina3_100"
+        android:layout_gravity="center"
+        android:id="@+id/icon"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/height_toolbar"
+        >
+
+
+        <com.litigy.lib.android.gui.view.textView.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info_tina_splash"
+            app:fontAppearance="display1"
+            android:textColor="@color/aaa"
+            />
+
+        <com.litigy.lib.android.gui.view.textView.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:text="3"
+            app:fontAppearance="body2"
+            android:textColor="@color/aaa"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

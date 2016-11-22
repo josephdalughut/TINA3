@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_toolbar"
+        android:background="@color/tina_green"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        >
+
+        <ImageButton
+            android:layout_width="@dimen/height_toolbar"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:src="@mipmap/ic_action_navigation_close"
+            android:id="@+id/closeButton"
+            />
+
+        <com.litigy.lib.android.gui.view.textView.TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|left"
+            android:textColor="@color/white"
+            app:fontAppearance="body2"
+            android:text="@string/settings"
+            android:textAllCaps="true"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+</LinearLayout>

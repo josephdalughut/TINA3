@@ -7,7 +7,7 @@
 #include <RF24.h>
 
 //uuid for this outlet
-const String UUID = "12345";
+const String UUID = "T4ES5LWMSLA0MCHS1S58FG";
 const String STATE_ON = "ON", STATE_OFF = "OFF";
 String message = "";
 int msg[1];

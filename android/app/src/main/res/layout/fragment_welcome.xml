@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="@dimen/margin_page"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_tina3_100"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:id="@+id/icon"
+                />
+
+            <com.litigy.lib.android.gui.view.textView.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_below="@+id/icon"
+                android:textColor="@color/three"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/height_button_normal"
+                android:text="@string/info_welcome_to_tina"
+                app:fontSize="title"
+                app:fontStyle="latoBold"
+                android:id="@+id/welcomeInfo"
+                />
+
+            <com.litigy.lib.android.gui.view.textView.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_below="@+id/welcomeInfo"
+                android:textColor="@color/aaa"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_page"
+                android:layout_marginLeft="@dimen/height_toolbar"
+                android:layout_marginRight="@dimen/height_toolbar"
+                android:text="@string/info_welcome_to_tina_info"
+                app:fontAppearance="caption"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingLeft="@dimen/height_toolbar"
+            android:paddingRight="@dimen/height_toolbar"
+            >
+
+            <com.litigy.lib.android.gui.view.button.Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_toolbar"
+                android:textColor="@color/white"
+                app:fontAppearance="button"
+                android:backgroundTint="@color/tina_green"
+                android:text="@string/login"
+                />
+
+            <com.litigy.lib.android.gui.view.button.Button
+                android:id="@+id/signupButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_toolbar"
+                android:textColor="@color/three"
+                app:fontAppearance="button"
+                android:backgroundTint="@color/ccc"
+                android:text="@string/signup"
+                />
+
+            <com.litigy.lib.android.gui.view.textView.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_page"
+                android:textColor="@color/bbb"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:autoLink="web"
+                android:textColorLink="@color/tina_green"
+                android:text="@string/welcome_learn_more"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
