@@ -60,9 +60,7 @@ class SmartPlugApi extends AbstractApi
         if(!$this->_getDatabase()->query($insertSQL)){
             return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
-        $arr = Array();
-        $arr["data"] = $smartPlug;
-        return $this->_response(json_encode($arr), HTTPStatusCode::$OK);
+        return $this->_response($smartPlug, HTTPStatusCode::$OK);
     }
 
     /**
@@ -95,9 +93,7 @@ class SmartPlugApi extends AbstractApi
         if(!$this->_getDatabase()->query($deleteSQL)){
             return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
-        $arr = Array();
-        $arr["data"] = true;
-        return $this->_response(json_encode($arr), HTTPStatusCode::$OK);
+        return $this->_response(true, HTTPStatusCode::$OK);
     }
 
     /**
@@ -155,9 +151,7 @@ class SmartPlugApi extends AbstractApi
                 default:
                     return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
             }
-            $arr = Array();
-            $arr["data"] = $smartPlug;
-            return $this->_response(json_encode($arr), HTTPStatusCode::$OK);
+            return $this->_response($smartPlug, HTTPStatusCode::$OK);
         }
     }
 
@@ -216,9 +210,7 @@ class SmartPlugApi extends AbstractApi
                 default:
                     return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
             }
-            $arr = Array();
-            $arr["data"] = $smartPlug;
-            return $this->_response(json_encode($arr), HTTPStatusCode::$OK);
+            return $this->_response($smartPlug, HTTPStatusCode::$OK);
         }
     }
 
@@ -277,9 +269,7 @@ class SmartPlugApi extends AbstractApi
                 default:
                     return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
             }
-            $arr = Array();
-            $arr["data"] = $smartPlug;
-            return $this->_response(json_encode($arr), HTTPStatusCode::$OK);
+            return $this->_response($smartPlug, HTTPStatusCode::$OK);
         }
     }
 

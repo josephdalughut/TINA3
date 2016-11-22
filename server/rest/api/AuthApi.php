@@ -54,7 +54,7 @@ class AuthApi extends AbstractApi
         $arr["refresh_token"] = "".$refresh_token->getId();
         $arr["expiresAt"] = "".$access_token->getExpiresAt();
         $user->setData($arr);
-        return $this->_response(json_encode($user), HTTPStatusCode::$OK);
+        return $this->_response($user, HTTPStatusCode::$OK);
     }
 
     /**
@@ -82,7 +82,7 @@ class AuthApi extends AbstractApi
         $arr["refresh_token"] = "".$refresh_token->getId();
         $arr["expiresAt"] = "".$access_token->getExpiresAt();
         $user->setData($arr);
-        return $this->_response(json_encode($user), HTTPStatusCode::$OK);
+        return $this->_response($user, HTTPStatusCode::$OK);
     }
 
 }
