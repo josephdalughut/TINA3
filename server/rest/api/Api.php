@@ -17,6 +17,7 @@ require_once 'AuthApi.php';
 require_once 'EventApi.php';
 require_once 'SmartPlugApi.php';
 require_once 'UserApi.php';
+require_once '../util/JSONUtil.php';
 
 if (!date_default_timezone_set('UTC')){
     echo "Timezone 'UTC' unknown, Maybe try updating tzinfo with your package manager?";

@@ -25,20 +25,20 @@ class JSONUtil
      * @param mixed $object
      * @return string|false
      */
-    public function serialize($object)
-    {
-        return json_encode($this->serializeInternal($object));
+    public function serialize($object){
+        if (is_string($object)){
+            return json_encode($object);
+        }else {
+            return json_encode($this->serializeInternal($object));
+        }
     }
 
     /**
      * @param $object
      * @return array
      */
-    private function serializeInternal($object)
-    {
-        if (is_string($object)){
-            $result = $object;
-        }elseif (is_array($object)) {
+    private function serializeInternal($object){
+        if (is_array($object)) {
             $result = $this->serializeArray($object);
         } elseif (is_object($object)) {
             $result = $this->serializeObject($object);
@@ -52,8 +52,7 @@ class JSONUtil
      * @param $object
      * @return \ReflectionClass
      */
-    private function getClassPropertyGetters($object)
-    {
+    private function getClassPropertyGetters($object){
         $className = get_class($object);
         if (!isset($this->classPropertyGetters[$className])) {
             $reflector = new \ReflectionClass($className);
@@ -93,8 +92,7 @@ class JSONUtil
      * @param $array
      * @return array
      */
-    private function serializeArray($array)
-    {
+    private function serializeArray($array){
         $result = array();
         foreach ($array as $key => $value) {
             $result[$key] = $this->serializeInternal($value);

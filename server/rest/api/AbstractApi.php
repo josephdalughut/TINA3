@@ -12,6 +12,7 @@ require_once '../model/Entity.php';
 require_once '../model/Event.php';
 require_once '../model/SmartPlug.php';
 require_once '../util/HTTPStatusCode.php';
+require_once '../util/JSONUtil.php';
 
 class AbstractApi
 {
