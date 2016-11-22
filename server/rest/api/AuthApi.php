@@ -9,14 +9,13 @@ require_once '../util/HTTPStatusCode.php';
 class AuthApi extends AbstractApi
 {
 
-    public function __construct($method)
+    public function __construct($method, $authorization)
     {
-        parent::__construct($method);
+        parent::__construct($method, $authorization);
     }
 
     /**
      * @param array $args
-     * @throws Exception
      * @return string
      */
     public function login($args){
@@ -56,23 +55,21 @@ class AuthApi extends AbstractApi
         $arr["access_token"] = $access_token->getId();
         $arr["refresh_token"] = $refresh_token->getId();
         $arr["expiresAt"] = $access_token->getExpiresAt();
-        return json_encode($arr);
+        return $this->_response(json_encode($arr), HTTPStatusCode::$OK);
     }
 
     /**
      * @param $args
-     * @return mixed|string
-     * @throws Exception
+     * @return string
      */
     public function refresh($args){
         if(!$this->method == "POST"){
-            $this->_response("Only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
-            throw new Exception();
+            return $this->_response("Only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
         if(!self::checkParams($args, "refresh_token")){
             return $this->_response("Required parameter not found", HTTPStatusCode::$NOT_FOUND);
         }
-        $refresh_token = Token::findToken($args["refresh_token"], $this, $this->_getDatabase(), $_COOKIE);
+        $refresh_token = Token::getToken($args["refresh_token"], $this, $this->_getDatabase(), $_COOKIE);
         if(!$refresh_token instanceof Token){
             return $refresh_token;
         }
@@ -86,7 +83,7 @@ class AuthApi extends AbstractApi
         $arr["access_token"] = $access_token->getId();
         $arr["refresh_token"] = $refresh_token->getId();
         $arr["expiresAt"] = $access_token->getExpiresAt();
-        return json_encode($arr);
+        return $this->_response(json_encode($arr), HTTPStatusCode::$OK);
     }
 
 }

@@ -44,12 +44,11 @@ class Api
         $this->endpointClass = $reqs[0];
         $this->endpoint = $reqs[1];
         $this->args = $_REQUEST;
-        //echo ("\n cookies:");
-        foreach ($_COOKIE as $key => $value) {
-            //echo ("cookie is key:".$key.", value: ".$value."\n");
-        }
-        foreach ($this->args as $key => $value){
-            //echo ("request is key:".$key.", value: ".$value."\n");
+
+        $headers = getallheaders();
+        $this->authorization = $headers["Authorization"];
+        if(!$this->authorization==null && !$this->authorization==""){
+            $this->authorization = explode(" ", $this->authorization)[1];
         }
 
         $this->method = $_SERVER['REQUEST_METHOD'];
@@ -75,16 +74,16 @@ class Api
         $apiClass = null;
         switch ($this->endpointClass){
             case "user":
-                $apiClass = new UserApi($this->method);
+                $apiClass = new UserApi($this->method, $this->authorization);
                 break;
             case "smartPlug":
-                $apiClass = new SmartPlugApi($this->method);
+                $apiClass = new SmartPlugApi($this->method, $this->authorization);
                 break;
             case "event":
-                $apiClass = new EventApi($this->method);
+                $apiClass = new EventApi($this->method, $this->authorization);
                 break;
             case "auth":
-                $apiClass = new AuthApi($this->method);
+                $apiClass = new AuthApi($this->method, $this->authorization);
                 break;
             default:
                 return $this->_response("No API: $this->endpointClass", HTTPStatusCode::$NOT_FOUND);
@@ -97,12 +96,12 @@ class Api
      */
     public function _respond($object, $method, $args){
         if (method_exists($object, $method)) {
-            return $this->_response($object->{$method}($args));
+            return $object->{$method}($args);
         }
         return $this->_response("No Endpoint: $this->endpoint", HTTPStatusCode::$NOT_FOUND);
     }
 
-    public function _response($data, $status = 200) {
+    public function _response($data, $status) {
         header("HTTP/1.1 " . $status . " " . HTTPStatusCode::requestStatus($status));
         return json_encode($data);
     }

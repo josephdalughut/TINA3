@@ -22,14 +22,20 @@ class AbstractApi
     private $conn = Null;
     public $method = '';
 
+    /**
+     * @var string
+     */
+    public $authorization;
 
-    public function __construct($method)
+
+    public function __construct($method, $authorization)
     {
         $this->method = $method;
+        $this->authorization = $authorization;
         $this->_connectDatabase();
     }
 
-    public function _response($data, $status = 200) {
+    public function _response($data, $status) {
         header("HTTP/1.1 " . $status . " " . HTTPStatusCode::requestStatus($status));
         return json_encode($data);
     }
@@ -56,7 +62,7 @@ class AbstractApi
             echo ("MySQL Error Creating outlets table: ".$conn->error);
         }
         if(!$conn->query(Token::_getDatabaseTableCreateStatement())){
-            echo ("MySQL Error Creationg session table: ".$conn->error);
+            echo ("MySQL Error Creation session table: ".$conn->error);
         }
         $this->conn = $conn;
     }

@@ -117,31 +117,26 @@ class Token extends Entity{
     /**
      * @param AbstractApi $api
      * @param mysqli $conn
-     * @param array $cookie
-     * @throws Exception
      * @return User|string
      */
-    public static function toUser($api, $conn, $cookie){
-        if(!AbstractApi::checkParams($cookie, Token::$cookie_key_session)){
-            return $api->_response("Session Parameter required", HTTPStatusCode::$UNAUTHORIZED);
+    public static function getUserFromRequest($api, $conn){
+        $tokenId = $api->authorization;
+        if($tokenId == Null){
+            return $api->_response("token not found", HTTPStatusCode::$UNAUTHORIZED);
         }
-        $sessionId = Crypt::decryptAES(Token::$cookie_encryption_key, $cookie[Token::$cookie_key_session]);
-        if($sessionId == Null){
-            return $api->_response("Session not found", HTTPStatusCode::$UNAUTHORIZED);
-        }
-        $findSQL = "select * from ".Token::$database_tableName." where ".Entity::$database_tableColumn_id."='".$sessionId."'";
+        $findSQL = "select * from ".Token::$database_tableName." where ".Entity::$database_tableColumn_id."='".$tokenId."'";
         $res = $conn->query($findSQL);
         if(!$res||$res->num_rows<1){
-            return $api->_response("Session not found", HTTPStatusCode::$AUTHENTICATION_TIMEOUT);
+            return $api->_response("token not found", HTTPStatusCode::$UNAUTHORIZED);
         }
-        $session = self::fromSQL(mysqli_fetch_row($res));
-        if($session->isExpired()){
-            return $api->_response("Session Expired", HTTPStatusCode::$AUTHENTICATION_TIMEOUT);
+        $tokenId = self::fromSQL(mysqli_fetch_row($res));
+        if($tokenId->isExpired()){
+            return $api->_response("token Expired", HTTPStatusCode::$AUTHENTICATION_TIMEOUT);
         }
-        $findUserSQL = "select * from ".User::$database_tableName." where ".User::$database_tableColumn_id."='".$session->getUserId()."'";
+        $findUserSQL = "select * from ".User::$database_tableName." where ".User::$database_tableColumn_id."='".$tokenId->getUserId()."'";
         $resUser = $conn->query($findUserSQL);
         if(!$resUser||$resUser->num_rows<1){
-            return $api->_response("User not found", HTTPStatusCode::$NOT_FOUND);
+            return $api->_response("user not found", HTTPStatusCode::$NOT_FOUND);
         }
         $user = User::fromSQL(mysqli_fetch_row($res));
         return $user;
@@ -151,20 +146,16 @@ class Token extends Entity{
     /**
      * @param AbstractApi $api
      * @param mysqli $conn
-     * @param array $cookie
      * @return mixed
      */
-    public static function findToken($tokenId, $api, $conn, $cookie){
-        if(!AbstractApi::checkParams($cookie, Token::$cookie_key_session)){
-            return $api->_response("token Parameter required", HTTPStatusCode::$UNAUTHORIZED);
-        }
+    public static function getToken($tokenId, $api, $conn){
         if($tokenId == Null){
             return $api->_response("token not found", HTTPStatusCode::$UNAUTHORIZED);
         }
         $findSQL = "select * from ".Token::$database_tableName." where ".Entity::$database_tableColumn_id."='".$tokenId."'";
         $res = $conn->query($findSQL);
         if(!$res||$res->num_rows<1){
-            return $api->_response("token not found", HTTPStatusCode::$AUTHENTICATION_TIMEOUT);
+            return $api->_response("token not found", HTTPStatusCode::$UNAUTHORIZED);
         }
         $token = self::fromSQL(mysqli_fetch_row($res));
         return $token;
@@ -174,7 +165,6 @@ class Token extends Entity{
      * @param AbstractApi $api
      * @param mysqli $conn
      * @param User $user
-     * @throws Exception
      * @return Token
      */
     public function createAccessToken($api, $conn, $user){
@@ -196,7 +186,7 @@ class Token extends Entity{
             ."'".$this->getUpdatedAt()."'"
             .")";
         if(!$conn->query($sql)){
-            return $api->_response("Service unavailable", HTTPStatusCode::$SERVICE_UNAVAILABLE);
+            return $api->_response("service unavailable", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
         return $this;
     }
@@ -205,7 +195,6 @@ class Token extends Entity{
      * @param AbstractApi $api
      * @param mysqli $conn
      * @param User $user
-     * @throws Exception
      * @return Token
      */
     public function createRefreshToken($api, $conn, $user){
@@ -226,7 +215,7 @@ class Token extends Entity{
             ."'".$this->getUpdatedAt()."'"
             .")";
         if(!$conn->query($sql)){
-            return $api->_response("Service unavailable", HTTPStatusCode::$SERVICE_UNAVAILABLE);
+            return $api->_response("service unavailable", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
         return $this;
     }
