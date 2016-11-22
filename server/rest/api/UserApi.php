@@ -46,7 +46,7 @@ class UserApi extends AbstractApi
         $refresh_token = new Token(true);
         $access_token = $access_token->createAccessToken($this, $this->_getDatabase(), $user);
         $refresh_token = $refresh_token->createAccessToken($this, $this->_getDatabase(), $user);
-        $arr["user"] = json_encode($user);
+        $arr["user"] = $user;
         $arr["access_token"] = $access_token->getId();
         $arr["refresh_token"] = $refresh_token->getId();
         $arr["expiresAt"] = $access_token->getExpiresAt();

@@ -67,7 +67,7 @@ class Crypt
      * @return string
      */
     public static function UUIDClear(){
-        return self::guidv4(random_bytes(16));
+        return str_replace("-", "", self::guidv4(random_bytes(16)));
     }
 
     private static function guidv4($data)
