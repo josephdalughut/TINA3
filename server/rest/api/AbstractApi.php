@@ -36,7 +36,8 @@ class AbstractApi
 
     public function _response($data, $status) {
         header("HTTP/1.1 " . $status . " " . HTTPStatusCode::requestStatus($status));
-        return json_encode((array)$data);
+        $jsonUtil = new JSONUtil();
+        return $jsonUtil->serialize($data);
     }
 
     /**
