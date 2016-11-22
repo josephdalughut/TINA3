@@ -70,8 +70,9 @@ class JSONUtil
                     // if no getter for a specific property - ignore it
                 }
             }
-            if ($parentClassName == "Entity"){
-                $parentProperties = new \ReflectionClass($parentClassName);
+            if ($parentClassName != null && $parentClassName == "Entity"){
+                $parentReflector = new \ReflectionClass($parentClassName);
+                $parentProperties = $parentReflector->getProperties();
                 foreach ($parentProperties as $property)
                 {
                     $name = $property->getName();
