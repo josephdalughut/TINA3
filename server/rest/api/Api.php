@@ -88,6 +88,10 @@ class Api
             default:
                 return $this->_response("No API: $this->endpointClass", HTTPStatusCode::$NOT_FOUND);
         }
+        $error = $apiClass->_connectDatabase();
+        if($error == null){
+            return $error;
+        }
         return $this->_respond($apiClass, $this->endpoint, $this->args);
     }
 

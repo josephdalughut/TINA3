@@ -32,7 +32,6 @@ class AbstractApi
     {
         $this->method = $method;
         $this->authorization = $authorization;
-        $this->_connectDatabase();
     }
 
     public function _response($data, $status) {
@@ -40,31 +39,35 @@ class AbstractApi
         return json_encode($data);
     }
 
-    private function _connectDatabase(){
+    /**
+     * return string
+     */
+    public function _connectDatabase(){
         $conn = new mysqli(DatabaseConstants::$database_serverName, DatabaseConstants::$database_userName, DatabaseConstants::$database_password);
         if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+            return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
         //create database and tables
         if(!$conn->query("create database if not exists tina3")){
-            echo ("MySQL Error Creating database: ".$conn->error);
+            return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
         if(!$conn->query("use tina3")){
-            echo ("MySQL Error selecting database: ".$conn->error);
+            return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
         if(!$conn->query(User::_getDatabaseTableCreateStatement())){
-            echo ("MySQL Error Creating Devices table: ".$conn->error);
+            return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
         if(!$conn->query(Event::_getDatabaseTableCreateStatement())){
-            echo ("MySQL Error Creating events table: ".$conn->error);
+            return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
         if(!$conn->query(SmartPlug::_getDatabaseTableCreateStatement())){
-            echo ("MySQL Error Creating outlets table: ".$conn->error);
+            return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
         if(!$conn->query(Token::_getDatabaseTableCreateStatement())){
-            echo ("MySQL Error Creation session table: ".$conn->error);
+            return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
         $this->conn = $conn;
+        return null;
     }
 
     /**

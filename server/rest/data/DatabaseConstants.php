@@ -11,7 +11,7 @@ class DatabaseConstants
 
     public static $database_serverName = "localhost";
     public static $database_userName = "root";
-    public static $database_password = "";
+    public static $database_password = "password";
 
 
 
