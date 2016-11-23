@@ -4,11 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.litigy.lib.android.gui.dialog.DialogFragtivity;
+import com.litigy.lib.android.gui.dialog.InfoDialog;
+import com.litigy.lib.android.gui.dialog.ProgressDialog;
 import com.litigy.lib.android.gui.view.textView.TextView;
 import com.litigy.lib.java.generic.Receiver;
+import com.litigy.lib.java.util.Value;
 
 import ng.edu.aun.tina3.R;
 import ng.edu.aun.tina3.auth.Authenticator;
+import ng.edu.aun.tina3.gui.activity.Activity;
 import ng.edu.aun.tina3.rest.model.User;
 
 /**
@@ -76,6 +81,30 @@ public class OutletListNavigationFragment extends BroadcastFragtivity  {
     @Override
     public void setupViews() {
         onRefreshUserInfo();
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!Value.IS.nullValue(optionSelectListener))
+                    getOptionSelectListener().onReceive(1);
+                ((Activity)getActivity()).addFragment(SettingsFragment.getInstance());
+            }
+        });
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!Value.IS.nullValue(optionSelectListener))
+                    getOptionSelectListener().onReceive(2);
+                ((Activity)getActivity()).addFragment(AboutFragment.getInstance());
+            }
+        });
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!Value.IS.nullValue(optionSelectListener))
+                    getOptionSelectListener().onReceive(3);
+                onLogoutRequest();
+            }
+        });
     }
 
     private void onRefreshUserInfo(){
@@ -86,6 +115,44 @@ public class OutletListNavigationFragment extends BroadcastFragtivity  {
             e.printStackTrace();
         }
 
+    }
+
+    private void onLogoutRequest(){
+        InfoDialog.getInstance(getString(R.string.logout), getString(R.string.query_logout), true)
+                .withPositiveButton(getString(R.string.logout), new InfoDialog.OnClickListener() {
+                    @Override
+                    public void onClick(View view, DialogFragtivity dialogFragtivity) {
+                        dialogFragtivity.dismissAllowingStateLoss();
+                        onLogoutConfirm();
+                    }
+                }).withNegativeButton(getString(R.string.back), new InfoDialog.OnClickListener() {
+            @Override
+            public void onClick(View view, DialogFragtivity dialogFragtivity) {
+                dialogFragtivity.dismissAllowingStateLoss();
+            }
+        }).show(getChildFragmentManager(), null);
+    }
+
+    ProgressDialog dialog;
+
+    private void onLogoutConfirm(){
+        dialog = ProgressDialog.getInstance(getString(R.string.please_wait),
+                getString(R.string.logging_out), getColor(R.color.tina_green), false);
+        dialog.show(getChildFragmentManager(), null);
+        Authenticator.getInstance().logoutAsync(new Receiver<Void>() {
+            @Override
+            public void onReceive(Void aVoid) {
+                onLogout();
+            }
+        });
+    }
+
+    private void onLogout(){
+        if(!Value.IS.nullValue(dialog)&& dialog.isVisible()){
+            dialog.dismissAllowingStateLoss();
+            dialog = null;
+        }
+        ((Activity)getActivity()).replaceFragment(WelcomeFragment.getInstance());
     }
 
     @Override

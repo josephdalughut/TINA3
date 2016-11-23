@@ -13,6 +13,8 @@ class SmartPlug extends Entity
 {
     public static $database_tableName = "smartPlugs";
     public static $database_tableColumn_userId = "userId";
+    public static $database_tableColumn_name = "name";
+    public static $database_tableColumn_type = "type";
     public static $database_tableColumn_state = "state";
 
     /**
@@ -20,6 +22,8 @@ class SmartPlug extends Entity
      */
     public static function _getDatabaseTableCreateStatement(){
         $sql = SmartPlug::$database_tableColumn_userId." int, "
+            .SmartPlug::$database_tableColumn_name." varchar(255), "
+            .SmartPlug::$database_tableColumn_type." varchar(30), "
             .SmartPlug::$database_tableColumn_state." varchar(5), ";
         return Entity::_createDatabaseTableCreateStatementPad(SmartPlug::$database_tableName, $sql);
     }
@@ -33,6 +37,16 @@ class SmartPlug extends Entity
      * @var string
      */
     private $state = Null;
+
+    /**
+     * @var string
+     */
+    private $name = Null;
+
+    /**
+     * @var string
+     */
+    private $type = Null;
 
     /**
      * @return integer
@@ -70,6 +84,37 @@ class SmartPlug extends Entity
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
 
 
     /**
@@ -80,12 +125,16 @@ class SmartPlug extends Entity
         $sql = "insert into ".SmartPlug::$database_tableName." ("
             .Entity::$database_tableColumn_id.", "
             .SmartPlug::$database_tableColumn_userId.", "
+            .SmartPlug::$database_tableColumn_name.", "
+            .SmartPlug::$database_tableColumn_type.", "
             .SmartPlug::$database_tableColumn_state.", "
             .Entity::$database_tableColumn_createdAt.", "
             .Entity::$database_tableColumn_updatedAt.") values ("
             ."'".$outlet->getId()."', "
             ."'".$outlet->getUserId()."', "
-            ."'".$outlet->isState()."', "
+            ."'".$outlet->getName()."', "
+            ."'".$outlet->getType()."', "
+            ."'".$outlet->getState()."', "
             ."'".$outlet->getCreatedAt()."', "
             ."'".$outlet->getUpdatedAt()."'"
             .")";
@@ -100,9 +149,11 @@ class SmartPlug extends Entity
         $outlet = new SmartPlug();
         $outlet->setId($row[0]);
         $outlet->setUserId($row[1]);
-        $outlet->setState($row[2]);
-        $outlet->setCreatedAt($row[3]);
-        $outlet->setUpdatedAt($row[4]);
+        $outlet->setName($row[2]);
+        $outlet->setType($row[3]);
+        $outlet->setState($row[4]);
+        $outlet->setCreatedAt($row[5]);
+        $outlet->setUpdatedAt($row[6]);
         return $outlet;
     }
 

@@ -36,7 +36,7 @@ class AbstractApi
     }
 
     /**
-     * @param object $data
+     * @param $data
      * @param $status
      * @return string
      */

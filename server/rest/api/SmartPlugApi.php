@@ -19,15 +19,19 @@ class SmartPlugApi extends AbstractApi
 {
 
     /**
-     * @param string $smartPlugId
+     * @param array $args
      * @return string
      */
-    public function create($smartPlugId){
+    public function create($args){
         if(!$this->method == "POST"){
-            return $this->_response("Only GET requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+            return $this->_response("only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
+        if(!self::checkParams($args, "id")){
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
+        }
+        $smartPlugId = $args["id"];
         $user = Token::getUserFromRequest($this, $this->_getDatabase());
-        if(!$user instanceof User){
+        if(is_string($user)){
             return $user;
         }
         $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_id." ='".$smartPlugId."'";
@@ -64,13 +68,17 @@ class SmartPlugApi extends AbstractApi
     }
 
     /**
-     * @param string $smartPlugId
+     * @param array $args
      * @return string
      */
-    public function delete($smartPlugId){
+    public function delete($args){
         if(!$this->method == "DELETE"){
-            return $this->_response("Only GET requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+            return $this->_response("only DELETE requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
+        if(!self::checkParams($args, "id")){
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
+        }
+        $smartPlugId = $args["id"];
         $user = Token::getUserFromRequest($this, $this->_getDatabase());
         if(!$user instanceof User){
             return $user;
@@ -93,17 +101,21 @@ class SmartPlugApi extends AbstractApi
         if(!$this->_getDatabase()->query($deleteSQL)){
             return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
-        return $this->_response(true, HTTPStatusCode::$OK);
+        return $this->_response($smartPlug, HTTPStatusCode::$OK);
     }
 
     /**
-     * @param $smartPlugId
+     * @param array $args
      * @return string
      */
-    public function on($smartPlugId){
+    public function on($args){
         if(!$this->method == "PUT"){
-            return $this->_response("Only GET requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+            return $this->_response("Only PUT requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
+        if(!self::checkParams($args, "id")){
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
+        }
+        $smartPlugId = $args["id"];
         $user = Token::getUserFromRequest($this, $this->_getDatabase());
         if(!$user instanceof User){
             return $user;
@@ -156,13 +168,17 @@ class SmartPlugApi extends AbstractApi
     }
 
     /**
-     * @param $smartPlugId
+     * @param array $args
      * @return string
      */
-    public function Off($smartPlugId){
+    public function off($args){
         if(!$this->method == "PUT"){
             return $this->_response("Only GET requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
+        if(!self::checkParams($args, "id")){
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
+        }
+        $smartPlugId = $args["id"];
         $user = Token::getUserFromRequest($this, $this->_getDatabase());
         if(!$user instanceof User){
             return $user;
@@ -215,13 +231,83 @@ class SmartPlugApi extends AbstractApi
     }
 
     /**
-     * @param string $smartPlugId
+     * @param array $args
      * @return string
      */
-    public function id($smartPlugId){
+    public function get($args){
         if(!$this->method == "GET"){
             return $this->_response("Only GET requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
+        if(!self::checkParams($args, "id")){
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
+        }
+        $smartPlugId = $args["id"];
+        $user = Token::getUserFromRequest($this, $this->_getDatabase());
+        if(!$user instanceof User){
+            return $user;
+        }
+        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_id." ='".$smartPlugId->getId()."'";
+        /** @var mysqli_result $res */
+        $res = $this->_getDatabase()->query($findSQL);
+        if(!$res){
+            return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
+        }
+        if($res->num_rows<1){
+            return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+        }
+        $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
+        if($smartPlug->getUserId() != $user->getId()){
+            return $this->_response("Forbidden", HTTPStatusCode::$FORBIDDEN);
+        }
+        return $this->_response($smartPlug, HTTPStatusCode::$OK);
+    }
+
+    /**
+     * @param array $args
+     * @return string
+     */
+    public function gets($args){
+        if(!$this->method == "GET"){
+            return $this->_response("Only GET requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+        }
+        /*if(!self::checkParams($args, "id")){
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
+        }*/
+        $user = Token::getUserFromRequest($this, $this->_getDatabase());
+        if(!$user instanceof User){
+            return $user;
+        }
+        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_userId." ='".$user->getId()."'";
+        /** @var mysqli_result $res */
+        $res = $this->_getDatabase()->query($findSQL);
+        if(!$res){
+            return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
+        }
+        if($res->num_rows<1){
+            return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+        }
+        $smartPlugs = array();
+        while ($row = mysqli_fetch_array($res))
+        {
+            $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
+            array_push($smartPlugs, $smartPlug);
+        }
+        return $this->_response($smartPlugs, HTTPStatusCode::$OK);
+    }
+
+
+    /**
+     * @param array $args
+     * @return string
+     */
+    public function say($args){
+        if(!$this->method == "GET"){
+            return $this->_response("Only GET requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+        }
+        if(!self::checkParams($args, "id")){
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
+        }
+        $smartPlugId = $args["id"];
         $user = Token::getUserFromRequest($this, $this->_getDatabase());
         if(!$user instanceof User){
             return $user;
