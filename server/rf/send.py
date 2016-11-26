@@ -24,10 +24,10 @@ radio.enableAckPayload()
 
 radio.openWritingPipe(pipes[0])
 radio.openReadingPipe(1, pipes[1])
-radio.printDetails()
+#radio.printDetails()
 # radio.startListening()
 if len(sys.argv) != 2:
-    print ("Wrong number of arguments")
+    print ("ERROR: Wrong number of args")
     sys.exit(1)
 message = list(str(sys.argv[1]))
 while len(message) < 32:
@@ -41,7 +41,7 @@ while(retry < 5):
     while not radio.available(0):
         time.sleep(1 / 100)
         if time.time() - start > 2:
-            print("Timed out.")
+            #print("Timed out.")
             break
 
     receivedMessage = []
@@ -54,18 +54,18 @@ while(retry < 5):
             string += chr(n)
     #print("Out received message decodes to: {}".format(string))
     if len(string) > 1:
-        print ("Callback received:")
+        #print ("Callback received:")
         print string
         radio.stopListening()
         radio.write("")
         radio.powerDown()
-        sys.stdout.write(string);
+        #sys.stdout.write(string);
+	#print ("ERROR: No Response")
         sys.exit(0)
     radio.stopListening()
     retry = retry + 1
     time.sleep(1/100)
 print ("Error: Timed out")
-sys.stdout.write("ERROR");
 radio.stopListening()
 radio.powerDown()
 sys.exit(1)
