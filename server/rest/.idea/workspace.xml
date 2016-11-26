@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../android/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/SmartPlugApi.php" afterPath="$PROJECT_DIR$/api/SmartPlugApi.php" />
     </list>
     <ignored path="rest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,8 +59,8 @@
       <file leaf-file-name="SmartPlugApi.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="53" column="58" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
+            <state relative-caret-position="216">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <marker date="1480194610832" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
                 <marker date="1480194610832" expanded="true" signature="3933:4047" ph="select * fro... ${SmartPlug::$database_tableName}" />
@@ -172,8 +170,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="265" />
-    <option name="y" value="346" />
+    <option name="x" value="96" />
+    <option name="y" value="133" />
     <option name="width" value="1188" />
     <option name="height" value="610" />
   </component>
@@ -351,7 +349,7 @@
       <workItem from="1480091166256" duration="1838000" />
       <workItem from="1480155400282" duration="5634000" />
       <workItem from="1480167799020" duration="7026000" />
-      <workItem from="1480190232889" duration="2640000" />
+      <workItem from="1480190232889" duration="2843000" />
     </task>
     <task id="LOCAL-00001" summary="update endpoints">
       <created>1479775208384</created>
@@ -616,10 +614,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65538000" />
+    <option name="totallyTimeSpent" value="65741000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="265" y="346" width="1188" height="610" extended-state="0" />
+    <frame x="96" y="133" width="1188" height="610" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35340315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1100,8 +1098,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="53" column="58" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
+        <state relative-caret-position="216">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <marker date="1480194610832" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
             <marker date="1480194610832" expanded="true" signature="3933:4047" ph="select * fro... ${SmartPlug::$database_tableName}" />
