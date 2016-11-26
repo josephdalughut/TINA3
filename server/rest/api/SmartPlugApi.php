@@ -40,25 +40,33 @@ class SmartPlugApi extends AbstractApi
         if(!$res){
             return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
+        /** @var SmartPlug */
+        $smartPlug = null;
         if ($res->num_rows > 0){
-            return $this->_response("Conflict: smartPlug", HTTPStatusCode::$CONFLICT);
+            $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
+            if($smartPlug->getUserId()!=$user->getId()) {
+                return $this->_response("Conflict: smartPlug", HTTPStatusCode::$CONFLICT);
+            }
         }
         $command = $smartPlugId."_SAY_STATE";
         $result = exec("python ../../rf/send.py ".$command);
+        $VAL = "OFF";
         if($result == "ERROR"){
             return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
         }else{
             $arr = $this->_responseToArr($result);
             $UUID = $arr["UUID"];
             //$CMD = $arr["CMD"];
-            //$VAL = $arr["VAL"];
+            $VAL = $arr["VAL"];
             if($UUID != $smartPlugId){
                 return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
             }
         }
-        $smartPlug = new SmartPlug();
-        $smartPlug->setUserId($user->getId())->setState("OFF");
+        if($smartPlug == null){
+            $smartPlug = new SmartPlug();
+        }
         $now = Time::now();
+        $smartPlug->setUserId($user->getId());
         $smartPlug->setCreatedAt($now)->setUpdatedAt($now);
         $insertSQL = SmartPlug::wrapToInsertSQL($smartPlug);
         if(!$this->_getDatabase()->query($insertSQL)){
@@ -66,6 +74,43 @@ class SmartPlugApi extends AbstractApi
         }
         return $this->_response($smartPlug, HTTPStatusCode::$OK);
     }
+
+    /**
+     * @param array $args
+     * @return string
+     */
+    public function rename($args){
+        if(!$this->method == "POST"){
+            return $this->_response("only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+        }
+        if(!self::checkParams($args, "id", "name")){
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
+        }
+        $smartPlugId = $args["id"];
+        $name = $args["name"];
+        $user = Token::getUserFromRequest($this, $this->_getDatabase());
+        if(is_string($user)){
+            return $user;
+        }
+        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_id." ='".$smartPlugId."'";
+        /** @var mysqli_result $res */
+        $res = $this->_getDatabase()->query($findSQL);
+        if(!$res){
+            return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
+        }
+        if ($res->num_rows < 1){
+            return $this->_response("Not Found: smartPlug", HTTPStatusCode::$NOT_FOUND);
+        }
+        $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
+        $now = Time::now();
+        $smartPlug->setName($name)->setUpdatedAt($now);
+        $updateSQL = SmartPlug::wrapToUpdateSQL($smartPlug);
+        if(!$this->_getDatabase()->query($updateSQL)){
+            return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);
+        }
+        return $this->_response($smartPlug, HTTPStatusCode::$OK);
+    }
+
 
     /**
      * @param array $args
@@ -83,24 +128,14 @@ class SmartPlugApi extends AbstractApi
         if(!$user instanceof User){
             return $user;
         }
-        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_id." ='".$smartPlugId->getId()."'";
-        /** @var mysqli_result $res */
-        $res = $this->_getDatabase()->query($findSQL);
+        $deleteSQL = "delete from ".SmartPlug::$database_tableName." where ".Entity::$database_tableColumn_id
+            ."='".$smartPlugId."' and ".SmartPlug::$database_tableColumn_userId." ='".$user->getId()."'";
+        $res = $this->_getDatabase()->query($deleteSQL);
         if(!$res){
-            return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
-        }
-        if($res->num_rows<1){
             return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
         }
-        $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
-        if($smartPlug->getUserId() != $user->getId()){
-            return $this->_response("Forbidden", HTTPStatusCode::$FORBIDDEN);
-        }
-        $deleteSQL = "delete from ".SmartPlug::$database_tableName." where ".Entity::$database_tableColumn_id
-            ."='".$smartPlug->getId()."'";
-        if(!$this->_getDatabase()->query($deleteSQL)){
-            return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);
-        }
+        $smartPlug = new SmartPlug();
+        $smartPlug->setId($smartPlugId);
         return $this->_response($smartPlug, HTTPStatusCode::$OK);
     }
 
@@ -283,9 +318,11 @@ class SmartPlugApi extends AbstractApi
         if(!$res){
             return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
+        /*
         if($res->num_rows<1){
             return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
         }
+        */
         $smartPlugs = array();
         while ($row = mysqli_fetch_array($res))
         {

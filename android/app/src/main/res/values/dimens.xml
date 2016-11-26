@@ -2,4 +2,9 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="light_switch_shadow_height">15dp</dimen>
+    <dimen name="light_switch_width">200dp</dimen>
+    <dimen name="light_switch_height">300dp</dimen>
+    <dimen name="margin_page_toolbar">66dp</dimen>
+    <dimen name="height_light_switch_toolbar">35dp</dimen>
 </resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:clickable="true"
+    android:background="@color/tina_green"
+    android:padding="@dimen/height_toolbar"
+    >
+
+    <com.litigy.lib.android.gui.view.textView.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:fontAppearance="title"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:text="@string/add_a_smart_plug"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_action_tina3_white"
+        android:layout_marginTop="@dimen/margin_page_half"
+        />
+
+    <com.litigy.lib.android.gui.view.textView.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:fontAppearance="body2"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/margin_page"
+        android:text="@string/add_a_smart_plug_info_1"
+        />
+
+
+</LinearLayout>

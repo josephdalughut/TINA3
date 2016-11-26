@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flat_clouds"
+    android:clickable="true"
+    >
+
+    <ng.edu.aun.tina3.gui.custom.LightSwitch
+        android:id="@+id/lightSwitch"
+        android:layout_margin="@dimen/height_toolbar_normal_double"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+
+        android:layout_height="wrap_content"/>
+
+</FrameLayout>

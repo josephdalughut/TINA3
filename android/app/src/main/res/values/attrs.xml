@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LightSwitch">
+        <attr name="lightSwitchState" format="enum">
+            <enum name="OFF" value="0"/>
+            <enum name="ON" value="1"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

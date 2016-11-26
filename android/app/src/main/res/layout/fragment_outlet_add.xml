@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tina_green"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_toolbar"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:layout_width="@dimen/height_toolbar"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:src="@mipmap/ic_action_navigation_close"
+                android:id="@+id/closeButton"
+                />
+
+            <com.litigy.lib.android.gui.view.textView.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:textColor="@color/white"
+                />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+            <com.litigy.lib.android.gui.pager.NaughtyPager
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/pager"
+                />
+
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_page_half"
+            >
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <com.viewpagerindicator.CirclePageIndicator
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_gravity="center|left"
+                    android:id="@+id/indicator"
+                    app:fillColor="@color/white"
+                    app:pageColor="@color/black_half"
+                    app:strokeColor="@color/transparent"
+                    app:strokeWidth="2dp"
+                    />
+
+            </FrameLayout>
+
+            <com.litigy.lib.android.gui.view.button.Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/height_toolbar"
+                android:layout_gravity="right"
+                app:backgroundTint="@color/white"
+                android:textColor="@color/tina_green"
+                android:text="@string/next"
+                android:id="@+id/nextButton"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

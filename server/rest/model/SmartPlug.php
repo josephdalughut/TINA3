@@ -141,6 +141,49 @@ class SmartPlug extends Entity
         return $sql;
     }
 
+
+
+    /**
+     * @param SmartPlug $outlet
+     * @return string
+     */
+    public static function wrapToReplaceSQL($outlet){
+        $sql = "insert into ".SmartPlug::$database_tableName." ("
+            .Entity::$database_tableColumn_id.", "
+            .SmartPlug::$database_tableColumn_userId.", "
+            .SmartPlug::$database_tableColumn_name.", "
+            .SmartPlug::$database_tableColumn_type.", "
+            .SmartPlug::$database_tableColumn_state.", "
+            .Entity::$database_tableColumn_createdAt.", "
+            .Entity::$database_tableColumn_updatedAt.") values ("
+            ."'".$outlet->getId()."', "
+            ."'".$outlet->getUserId()."', "
+            ."'".$outlet->getName()."', "
+            ."'".$outlet->getType()."', "
+            ."'".$outlet->getState()."', "
+            ."'".$outlet->getCreatedAt()."', "
+            ."'".$outlet->getUpdatedAt()."'"
+            .")";
+        return $sql;
+    }
+
+    /**
+     * @param SmartPlug $outlet
+     * @return string
+     */
+    public static function wrapToUpdateSQL($outlet){
+        $sql = "update ".SmartPlug::$database_tableName." set "
+            .SmartPlug::$database_tableColumn_userId." ="."'".$outlet->getUserId()."', "
+            .SmartPlug::$database_tableColumn_name." ="."'".$outlet->getName()."', "
+            .SmartPlug::$database_tableColumn_type." ="."'".$outlet->getType()."', "
+            .SmartPlug::$database_tableColumn_state." ="."'".$outlet->getState()."', "
+            .Entity::$database_tableColumn_createdAt." ="."'".$outlet->getCreatedAt()."', "
+            .Entity::$database_tableColumn_updatedAt." ="."'".$outlet->getUpdatedAt()."' "
+            ."where ".Entity::$database_tableColumn_id." ="."'".$outlet->getId()."';";
+
+        return $sql;
+    }
+
     /**
      * @param array $row
      * @return SmartPlug

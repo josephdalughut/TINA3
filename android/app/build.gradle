@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "ng.edu.aun.tina3"
-        minSdkVersion 11
+        minSdkVersion 12
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -68,6 +68,10 @@ dependencies {
     compile 'org.apache.httpcomponents:httpmime:4.3.6'
     compile 'net.zetetic:android-database-sqlcipher:3.5.4'
     compile 'com.viewpagerindicator:library:2.4.1@aar'
+    compile 'org.jetbrains:annotations-java5:15.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    compile 'com.facebook.rebound:rebound:0.3.8'
 }
 
 repositories {

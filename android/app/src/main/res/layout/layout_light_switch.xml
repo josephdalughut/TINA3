@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    app:cardElevation="8dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardBackgroundColor="#e4e4e4"
+    android:clipChildren="false"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/settingsUI"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.CardView
+                android:layout_margin="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="@color/aaa"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0dp"
+                android:clickable="true"
+                >
+
+                <android.support.v7.widget.CardView
+                    android:layout_margin="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="#e4e4e4"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <com.litigy.lib.android.gui.view.textView.TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/name"
+                            android:textColor="@color/aaa"
+                            app:fontAppearance="caption"
+                            />
+
+                        <com.litigy.lib.android.gui.view.textView.TextView
+                            android:id="@+id/nameTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textColor="@color/nine"
+                            android:layout_marginTop="2dp"
+                            app:fontAppearance="body2"
+                            />
+
+                        <com.litigy.lib.android.gui.view.textView.TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/id"
+                            android:textColor="@color/aaa"
+                            android:layout_marginTop="6dp"
+                            app:fontAppearance="caption"
+                            />
+
+                        <com.litigy.lib.android.gui.view.textView.TextView
+                            android:id="@+id/idTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textColor="@color/nine"
+                            android:layout_marginTop="2dp"
+                            app:fontAppearance="body2"
+                            />
+
+                        <com.litigy.lib.android.gui.view.textView.TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/automated"
+                            android:textColor="@color/aaa"
+                            android:layout_marginTop="6dp"
+                            app:fontAppearance="caption"
+                            />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/automatedSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="2dp"
+                            />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </android.support.v7.widget.CardView>
+
+
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="@dimen/height_light_switch_toolbar"
+                android:layout_height="@dimen/height_light_switch_toolbar"
+                android:layout_gravity="bottom|right"
+                android:background="@color/transparent"
+                android:src="@mipmap/ic_action_action_delete_six"
+                />
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="@dimen/height_light_switch_toolbar"
+                android:layout_height="@dimen/height_light_switch_toolbar"
+                android:layout_gravity="top|left"
+                android:background="@color/transparent"
+                android:src="@mipmap/ic_action_navigation_close_six"
+                />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/switchUI"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/selector"
+                android:layout_margin="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="@color/aaa"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0dp"
+                android:clickable="true"
+                >
+
+                <android.support.v7.widget.CardView
+                    android:layout_margin="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="#9B9B9B"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp"
+                    >
+
+                    <android.support.v7.widget.CardView
+                        android:layout_margin="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="4dp"
+                        app:cardElevation="4dp"
+                        >
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                >
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    >
+
+                                    <View
+                                        android:layout_margin="0dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="@color/light_switch_off_shade"
+                                        android:id="@+id/buttonIsOn"
+                                        />
+
+                                    <android.support.v7.widget.CardView
+                                        android:id="@+id/shadowTop"
+                                        android:layout_margin="0dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        app:cardElevation="0dp"
+                                        app:cardBackgroundColor="@color/light_switch_shadow"
+                                        android:layout_gravity="top"
+                                        app:cardCornerRadius="1dp"
+                                        />
+
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    >
+
+                                    <View
+                                        android:layout_margin="0dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="@color/light_switch_on_shade"
+                                        android:id="@+id/buttonIsOff"
+                                        />
+
+                                    <android.support.v7.widget.CardView
+                                        android:id="@+id/shadowBottom"
+                                        android:layout_margin="0dp"
+                                        android:layout_width="match_parent"
+                                        app:cardElevation="0dp"
+                                        android:layout_height="@dimen/light_switch_shadow_height"
+                                        app:cardBackgroundColor="@color/light_switch_shadow"
+                                        android:layout_gravity="bottom"
+                                        app:cardCornerRadius="1dp"
+                                        />
+
+                                </FrameLayout>
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/middleGradient"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/light_switch_mid_gradient_off"
+                                />
+
+                        </FrameLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+                </android.support.v7.widget.CardView>
+
+
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <com.litigy.lib.android.gui.view.progress.PigressBar
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    app:pigressColor="@color/flat_alizarin"
+                    app:pigressIndeterminate="false"
+                    app:pigressProgress="100"
+                    app:pigressMax="100"
+                    android:id="@+id/statePigressBar"
+                    />
+
+                <android.support.v4.widget.Space
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    />
+
+                <com.litigy.lib.android.gui.view.progress.PigressBar
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    app:pigressColor="@color/ccc"
+                    app:pigressIndeterminate="false"
+                    app:pigressProgress="100"
+                    app:pigressMax="100"
+                    android:id="@+id/automationPigressBar"/>
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="bottom"
+                android:layout_height="35dp">
+
+                <com.litigy.lib.android.gui.view.textView.TextView
+                    android:id="@+id/stateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/six"
+                    app:fontAppearance="body2"
+                    android:text="OFF"
+                    android:textAllCaps="true"
+                    />
+
+                <ImageButton
+                    android:id="@+id/settingsButton"
+                    android:layout_width="35dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@color/transparent"
+                    android:src="@mipmap/ic_action_action_settings_six"
+                    />
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</android.support.v7.widget.CardView>

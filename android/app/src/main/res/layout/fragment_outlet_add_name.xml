@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tina_green"
+    android:clickable="true"
+    android:gravity="center"
+    android:padding="@dimen/height_toolbar"
+    >
+
+    <com.litigy.lib.android.gui.view.textView.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:fontAppearance="body2"
+        android:text="@string/smart_plug_optional_name"
+        />
+
+    <com.litigy.lib.android.gui.view.editText.EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_toolbar"
+        android:textColor="@color/white"
+        app:fontAppearance="subhead"
+        android:textCursorDrawable="@drawable/cursor_white"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:id="@+id/name"
+        android:lines="1"
+        android:maxLength="22"
+        android:imeOptions="actionDone"
+        >
+
+        <requestFocus/>
+
+    </com.litigy.lib.android.gui.view.editText.EditText>
+
+    <View android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        />
+
+    <com.litigy.lib.android.gui.view.textView.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_half"
+        android:gravity="center"
+        app:fontAppearance="caption"
+        android:text="@string/smart_plug_name_info"
+        android:layout_marginTop="@dimen/height_toolbar"
+        />
+
+</LinearLayout>

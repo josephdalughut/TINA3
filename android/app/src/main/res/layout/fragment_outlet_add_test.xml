@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tina_green"
+    android:clickable="true"
+    android:padding="@dimen/height_toolbar_normal"
+    android:clipChildren="false"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/height_toolbar_normal"
+        android:clipChildren="false"
+        >
+
+        <ng.edu.aun.tina3.gui.custom.LightSwitch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lightSwitch"
+            android:clipChildren="false"
+            >
+
+
+        </ng.edu.aun.tina3.gui.custom.LightSwitch>
+
+    </FrameLayout>
+
+    <com.litigy.lib.android.gui.view.textView.TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:id="@+id/infoTextView"
+        android:text="@string/add_smart_plug_try_info"
+        />
+
+</LinearLayout>

@@ -5,4 +5,7 @@
     <color name="colorAccent">@color/tina_green</color>
 
     <color name="tina_green">#4caf50</color>
+    <color name="light_switch_off_shade">#D3D3D3</color>
+    <color name="light_switch_on_shade">#e4e4e4</color>
+    <color name="light_switch_shadow">#a2a2a2</color>
 </resources>
