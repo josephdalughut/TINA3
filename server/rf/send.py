@@ -10,7 +10,6 @@ import cgitb
 cgitb.enable()
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
 
 pipes = [[0xE8, 0xE8, 0xF0, 0xF0, 0xE1], [0xF0, 0xF0, 0xF0, 0xF0, 0xE1]]
 
@@ -33,12 +32,12 @@ radio.openReadingPipe(1, pipes[1])
 if len(sys.argv) != 2:
     print ("ERROR: missing args")
 else:
+    returned = 0
     message = list(str(sys.argv[1]))
-    returned=1
     while len(message) < 32:
         message.append(0)
     retry=0
-    while(retry < 5 and returned==1):
+    while(retry < 5):
         start = time.time()
         radio.write(message)
         #print("Sent the message: {}".format(message))
@@ -61,16 +60,19 @@ else:
         if len(string) > 1:
             #print ("Callback received:")
             print string
-            returned=0
+            returned  = 1
+            radio.stopListening()
             radio.write("")
+            #radio.powerDown()
             #sys.stdout.write(string);
     	#print ("ERROR: No Response")
+            break
     	#sys.exit(0)
         radio.stopListening()
         retry = retry + 1
         time.sleep(1/100)
-    if returned != 0:
+    if returned != 1
         print ("ERROR: timed out")
-    radio.stopListening()
-    radio.powerDown()
+radio.stopListening()
+radio.powerDown()
 #sys.exit(0)
