@@ -60,8 +60,9 @@ else:
         #print("Out received message decodes to: {}".format(string))
         if len(string) > 1:
             #print ("Callback received:")
-            print string
             returned=0
+            print string
+            radio.stopListening()
             radio.write("")
             #sys.stdout.write(string);
     	#print ("ERROR: No Response")
