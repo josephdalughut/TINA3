@@ -82,7 +82,10 @@ class SmartPlugApi extends AbstractApi
         if(!self::checkParams($args, "path", "command")){
             return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
         }
-        $result = exec("python ".$args["path"]." ".$args["command"]);
+        $command = "python ".$args["path"]." ".$args["command"];
+        echo "Command is ".$command;
+        $result = shell_exec($command);
+        echo "Response is ".$result;
         return $this->_response($result, HTTPStatusCode::$OK);
     }
 
