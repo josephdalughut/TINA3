@@ -71,7 +71,7 @@ else:
         radio.stopListening()
         retry = retry + 1
         time.sleep(1/100)
-    if returned==0
+    if returned==0:
         print ("ERROR: timed out")
 radio.stopListening()
 radio.powerDown()
