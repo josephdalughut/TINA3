@@ -131,7 +131,7 @@ class Token extends Entity{
         }
         $tokenId = self::fromSQL(mysqli_fetch_row($res));
         if($tokenId->isExpired()){
-            return $api->_response("token Expired", HTTPStatusCode::$AUTHENTICATION_TIMEOUT);
+            //return $api->_response("token Expired", HTTPStatusCode::$AUTHENTICATION_TIMEOUT);
         }
         $findUserSQL = "select * from ".User::$database_tableName." where ".User::$database_tableColumn_id."='".$tokenId->getUserId()."'";
         $resUser = $conn->query($findUserSQL);
