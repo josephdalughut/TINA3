@@ -39,8 +39,8 @@
     <string name="control">Control</string>
     <string name="automation">Automation</string>
     <string name="smart_plug">Smart Plug</string>
-    <string name="add_a_smart_plug">TINA3 Smart Plug</string>
-    <string name="add_a_smart_plug_info_1">To add one, make sure it\'s connected to your power outlet and you also have its unique ID</string>
+    <string name="add_a_smart_plug">Add your \nTINA3 Smart Plug</string>
+    <string name="add_a_smart_plug_info_1">before you continue, make sure it\'s connected to your power outlet and you also have its unique ID</string>
     <string name="smart_plug_id">Smart-Plug ID</string>
     <string name="add_smart_plug_try_info">Try switching on your Smart-plug by clicking the switch here,</string>
     <string name="name">Name</string>
@@ -65,4 +65,10 @@
     <string name="smart_plug_error_switch_off">Your Smart-plug couldn\'t be switched off. Please try again</string>
     <string name="smart_plug_error_switch_on">Your Smart-plug couldn\'t be switched on. Please try again.</string>
     <string name="no_events">No Events for today.</string>
+    <string name="permission">Permission</string>
+    <string name="info_permission_add_accounts">To use this application, you need to grant it permission to add contacts and accounts.</string>
+    <string name="grant">Grant</string>
+    <string name="error_permission_not_granted">You didn\'t grant the required permissions.</string>
+    <string name="hint_no_smart_plugs_added">No Smart-plugs added</string>
+    <string name="hint_no_smart_plugs_added_info">when you add some, you\'ll always find them here.</string>
 </resources>

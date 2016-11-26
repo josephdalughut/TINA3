@@ -111,7 +111,9 @@ public class Authenticator extends AbstractAccountAuthenticator {
         Log.d("Account: "+account.toString());
         String data = accountManager.getUserData(account, "json");
         Log.d("Data is "+data);
-        User user = JsonUtils.fromJson(Crypto.AES.decrypt(Constants.DATA_ENCRYPTION_KEY, data), User.class);
+        String decrypted = Crypto.AES.decrypt(Constants.DATA_ENCRYPTION_KEY, data);
+        Log.d("Decrypted data is "+decrypted);
+        User user = JsonUtils.fromJson(decrypted, User.class);
         if(Value.IS.nullValue(user))
             throw new NotFoundException("error parsing json to user");
         return (Authenticator.user = user);

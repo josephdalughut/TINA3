@@ -4,6 +4,8 @@ package ng.edu.aun.tina3;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import net.sqlcipher.database.SQLiteDatabase;
+
 public class Application extends android.app.Application {
 
     /**
@@ -26,5 +28,6 @@ public class Application extends android.app.Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+        SQLiteDatabase.loadLibs(this);
     }
 }

@@ -113,7 +113,8 @@ public class Entity extends HashMap{
                 if(!Value.IS.nullValue(o)){
                     t.setData(new Gson().fromJson(o, JsonUtils.Data.class));
                 }
-            }catch (IllegalArgumentException ignored){
+            }catch (Exception ignored){
+                ignored.printStackTrace();
             }
 
             return t;

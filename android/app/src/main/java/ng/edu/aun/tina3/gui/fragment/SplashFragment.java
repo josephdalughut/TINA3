@@ -3,13 +3,18 @@ package ng.edu.aun.tina3.gui.fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 
+import com.litigy.lib.android.gui.dialog.DialogFragtivity;
+import com.litigy.lib.android.gui.dialog.InfoDialog;
 import com.litigy.lib.android.gui.fragment.Fragtivity;
 
 import ng.edu.aun.tina3.R;
 import ng.edu.aun.tina3.auth.Authenticator;
 import ng.edu.aun.tina3.gui.activity.Activity;
+import ng.edu.aun.tina3.gui.misc.Snackbar;
 import ng.edu.aun.tina3.rest.model.User;
+import ng.edu.aun.tina3.util.Log;
 import ng.edu.aun.tina3.util.PermissionUtils;
 import ng.edu.aun.tina3.util.Value;
 
@@ -55,7 +60,21 @@ public class SplashFragment extends BroadcastFragtivity {
     @Override
     public void setupViews() {
         if(PermissionUtils.Accounts.isPermissionRequired(getContext())){
-            PermissionUtils.Accounts.requestPermissions(getActivity());
+            InfoDialog.getInstance(getString(R.string.permission), getString(R.string.info_permission_add_accounts), false)
+                    .withPositiveButton(getString(R.string.grant), getColor(R.color.tina_green), new InfoDialog.OnClickListener() {
+                        @Override
+                        public void onClick(View view, DialogFragtivity dialogFragtivity) {
+                            dialogFragtivity.dismissAllowingStateLoss();
+                            PermissionUtils.Accounts.requestPermissions(getActivity());
+                        }
+                    })
+                    .withNegativeButton(getString(R.string.back), getColor(R.color.aaa), new InfoDialog.OnClickListener() {
+                        @Override
+                        public void onClick(View view, DialogFragtivity dialogFragtivity) {
+                            dialogFragtivity.dismissAllowingStateLoss();
+                            getActivity().onBackPressed();
+                        }
+                    }).show(getChildFragmentManager(), null);
             return;
         }
         loadUser();
@@ -68,6 +87,7 @@ public class SplashFragment extends BroadcastFragtivity {
                 try {
                     return Authenticator.getInstance().getUser(true);
                 } catch (Exception e) {
+                    Log.d("Exception loading user, is: "+e.getMessage());
                     return e;
                 }
             }
@@ -110,11 +130,16 @@ public class SplashFragment extends BroadcastFragtivity {
 
     @Override
     public String[] getIntentActions() {
-        return new String[]{PermissionUtils.Accounts.INTENT};
+        return new String[]{PermissionUtils.Accounts.INTENT_SUCCESS, PermissionUtils.Accounts.INTENT_FAILURE};
     }
 
     @Override
     public void onIntent(Intent intent) {
+        switch (intent.getAction()){
+            case PermissionUtils.Accounts.INTENT_FAILURE:
+                Snackbar.showLong(this, R.string.error_permission_not_granted);
+                break;
+        }
         try{
             setupViews();
         }catch (Exception ignored){

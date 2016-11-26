@@ -22,9 +22,9 @@ import ng.edu.aun.tina3.rest.utils.TINA3Request;
  * Created by joeyblack on 11/23/16.
  */
 
-public class SmartPlugApi {
+public class SmartPlugApi extends Api {
 
-    public static final String endpoint = "http://tina3server/api/v1/smartPlug/";
+    public static final String PATH = "api/v1/smartPlug/";
 
     public static void create(@NotNull final String smartPlugId, @NotNull final DoubleReceiver<SmartPlug,
             LitigyException> callbackReceiver){
@@ -39,7 +39,7 @@ public class SmartPlugApi {
                 @Override
                 public void onReceive1(String s) {
                     try {
-                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(endpoint+method).withParam("id", smartPlugId)
+                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method)).withParam("id", smartPlugId)
                                 .withCallbackReceiver(callbackReceiver).POST(SmartPlug.class);
                     } catch (IOException e) {
                         callbackReceiver.onReceive2(LitigyException.consumeIOException(e));
@@ -70,7 +70,7 @@ public class SmartPlugApi {
                 @Override
                 public void onReceive1(String s) {
                     try {
-                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(endpoint+method).withParam("id", smartPlugId)
+                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method)).withParam("id", smartPlugId)
                                 .withParam("name", smartPlugName)
                                 .withCallbackReceiver(callbackReceiver).POST(SmartPlug.class);
                     } catch (IOException e) {
@@ -102,7 +102,7 @@ public class SmartPlugApi {
                 @Override
                 public void onReceive1(String s) {
                     try {
-                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(endpoint+method).withParam("id", smartPlugId)
+                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method)).withParam("id", smartPlugId)
                                 .withCallbackReceiver(callbackReceiver).POST(SmartPlug.class);
                     } catch (IOException e) {
                         callbackReceiver.onReceive2(LitigyException.consumeIOException(e));
@@ -133,7 +133,7 @@ public class SmartPlugApi {
                 @Override
                 public void onReceive1(String s) {
                     try {
-                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(endpoint+method).withParam("id", smartPlugId)
+                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method)).withParam("id", smartPlugId)
                                 .withCallbackReceiver(callbackReceiver).PUT(SmartPlug.class);
                     } catch (IOException e) {
                         callbackReceiver.onReceive2(LitigyException.consumeIOException(e));
@@ -164,7 +164,7 @@ public class SmartPlugApi {
                 @Override
                 public void onReceive1(String s) {
                     try {
-                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(endpoint+method).withParam("id", smartPlugId)
+                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method)).withParam("id", smartPlugId)
                                 .withCallbackReceiver(callbackReceiver).PUT(SmartPlug.class);
                     } catch (IOException e) {
                         callbackReceiver.onReceive2(LitigyException.consumeIOException(e));
@@ -195,7 +195,7 @@ public class SmartPlugApi {
                 @Override
                 public void onReceive1(String s) {
                     try {
-                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(endpoint+method).withParam("id", smartPlugId)
+                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method)).withParam("id", smartPlugId)
                                 .withCallbackReceiver(callbackReceiver).GET(SmartPlug.class);
                     } catch (IOException e) {
                         callbackReceiver.onReceive2(LitigyException.consumeIOException(e));
@@ -225,7 +225,7 @@ public class SmartPlugApi {
                 @Override
                 public void onReceive1(String s) {
                     try {
-                        TINA3Request.<SmartPlugList>withAuthorization(s).withEndpoint(endpoint+method)
+                        TINA3Request.<SmartPlugList>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method))
                                 .withCallbackReceiver(callbackReceiver).GET(SmartPlugList.class);
                     } catch (IOException e) {
                         callbackReceiver.onReceive2(LitigyException.consumeIOException(e));
@@ -256,7 +256,7 @@ public class SmartPlugApi {
                 @Override
                 public void onReceive1(String s) {
                     try {
-                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(endpoint+method).withParam("id", smartPlugId)
+                        TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method)).withParam("id", smartPlugId)
                                 .withCallbackReceiver(callbackReceiver).GET(SmartPlug.class);
                     } catch (IOException e) {
                         callbackReceiver.onReceive2(LitigyException.consumeIOException(e));

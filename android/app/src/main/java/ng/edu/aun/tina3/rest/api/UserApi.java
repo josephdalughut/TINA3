@@ -14,12 +14,14 @@ import ng.edu.aun.tina3.util.Value;
  * Created by joeyblack on 11/22/16.
  */
 
-public class UserApi {
+public class UserApi extends Api {
+
+    public static final String PATH = "api/v1/user/";
 
     public static void signup(String aunId, String password, DoubleReceiver<User, LitigyException> receiver){
-        String endpoint = "http://tina3server/api/v1/user/signup";
+        String method = "signup";
         try {
-            TINA3Request.<User>withAuthorization(null).withEndpoint(endpoint)
+            TINA3Request.<User>withAuthorization(null).withEndpoint(buildEndpoint(PATH, method))
                     .withParam("username", aunId)
                     .withParam("password", password)
                     .withCallbackReceiver(receiver).POST(User.class);

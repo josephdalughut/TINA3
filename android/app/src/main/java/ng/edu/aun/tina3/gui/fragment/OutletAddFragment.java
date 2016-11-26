@@ -117,6 +117,7 @@ public class OutletAddFragment extends Fragtivity {
                 return fragments.size();
             }
         });
+        pager.setOffscreenPageLimit(fragments.size());
         indicator.setViewPager(pager);
     }
 

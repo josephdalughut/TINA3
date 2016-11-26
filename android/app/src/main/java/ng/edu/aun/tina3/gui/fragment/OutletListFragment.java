@@ -41,7 +41,7 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
     private DrawerLayout drawerLayout;
     private SwipeRefreshLayout refreshLayout;
     private RecyclerView recyclerView;
-    private View empty, error;
+    private View empty, error, menuButton;
     private FloatingActionButton addButton;
     private GenericRecyclerViewCursorAdapter<SmartPlugHolder> adapter;
 
@@ -83,6 +83,7 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
         error = findViewById(R.id.error);
         empty = findViewById(R.id.empty);
         addButton = (FloatingActionButton) findViewById(R.id.addButton);
+        menuButton = findViewById(R.id.menuButton);
     }
 
     @Override
@@ -100,7 +101,17 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ((Activity)getActivity()).addFragment(OutletAddFragment.getInstance());
+            }
+        });
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(drawerLayout.isDrawerOpen(Gravity.LEFT)){
+                    drawerLayout.closeDrawer(Gravity.LEFT);
+                }else{
+                    drawerLayout.openDrawer(Gravity.LEFT);
+                }
             }
         });
         adapter = GenericRecyclerViewCursorAdapter.<SmartPlugHolder>getInstance()
@@ -233,13 +244,11 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
 
     }
 
-    private void onRefresh(boolean refresh){
-        if(refresh && refreshLayout.isRefreshing())
-            return;
+    private void onRefresh(final boolean refresh){
         refreshLayout.post(new Runnable() {
             @Override
             public void run() {
-                refreshLayout.setRefreshing(true);
+                refreshLayout.setRefreshing(refresh);
             }
         });
         if(!refresh)
@@ -254,14 +263,15 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
 
     @Override
     public void onReceive1(Cursor cursor) {
+        onRefresh(false);
         adapter.setCursor(cursor);
         error.setVisibility(View.GONE);
         empty.setVisibility(adapter.isEmpty() ? View.VISIBLE : View.GONE);
-        onRefresh(false);
     }
 
     @Override
     public void onReceive2(LitigyException e) {
+        onRefresh(false);
         error.setVisibility(adapter.isEmpty() ? View.VISIBLE: View.GONE);
         empty.setVisibility(View.GONE);
         switch (e.toServiceException()){
@@ -272,7 +282,6 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
                 Snackbar.showLong(OutletListFragment.this, R.string.error_service_unavailable);
                 break;
         }
-        onRefresh(false);
     }
 
     @Override

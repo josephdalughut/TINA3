@@ -40,6 +40,7 @@
                     >
 
                     <ImageButton
+                        android:id="@+id/menuButton"
                         android:layout_width="@dimen/height_toolbar"
                         android:layout_height="match_parent"
                         android:background="@color/transparent"
@@ -108,7 +109,20 @@
                             android:layout_marginTop="@dimen/margin_page"
                             android:layout_marginRight="@dimen/height_toolbar"
                             android:layout_marginLeft="@dimen/height_toolbar"
-                            android:text="@string/hint_no_smart_plugs"
+                            android:text="@string/hint_no_smart_plugs_added"
+                            app:fontAppearance="body2"
+                            android:textColor="@color/aaa"
+                            />
+
+                        <com.litigy.lib.android.gui.view.textView.TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/margin_page"
+                            android:layout_marginRight="@dimen/height_toolbar"
+                            android:layout_marginLeft="@dimen/height_toolbar"
+                            android:text="@string/hint_no_smart_plugs_added_info"
                             app:fontAppearance="caption"
                             android:textColor="@color/aaa"
                             />

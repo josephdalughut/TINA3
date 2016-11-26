@@ -11,7 +11,8 @@ import android.support.v4.app.ActivityCompat;
 public class PermissionUtils {
 
     public static class Accounts {
-        public static final String INTENT = "com.joeydalu.wordit.android.util.PermissionUtils.ACCOUNTS";
+        public static final String INTENT_SUCCESS = "com.joeydalu.wordit.android.util.PermissionUtils.ACCOUNTS.SUCCESS";
+        public static final String INTENT_FAILURE = "com.joeydalu.wordit.android.util.PermissionUtils.ACCOUNTS.FAILURE";
         public static final int REQUEST_CODE = 101;
 
         public static boolean isPermissionRequired(Context context){
@@ -28,7 +29,8 @@ public class PermissionUtils {
     }
 
     public static class Files {
-        public static final String INTENT = "com.joeydalu.wordit.android.util.PermissionUtils.FILES";
+        public static final String INTENT_SUCCESS = "com.joeydalu.wordit.android.util.PermissionUtils.FILES.SUCCESS";
+        public static final String INTENT_FAILURE = "com.joeydalu.wordit.android.util.PermissionUtils.FILES.FAILURE";
         public static final int REQUEST_CODE = 103;
 
         public static boolean isPermissionRequired(Context context){

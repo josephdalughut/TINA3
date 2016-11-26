@@ -15,6 +15,7 @@
         app:contentInsetRight="0dp"
         app:contentInsetEnd="0dp"
         app:contentInsetLeft="0dp"
+        android:elevation="@dimen/elevation_default_app_bar"
         app:contentInsetStart="0dp"
         >
 

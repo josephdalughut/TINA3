@@ -52,21 +52,21 @@ class SmartPlugApi extends AbstractApi
         $result = exec("python ../../rf/send.py ".$command);
         $VAL = "OFF";
         if($result == "ERROR"){
-            return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+            return $this->_response("Not found, return successful from script with error: ".$result, HTTPStatusCode::$NOT_FOUND);
         }else{
             $arr = $this->_responseToArr($result);
             $UUID = $arr["UUID"];
             //$CMD = $arr["CMD"];
             $VAL = $arr["VAL"];
             if($UUID != $smartPlugId){
-                return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+                return $this->_response("Not found, uuid mismatch", HTTPStatusCode::$NOT_FOUND);
             }
         }
         if($smartPlug == null){
             $smartPlug = new SmartPlug();
         }
         $now = Time::now();
-        $smartPlug->setUserId($user->getId());
+        $smartPlug->setUserId($user->getId())->setState($VAL);
         $smartPlug->setCreatedAt($now)->setUpdatedAt($now);
         $insertSQL = SmartPlug::wrapToInsertSQL($smartPlug);
         if(!$this->_getDatabase()->query($insertSQL)){
