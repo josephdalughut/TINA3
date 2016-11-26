@@ -51,8 +51,8 @@ class SmartPlugApi extends AbstractApi
 
         $command = $smartPlugId."_SAY_STATE";
 
-        $script = escapeshellcmd('python ../../rf/send.py "'.$command.'"');
-        $result = shell_exec($script);
+        $script = "python ../../rf/send.py \"".$command."\"";
+        $result = exec($script);
         $VAL = "OFF";
         if($result == "ERROR"){
             return $this->_response("Not found, return successful from script with error: ".$result, HTTPStatusCode::$NOT_FOUND);
@@ -76,6 +76,14 @@ class SmartPlugApi extends AbstractApi
             return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
         return $this->_response($smartPlug, HTTPStatusCode::$OK);
+    }
+
+    public function testPy($args){
+        if(!self::checkParams($args, "path", "command")){
+            return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
+        }
+        $result = exec("python ".$args["path"]." ".$args["command"]);
+        return $this->_response($result, HTTPStatusCode::$OK);
     }
 
     /**
