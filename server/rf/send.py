@@ -62,9 +62,9 @@ while(retry < 5):
         radio.stopListening()
         radio.write("")
         radio.powerDown()
+        sys.exit(0)
         #sys.stdout.write(string);
 	#print ("ERROR: No Response")
-	   sys.exit(0)
     radio.stopListening()
     retry = retry + 1
     time.sleep(1/100)
