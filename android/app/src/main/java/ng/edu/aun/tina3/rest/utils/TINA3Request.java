@@ -190,14 +190,17 @@ public class TINA3Request<T> implements Response.ErrorListener {
 
     @Override
     public void onErrorResponse(VolleyError error) {
+        Log.d("Volley error: "+error.getMessage());
         NetworkResponse response = error.networkResponse;
-        int responseCode = response.statusCode;
-        String message;
-        try {
-            message = new String(response.data, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            Log.d("Error converting response bytes to string: "+e.getMessage());
-            message = null;
+        int responseCode = LitigyException.Mappings.ServiceUnvailableException;
+        String message = "no message";
+        if(!Value.IS.nullValue(response)){
+            responseCode = response.statusCode;
+            try {
+                message = new String(response.data, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                Log.d("Error converting response bytes to string: "+e.getMessage());
+            }
         }
         Log.d("Response code: "+responseCode+", return data length: "+message);
         if(!Value.IS.nullValue(callbackReceiver)) {
