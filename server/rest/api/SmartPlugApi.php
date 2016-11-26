@@ -52,7 +52,7 @@ class SmartPlugApi extends AbstractApi
         $command = $smartPlugId."_SAY_STATE";
 
         $script = "python ../../rf/send.py \"".$command."\"";
-        $result = exec($script);
+        $result = shell_exec($script);
         $VAL = "OFF";
         if (preg_match('/^ERROR/', $result)) {
             return $this->_response("Not found, return successful from script with error: ".$result, HTTPStatusCode::$NOT_FOUND);
