@@ -1,10 +1,14 @@
 #!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 
 import RPi.GPIO as GPIO
 from lib_nrf24 import NRF24
 import time
 import spidev
 import sys
+import cgitb
+
+cgitb.enable()
 
 GPIO.setmode(GPIO.BCM)
 

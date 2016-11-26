@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../android/.idea/workspace.xml" />
     </list>
     <ignored path="rest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,7 +26,7 @@
       <file leaf-file-name="AbstractApi.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
+            <state relative-caret-position="756">
               <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
               <folding />
             </state>
@@ -49,7 +49,7 @@
       <file leaf-file-name="Api.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/Api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="1350">
               <caret line="80" column="41" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
               <folding />
             </state>
@@ -59,7 +59,7 @@
       <file leaf-file-name="SmartPlugApi.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
+            <state relative-caret-position="18">
               <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
               <folding>
                 <marker date="1480176281839" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
@@ -84,7 +84,7 @@
       <file leaf-file-name="AuthApi.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/AuthApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="1188">
               <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
               <folding>
                 <marker date="1480173562195" expanded="true" signature="948:1066" ph="select * fro... ${User::$database_tableName}" />
@@ -96,7 +96,7 @@
       <file leaf-file-name="Token.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/Token.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
+            <state relative-caret-position="2304">
               <caret line="133" column="15" selection-start-line="133" selection-start-column="15" selection-end-line="133" selection-end-column="15" />
               <folding>
                 <marker date="1480174005227" expanded="true" signature="2661:2763" ph="select * fro... ${Session::$database_tableName}" />
@@ -112,7 +112,7 @@
       <file leaf-file-name="UserApi.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/UserApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-307">
+            <state relative-caret-position="54">
               <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
               <folding>
                 <marker date="1479813220975" expanded="true" signature="826:944" ph="select * fro... ${User::$database_tableName}" />
@@ -124,7 +124,7 @@
       <file leaf-file-name="SmartPlug.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
+            <state relative-caret-position="2484">
               <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
               <folding>
                 <marker date="1480158523959" expanded="true" signature="2340:3110" ph="insert into ${SmartPlug::$database_tableName}... " />
@@ -170,10 +170,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="477" />
-    <option name="y" value="179" />
-    <option name="width" value="1188" />
-    <option name="height" value="610" />
+    <option name="y" value="18" />
+    <option name="width" value="1600" />
+    <option name="height" value="882" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -200,8 +199,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -278,6 +275,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -349,6 +348,7 @@
       <workItem from="1480091166256" duration="1838000" />
       <workItem from="1480155400282" duration="5634000" />
       <workItem from="1480167799020" duration="7026000" />
+      <workItem from="1480190232889" duration="499000" />
     </task>
     <task id="LOCAL-00001" summary="update endpoints">
       <created>1479775208384</created>
@@ -606,15 +606,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62898000" />
+    <option name="totallyTimeSpent" value="63397000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="477" y="179" width="1188" height="610" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="18" width="1600" height="882" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36300173" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3677792" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5019305" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33037975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -622,6 +621,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5019305" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -671,6 +671,33 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <marker date="1479813885523" expanded="true" signature="444:851" ph="create table... if" />
+            <marker date="1479813885523" expanded="true" signature="2043:2522" ph="insert into ${User::$database_tableName}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/Api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="80" column="41" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1656">
@@ -1036,7 +1063,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/Api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
+        <state relative-caret-position="1350">
           <caret line="80" column="41" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
           <folding />
         </state>
@@ -1053,64 +1080,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-          <folding>
-            <marker date="1480158523959" expanded="true" signature="2340:3110" ph="insert into ${SmartPlug::$database_tableName}... " />
-            <marker date="1480158523959" expanded="true" signature="3283:4053" ph="insert into ${SmartPlug::$database_tableName}... " />
-            <marker date="1480158523959" expanded="true" signature="3289:4053" ph="insert into ${SmartPlug::$database_tableName}... " />
-            <marker date="1480158523959" expanded="true" signature="4229:4799" ph="insert into ${SmartPlug::$database_tableName}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/AuthApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
-          <folding>
-            <marker date="1480173562195" expanded="true" signature="948:1066" ph="select * fro... ${User::$database_tableName}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/UserApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-307">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <marker date="1479813220975" expanded="true" signature="826:944" ph="select * fro... ${User::$database_tableName}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
+        <state relative-caret-position="756">
           <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Token.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="133" column="15" selection-start-line="133" selection-start-column="15" selection-end-line="133" selection-end-column="15" />
-          <folding>
-            <marker date="1480174005227" expanded="true" signature="2661:2763" ph="select * fro... ${Session::$database_tableName}" />
-            <marker date="1480174005227" expanded="true" signature="3161:3273" ph="select * fro... ${User::$database_tableName}" />
-            <marker date="1480174005227" expanded="true" signature="3846:3948" ph="select * fro... ${Session::$database_tableName}" />
-            <marker date="1480174005227" expanded="true" signature="4596:5244" ph="insert into ${Session::$database_tableName}... " />
-            <marker date="1480174005227" expanded="true" signature="5760:6408" ph="insert into ${Session::$database_tableName}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
+        <state relative-caret-position="18">
           <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
           <folding>
             <marker date="1480176281839" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
@@ -1127,6 +1107,53 @@
             <marker date="1480176281839" expanded="true" signature="12101:12224" ph="select * fro... ${SmartPlug::$database_tableName}" />
             <marker date="1480176281839" expanded="true" signature="13414:13534" ph="select * fro... ${SmartPlug::$database_tableName}" />
             <marker date="1480176281839" expanded="true" signature="14788:14911" ph="select * fro... ${SmartPlug::$database_tableName}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/AuthApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+          <folding>
+            <marker date="1480173562195" expanded="true" signature="948:1066" ph="select * fro... ${User::$database_tableName}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Token.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2304">
+          <caret line="133" column="15" selection-start-line="133" selection-start-column="15" selection-end-line="133" selection-end-column="15" />
+          <folding>
+            <marker date="1480174005227" expanded="true" signature="2661:2763" ph="select * fro... ${Session::$database_tableName}" />
+            <marker date="1480174005227" expanded="true" signature="3161:3273" ph="select * fro... ${User::$database_tableName}" />
+            <marker date="1480174005227" expanded="true" signature="3846:3948" ph="select * fro... ${Session::$database_tableName}" />
+            <marker date="1480174005227" expanded="true" signature="4596:5244" ph="insert into ${Session::$database_tableName}... " />
+            <marker date="1480174005227" expanded="true" signature="5760:6408" ph="insert into ${Session::$database_tableName}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/UserApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding>
+            <marker date="1479813220975" expanded="true" signature="826:944" ph="select * fro... ${User::$database_tableName}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2484">
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+          <folding>
+            <marker date="1480158523959" expanded="true" signature="2340:3110" ph="insert into ${SmartPlug::$database_tableName}... " />
+            <marker date="1480158523959" expanded="true" signature="3283:4053" ph="insert into ${SmartPlug::$database_tableName}... " />
+            <marker date="1480158523959" expanded="true" signature="3289:4053" ph="insert into ${SmartPlug::$database_tableName}... " />
+            <marker date="1480158523959" expanded="true" signature="4229:4799" ph="insert into ${SmartPlug::$database_tableName}... " />
           </folding>
         </state>
       </provider>
