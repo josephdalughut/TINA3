@@ -68,7 +68,7 @@ class AuthApi extends AbstractApi
         if(!self::checkParams($args, "refresh_token")){
             return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
         }
-        $refresh_token = Token::getToken($args["refresh_token"], $this, $this->_getDatabase(), $_COOKIE);
+        $refresh_token = Token::getToken($args["refresh_token"], $this, $this->_getDatabase());
         if(!$refresh_token instanceof Token){
             return $refresh_token;
         }

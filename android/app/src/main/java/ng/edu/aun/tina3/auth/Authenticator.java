@@ -183,7 +183,7 @@ public class Authenticator extends AbstractAccountAuthenticator {
 
             @Override
             protected void onPostExecute(Object o) {
-                Log.d("Returning from set user asnyn");
+                Log.d("Returning from set user asnync");
                 if (!Value.IS.nullValue(callbackReceiver)) {
                     if(o instanceof User){
                         callbackReceiver.onReceive1((User)o);
