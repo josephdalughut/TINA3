@@ -66,9 +66,10 @@ else:
             #sys.stdout.write(string);
     	#print ("ERROR: No Response")
     	#sys.exit(0)
-        radio.stopListening()
-        retry = retry + 1
-        time.sleep(1/100)
+        else:
+            radio.stopListening()
+            retry = retry + 1
+            time.sleep(1/100)
     if returned != 0:
         print ("ERROR: timed out")
 radio.stopListening()
