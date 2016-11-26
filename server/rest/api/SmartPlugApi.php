@@ -62,7 +62,7 @@ class SmartPlugApi extends AbstractApi
             //$CMD = $arr["CMD"];
             $VAL = $arr["VAL"];
             if($UUID != $smartPlugId){
-                return $this->_response("Not found, uuid mismatch", HTTPStatusCode::$NOT_FOUND);
+                return $this->_response("Not found, result is ".$result, HTTPStatusCode::$NOT_FOUND);
             }
         }
         if($smartPlug == null){
