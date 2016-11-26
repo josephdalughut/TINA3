@@ -31,7 +31,7 @@ radio.openReadingPipe(1, pipes[1])
 # radio.startListening()
 if len(sys.argv) != 2:
     print ("ERROR")
-    sys.exit(0)
+    return
 message = list(str(sys.argv[1]))
 while len(message) < 32:
     message.append(0)
@@ -64,11 +64,12 @@ while(retry < 5):
         radio.powerDown()
         #sys.stdout.write(string);
 	#print ("ERROR: No Response")
-        sys.exit(0)
+        return 
+	#sys.exit(0)
     radio.stopListening()
     retry = retry + 1
     time.sleep(1/100)
 print ("ERROR")
 radio.stopListening()
 radio.powerDown()
-sys.exit(0)
+#sys.exit(0)
