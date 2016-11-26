@@ -32,7 +32,7 @@ radio.openReadingPipe(1, pipes[1])
 if len(sys.argv) != 2:
     print ("ERROR: missing args")
 else:
-    returned = 0
+    returned=0
     message = list(str(sys.argv[1]))
     while len(message) < 32:
         message.append(0)
@@ -60,7 +60,7 @@ else:
         if len(string) > 1:
             #print ("Callback received:")
             print string
-            returned  = 1
+            returned=len(string)
             radio.stopListening()
             radio.write("")
             #radio.powerDown()
@@ -71,7 +71,7 @@ else:
         radio.stopListening()
         retry = retry + 1
         time.sleep(1/100)
-    if returned != 1
+    if returned==0
         print ("ERROR: timed out")
 radio.stopListening()
 radio.powerDown()
