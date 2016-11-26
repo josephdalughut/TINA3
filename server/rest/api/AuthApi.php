@@ -74,6 +74,7 @@ class AuthApi extends AbstractApi
         }
         $arr = Array();
         $user = new User();
+        $user->setId($refresh_token->getUserId());
         $access_token = new Token(true);
         $refresh_token = new Token(true);
         $access_token = $access_token->createAccessToken($this, $this->_getDatabase(), $user);
