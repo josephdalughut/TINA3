@@ -37,7 +37,7 @@ else:
     while len(message) < 32:
         message.append(0)
     retry=0
-    while(retry < 5 && returned=1):
+    while(retry < 5 and returned=1):
         start = time.time()
         radio.write(message)
         #print("Sent the message: {}".format(message))
