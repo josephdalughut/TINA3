@@ -48,8 +48,11 @@ class SmartPlugApi extends AbstractApi
                 return $this->_response("Conflict: smartPlug", HTTPStatusCode::$CONFLICT);
             }
         }
+
         $command = $smartPlugId."_SAY_STATE";
-        $result = exec("python ../../rf/send.py ".$command);
+
+        $script = escapeshellcmd('../../rf/send.py "'.$command.'"');
+        $result = shell_exec($script);
         $VAL = "OFF";
         if($result == "ERROR"){
             return $this->_response("Not found, return successful from script with error: ".$result, HTTPStatusCode::$NOT_FOUND);
