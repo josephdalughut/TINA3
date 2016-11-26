@@ -31,7 +31,7 @@ radio.openReadingPipe(1, pipes[1])
 # radio.startListening()
 if len(sys.argv) != 2:
     print ("ERROR")
-    sys.exit(1)
+    sys.exit(0)
 message = list(str(sys.argv[1]))
 while len(message) < 32:
     message.append(0)
@@ -71,4 +71,4 @@ while(retry < 5):
 print ("ERROR")
 radio.stopListening()
 radio.powerDown()
-sys.exit(1)
+sys.exit(0)
