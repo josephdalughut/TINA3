@@ -31,45 +31,45 @@ radio.openReadingPipe(1, pipes[1])
 # radio.startListening()
 if len(sys.argv) != 2:
     print ("ERROR: missing args")
-    return
-message = list(str(sys.argv[1]))
-while len(message) < 32:
-    message.append(0)
-retry=0
-while(retry < 5):
-    start = time.time()
-    radio.write(message)
-    #print("Sent the message: {}".format(message))
-    radio.startListening()
-    while not radio.available(0):
-        time.sleep(1 / 100)
-        if time.time() - start > 2:
-            #print("Timed out.")
-            break
+else:
+    message = list(str(sys.argv[1]))
+    returned=1
+    while len(message) < 32:
+        message.append(0)
+    retry=0
+    while(retry < 5 && returned=1):
+        start = time.time()
+        radio.write(message)
+        #print("Sent the message: {}".format(message))
+        radio.startListening()
+        while not radio.available(0):
+            time.sleep(1 / 100)
+            if time.time() - start > 2:
+                #print("Timed out.")
+                break
 
-    receivedMessage = []
-    radio.read(receivedMessage, radio.getDynamicPayloadSize())
-    #print("Received: {}".format(receivedMessage))
-    string = ""
-    for n in receivedMessage:
-        # Decode into standard unicode set
-        if (n >= 32 and n <= 126):
-            string += chr(n)
-    #print("Out received message decodes to: {}".format(string))
-    if len(string) > 1:
-        #print ("Callback received:")
-        print string
+        receivedMessage = []
+        radio.read(receivedMessage, radio.getDynamicPayloadSize())
+        #print("Received: {}".format(receivedMessage))
+        string = ""
+        for n in receivedMessage:
+            # Decode into standard unicode set
+            if (n >= 32 and n <= 126):
+                string += chr(n)
+        #print("Out received message decodes to: {}".format(string))
+        if len(string) > 1:
+            #print ("Callback received:")
+            print string
+            returned=0
+            radio.write("")
+            #sys.stdout.write(string);
+    	#print ("ERROR: No Response")
+    	#sys.exit(0)
         radio.stopListening()
-        radio.write("")
-        radio.powerDown()
-        #sys.stdout.write(string);
-	#print ("ERROR: No Response")
-        return
-	#sys.exit(0)
+        retry = retry + 1
+        time.sleep(1/100)
+    if returned != 0:
+        print ("ERROR: timed out")
     radio.stopListening()
-    retry = retry + 1
-    time.sleep(1/100)
-print ("ERROR: timed out")
-radio.stopListening()
-radio.powerDown()
+    radio.powerDown()
 #sys.exit(0)
