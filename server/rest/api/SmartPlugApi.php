@@ -51,7 +51,7 @@ class SmartPlugApi extends AbstractApi
 
         $command = $smartPlugId."_SAY_STATE";
 
-        $script = escapeshellcmd('../../rf/send.py "'.$command.'"');
+        $script = escapeshellcmd('python ../../rf/send.py "'.$command.'"');
         $result = shell_exec($script);
         $VAL = "OFF";
         if($result == "ERROR"){
