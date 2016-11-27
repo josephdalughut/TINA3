@@ -172,8 +172,8 @@ class SmartPlugApi extends AbstractApi
      * @return string
      */
     public function on($args){
-        if(!$this->method == "PUT"){
-            return $this->_response("Only PUT requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+        if(!$this->method == "POST"){
+            return $this->_response("Only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
         if(!self::checkParams($args, "id")){
             return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
@@ -231,8 +231,8 @@ class SmartPlugApi extends AbstractApi
      * @return string
      */
     public function off($args){
-        if(!$this->method == "PUT"){
-            return $this->_response("Only GET requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+        if(!$this->method == "POST"){
+            return $this->_response("Only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
         if(!self::checkParams($args, "id")){
             return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
