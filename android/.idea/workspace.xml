@@ -17,7 +17,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b262fbb-44c5-495e-96c9-bce960177e7d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/rest/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/rest/.idea/workspace.xml" />
     </list>
     <ignored path="android.iws" />
@@ -139,8 +138,8 @@
       <file leaf-file-name="OutletAddFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="196" column="41" selection-start-line="196" selection-start-column="41" selection-end-line="196" selection-end-column="41" />
+            <state relative-caret-position="277">
+              <caret line="188" column="28" selection-start-line="188" selection-start-column="28" selection-end-line="188" selection-end-column="28" />
               <folding>
                 <element signature="e#8123#8153#0" expanded="true" />
                 <element signature="e#8246#8270#0" expanded="true" />
@@ -2042,8 +2041,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1600" />
-    <option name="y" value="18" />
+    <option name="y" value="-882" />
     <option name="width" value="1600" />
     <option name="height" value="882" />
   </component>
@@ -3036,7 +3034,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1600" y="18" width="1600" height="882" extended-state="6" />
+    <frame x="0" y="-882" width="1600" height="882" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3596,8 +3594,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="196" column="41" selection-start-line="196" selection-start-column="41" selection-end-line="196" selection-end-column="41" />
+        <state relative-caret-position="277">
+          <caret line="188" column="28" selection-start-line="188" selection-start-column="28" selection-end-line="188" selection-end-column="28" />
           <folding>
             <element signature="e#8123#8153#0" expanded="true" />
             <element signature="e#8246#8270#0" expanded="true" />

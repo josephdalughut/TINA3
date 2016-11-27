@@ -410,17 +410,23 @@ class SmartPlugApi extends AbstractApi
         }
     }
 
+    public function split($arr){
+        $value= $arr["value"];
+        $response = $this->_responseToArr($value);
+        return $this->_response($response, HTTPStatusCode::$OK);
+    }
+
     /**
-     * @param string $result
+     * @param string $value
      * @return array
      */
-    public function _responseToArr($result){
-        $uuid_idx = strpos($result, "_");
-        $cmd_idx = strpos($result, "_", $uuid_idx + 1);
-        $val_idx = strpos($result, "_", $cmd_idx + 1);
-        $uuid = substr($result, 0, $uuid_idx);
-        $cmd = substr($result, $uuid_idx + 1, $cmd_idx);
-        $val = substr($result, $cmd_idx + 1, $val_idx);
+    public function _responseToArr($value){
+        $uuid_idx = strpos($value, "_");
+        $cmd_idx = strpos($value, "_", $uuid_idx + 1);
+        $val_idx = strpos($value, "_", $cmd_idx + 1);
+        $uuid = substr($value, 0, $uuid_idx);
+        $cmd = substr($value, $uuid_idx + 1, $cmd_idx);
+        $val = substr($value, $cmd_idx + 1, $val_idx);
         return array (
           "UUID" => $uuid, "CMD" => $cmd, "VAL" => $val
         );
