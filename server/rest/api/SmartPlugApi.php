@@ -53,8 +53,9 @@ class SmartPlugApi extends AbstractApi
 
         $script = "python ../../rf/send.py \"".$command."\"";
         $result = shell_exec($script);
-        $VAL = "OFF";
-        /*if (preg_match('/^ERROR/', $result)) {
+        $result = str_replace("\n", "", $result);
+        /*$VAL = "OFF";
+        if (preg_match('/^ERROR/', $result)) {
             return $this->_response("Not found, return successful from script with error: ".$result, HTTPStatusCode::$NOT_FOUND);
         } else{
             $arr = $this->_responseToArr($result);

@@ -1,6 +1,7 @@
 package ng.edu.aun.tina3.rest.utils;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -61,6 +62,8 @@ public class TINA3Request<T> implements Response.ErrorListener {
         return Value.IS.nullValue(queue) ? (queue = Volley.newRequestQueue(Application.getInstance()))
                 : queue;
     }
+
+
 
     public TINA3Request<T> withEndpoint(String endpoint){
         return setEndpoint(endpoint);
@@ -157,8 +160,11 @@ public class TINA3Request<T> implements Response.ErrorListener {
                 return params;
             }
             */
-        });
+        }).setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
+
+
 
 
     public String getAuthorization() {
@@ -188,6 +194,8 @@ public class TINA3Request<T> implements Response.ErrorListener {
         return this;
     }
 
+
+
     @Override
     public void onErrorResponse(VolleyError error) {
         Log.d("Volley error: "+error.getMessage());
@@ -202,7 +210,7 @@ public class TINA3Request<T> implements Response.ErrorListener {
                 Log.d("Error converting response bytes to string: "+e.getMessage());
             }
         }
-        Log.d("Response code: "+responseCode+", return data length: "+message);
+        Log.d("Response code: "+responseCode+", return data: "+message);
         if(!Value.IS.nullValue(callbackReceiver)) {
             callbackReceiver.onReceive2(new LitigyException(responseCode, message));
         }
