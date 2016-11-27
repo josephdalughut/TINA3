@@ -24,10 +24,9 @@ import ng.edu.aun.tina3.util.Log;
 public class OutletAddTestFragment extends Fragtivity implements LightSwitch.LightSwitchListener{
 
     private LearningStage learningStage = LearningStage.LEARN_SWITCH_ON;
-    private SmartPlug smartPlug;
-
     private TextView infoTextView;
     private LightSwitch lightSwitch;
+    private SmartPlug smartPlug;
 
     public static OutletAddTestFragment getInstance(){
         return new OutletAddTestFragment();
@@ -132,15 +131,17 @@ public class OutletAddTestFragment extends Fragtivity implements LightSwitch.Lig
         }
     }
 
+    public SmartPlug getSmartPlug() {
+        return smartPlug;
+    }
+
     @Override
     public void onAutomationChanged(boolean enabled) {
+        SmartPlug smartPlug = ((OutletAddFragment)getParentFragment()).getSmartPlug();
         smartPlug.setAutomated(enabled ? 1 : 0);
         lightSwitch.flip();
     }
 
-    public SmartPlug getSmartPlug() {
-        return smartPlug;
-    }
 
     public OutletAddTestFragment setSmartPlug(SmartPlug smartPlug) {
         this.smartPlug = smartPlug;
@@ -168,6 +169,7 @@ public class OutletAddTestFragment extends Fragtivity implements LightSwitch.Lig
             @Override
             public void onReceive1(SmartPlug smartPlug) {
                 Log.d("Smart plug switched on");
+                OutletAddTestFragment.this.smartPlug = smartPlug;
                 lightSwitch.switchOn();
             }
 
@@ -189,6 +191,7 @@ public class OutletAddTestFragment extends Fragtivity implements LightSwitch.Lig
             @Override
             public void onReceive1(SmartPlug smartPlug) {
                 Log.d("Smart plug switched off");
+                OutletAddTestFragment.this.smartPlug = smartPlug;
                 lightSwitch.switchOff();
             }
 

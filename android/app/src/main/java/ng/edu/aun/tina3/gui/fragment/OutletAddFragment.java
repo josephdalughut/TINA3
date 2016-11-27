@@ -237,8 +237,8 @@ public class OutletAddFragment extends Fragtivity {
     }
 
     private void onSmartPlugRenamed(){
-        pager.setCurrentItem(3);
         ((OutletAddTestFragment)fragments.get(3)).setSmartPlug(smartPlug);
+        pager.setCurrentItem(3);
     }
 
     private void hideProgress(){
@@ -275,5 +275,15 @@ public class OutletAddFragment extends Fragtivity {
     @Override
     public boolean shouldWatchKeyboard() {
         return false;
+    }
+
+
+    public SmartPlug getSmartPlug() {
+        return smartPlug;
+    }
+
+    public OutletAddFragment setSmartPlug(SmartPlug smartPlug) {
+        this.smartPlug = smartPlug;
+        return this;
     }
 }

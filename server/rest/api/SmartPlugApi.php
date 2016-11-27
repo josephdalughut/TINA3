@@ -172,18 +172,18 @@ class SmartPlugApi extends AbstractApi
      * @return string
      */
     public function switchOn($args){
-        if(!$this->method == "PUT"){
-            return $this->_response("Only PUT requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+        if(!$this->method == "POST"){
+            return $this->_response("only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
         if(!self::checkParams($args, "id")){
             return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
         }
         $smartPlugId = $args["id"];
         $user = Token::getUserFromRequest($this, $this->_getDatabase());
-        if(!$user instanceof User){
+        if(is_string($user)){
             return $user;
         }
-        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_id." ='".$smartPlugId->getId()."'";
+        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_id." ='".$smartPlugId."'";
         /** @var mysqli_result $res */
         $res = $this->_getDatabase()->query($findSQL);
         if(!$res){
@@ -196,8 +196,8 @@ class SmartPlugApi extends AbstractApi
         if($smartPlug->getUserId() != $user->getId()){
             return $this->_response("Forbidden", HTTPStatusCode::$FORBIDDEN);
         }
-        $command = $smartPlug->getId()."_TO_ON";
 
+        $command = $smartPlug->getId()."_TO_ON";
         $script = "python ../../rf/send.py \"".$command."\"";
         $result = shell_exec($script);
         if(preg_match('/^ERROR/', $result)){
