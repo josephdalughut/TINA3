@@ -135,7 +135,7 @@ class SmartPlug extends Entity
             .Entity::$database_tableColumn_createdAt.", "
             .Entity::$database_tableColumn_updatedAt.") values ("
             ."'".$outlet->getId()."', "
-            ."'".$outlet->getUserId()."', "
+            .$outlet->getUserId().", "
             ."'".$outlet->getName()."', "
             ."'".$outlet->getType()."', "
             ."'".$outlet->getState()."', "
@@ -161,7 +161,7 @@ class SmartPlug extends Entity
             .Entity::$database_tableColumn_createdAt.", "
             .Entity::$database_tableColumn_updatedAt.") values ("
             ."'".$outlet->getId()."', "
-            ."'".$outlet->getUserId()."', "
+            .$outlet->getUserId().", "
             ."'".$outlet->getName()."', "
             ."'".$outlet->getType()."', "
             ."'".$outlet->getState()."', "
@@ -177,7 +177,7 @@ class SmartPlug extends Entity
      */
     public static function wrapToUpdateSQL($outlet){
         $sql = "update ".SmartPlug::$database_tableName." set "
-            .SmartPlug::$database_tableColumn_userId." ="."'".$outlet->getUserId()."', "
+            .SmartPlug::$database_tableColumn_userId." =".$outlet->getUserId().", "
             .SmartPlug::$database_tableColumn_name." ="."'".$outlet->getName()."', "
             .SmartPlug::$database_tableColumn_type." ="."'".$outlet->getType()."', "
             .SmartPlug::$database_tableColumn_state." ="."'".$outlet->getState()."', "
