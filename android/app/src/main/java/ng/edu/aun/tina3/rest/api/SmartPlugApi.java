@@ -1,5 +1,13 @@
 package ng.edu.aun.tina3.rest.api;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 import com.litigy.lib.java.error.LitigyException;
 import com.litigy.lib.java.generic.DoubleReceiver;
@@ -14,9 +22,12 @@ import java.util.List;
 
 import ng.edu.aun.tina3.auth.Authenticator;
 import ng.edu.aun.tina3.error.NotFoundException;
+import ng.edu.aun.tina3.rest.model.Entity;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
 import ng.edu.aun.tina3.rest.model.User;
 import ng.edu.aun.tina3.rest.utils.TINA3Request;
+import ng.edu.aun.tina3.util.JsonUtils;
+import ng.edu.aun.tina3.util.Log;
 
 /**
  * Created by joeyblack on 11/23/16.
@@ -274,6 +285,39 @@ public class SmartPlugApi extends Api {
         }
     }
 
-    public static class SmartPlugList extends ArrayList<SmartPlug>{}
+    public static class SmartPlugList extends ArrayList<SmartPlug>{
+
+        public static class SmartPlugListSerializer implements JsonSerializer<SmartPlugList>{
+
+            @Override
+            public JsonElement serialize(SmartPlugList src, Type typeOfSrc, JsonSerializationContext context) {
+                JsonArray array = new JsonArray();
+                for(SmartPlug smartPlug: src){
+                    array.add(JsonUtils.toJson(smartPlug));
+                }
+                return array;
+            }
+        }
+
+        public static class SmartPlugListDeserializer implements JsonDeserializer<SmartPlugList> {
+
+            @Override
+            public SmartPlugList deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                Log.d("Deserializing smartpluglist: "+json);
+                SmartPlugList smartPlugs = new SmartPlugList();
+                for(JsonElement element: json.getAsJsonArray()){
+                    Log.d("Element is "+element);
+                    JsonObject o = element.getAsJsonObject();
+                    Log.d("Object is "+o);
+                    SmartPlug smartPlug = JsonUtils.fromJson(o.toString(), SmartPlug.class);
+                    Log.d("Plug is "+smartPlug.toString()+", id is "+smartPlug.getId());
+                    smartPlugs.add(smartPlug);
+                }
+                return smartPlugs;
+            }
+
+        }
+
+    }
 
 }

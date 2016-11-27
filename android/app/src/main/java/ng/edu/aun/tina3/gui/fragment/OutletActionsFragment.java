@@ -105,6 +105,7 @@ public class OutletActionsFragment extends BroadcastFragtivity implements ViewPa
         });
         indicator.setViewPager(pager);
         indicator.setOnPageChangeListener(this);
+        onPageSelected(0);
     }
 
     public SmartPlugTable getSmartPlugTable() {

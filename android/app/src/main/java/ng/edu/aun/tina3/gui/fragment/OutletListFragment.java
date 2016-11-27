@@ -22,6 +22,7 @@ import com.litigy.lib.java.generic.QuatroReceiver;
 import com.litigy.lib.java.generic.Receiver;
 
 import ng.edu.aun.tina3.R;
+import ng.edu.aun.tina3.auth.Authenticator;
 import ng.edu.aun.tina3.data.SmartPlugTable;
 import ng.edu.aun.tina3.gui.activity.Activity;
 import ng.edu.aun.tina3.gui.custom.LightSwitchStub;
@@ -127,7 +128,7 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
                         }else{
                             smartPlugHolder.lightSwitch.setStatus(LightSwitchStub.Status.OFF);
                         }
-                        smartPlugHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        smartPlugHolder.selectorView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 if(cursor.moveToPosition(integer))
@@ -253,7 +254,12 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
         });
         if(!refresh)
             return;
-        SmartPlugTable.SmartPlugLoader.getInstance(this).load();
+        try {
+            SmartPlugTable.SmartPlugLoader.getInstance(Authenticator.getInstance().getUser(false), this).load();
+        } catch (Exception e) {
+            onRefresh(false);
+            Snackbar.showLong(this, getString(R.string.error_no_accounts));
+        }
     }
 
     @Override
@@ -292,10 +298,12 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
     private static class SmartPlugHolder extends RecyclerView.ViewHolder {
 
         private LightSwitchStub lightSwitch;
+        private View selectorView;
 
         public SmartPlugHolder(View itemView) {
             super(itemView);
             lightSwitch = (LightSwitchStub) findViewById(R.id.lightSwitch);
+            selectorView = findViewById(R.id.selectorView);
         }
 
         private View findViewById(int res){

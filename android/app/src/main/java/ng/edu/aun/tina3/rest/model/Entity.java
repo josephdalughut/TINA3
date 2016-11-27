@@ -23,7 +23,7 @@ import ng.edu.aun.tina3.util.Value;
  * Created by joeyblack on 11/19/16.
  */
 
-public class Entity extends HashMap{
+public class Entity {
 
     public static class Constants{
         public static class Fields {
@@ -108,15 +108,16 @@ public class Entity extends HashMap{
         private T performDeserialize(T t, JsonObject object){
             t.setCreatedAt(Value.TO.longValue(Constants.Fields.CREATED_AT, object));
             t.setUpdatedAt(Value.TO.longValue(Constants.Fields.UPDATED_AT, object));
-            try {
-                JsonObject o = object.getAsJsonObject(Constants.Fields.DATA);
-                if(!Value.IS.nullValue(o)){
-                    t.setData(new Gson().fromJson(o, JsonUtils.Data.class));
+            if(object.has(Constants.Fields.DATA) && !object.get(Constants.Fields.DATA).isJsonNull()) {
+                try {
+                    JsonObject o = object.getAsJsonObject(Constants.Fields.DATA);
+                    if (!Value.IS.nullValue(o)) {
+                        t.setData(new Gson().fromJson(o, JsonUtils.Data.class));
+                    }
+                } catch (Exception ignored) {
+                    ignored.printStackTrace();
                 }
-            }catch (Exception ignored){
-                ignored.printStackTrace();
             }
-
             return t;
         }
     }

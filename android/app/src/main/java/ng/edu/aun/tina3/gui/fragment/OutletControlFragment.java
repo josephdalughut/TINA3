@@ -12,6 +12,7 @@ import ng.edu.aun.tina3.gui.custom.LightSwitchStub;
 import ng.edu.aun.tina3.gui.misc.Snackbar;
 import ng.edu.aun.tina3.rest.api.SmartPlugApi;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
+import ng.edu.aun.tina3.util.Log;
 
 /**
  * Created by joeyblack on 11/24/16.
@@ -139,12 +140,13 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
 
             @Override
             public void onReceive1(SmartPlug smartPlug) {
+                Log.d("Smart plug switched on");
                 lightSwitch.switchOn();
             }
 
             @Override
             public void onReceive2(LitigyException e) {
-                lightSwitch.failSwitchOff();
+                lightSwitch.failSwitchOn();
                 Snackbar.showLong(OutletControlFragment.this, R.string.smart_plug_error_switch_on);
             }
         });
@@ -159,17 +161,17 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
 
             @Override
             public void onReceive1(SmartPlug smartPlug) {
+                Log.d("Smart plug switched off");
                 lightSwitch.switchOff();
             }
 
             @Override
             public void onReceive2(LitigyException e) {
-                lightSwitch.failSwitchOn();
+                lightSwitch.failSwitchOff();
                 Snackbar.showLong(OutletControlFragment.this, R.string.smart_plug_error_switch_off);
             }
         });
     }
-
     @Override
     public void onAutomationChanged(boolean enabled) {
         ((OutletActionsFragment)getParentFragment()).getSmartPlugTable().updateSmartPlugAsync(smartPlug.setAutomated(enabled ? 1 : 0), true, null);

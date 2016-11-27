@@ -78,11 +78,8 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
     private void refreshDate(){
         StringBuilder builder = new StringBuilder();
         DateTime dateTime = DateTime.now(DateTimeZone.getDefault());
-        char[] dayChars = dateTime.dayOfWeek().getName().toCharArray();
-        builder.append(String.valueOf(dayChars[0]).toUpperCase());
-        for(char c : dayChars){
-            builder.append(String.valueOf(c).toLowerCase());
-        }
+        String day = dateTime.dayOfWeek().getAsText();
+        builder.append(day);
         builder.append(" ");
         builder.append(dateTime.getDayOfMonth());
         builder.append(", ");

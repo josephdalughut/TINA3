@@ -111,6 +111,10 @@
             android:layout_marginTop="@dimen/margin_page_toolbar"
             >
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></FrameLayout>
+
         </android.support.v4.widget.SwipeRefreshLayout>
 
     </FrameLayout>

@@ -13,6 +13,7 @@ import ng.edu.aun.tina3.Application;
 import ng.edu.aun.tina3.rest.api.SmartPlugApi;
 import ng.edu.aun.tina3.rest.model.Entity;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
+import ng.edu.aun.tina3.rest.model.User;
 import ng.edu.aun.tina3.util.Log;
 
 /**
@@ -67,7 +68,8 @@ public class SmartPlugTable {
         values.put(Constants.Columns.TYPE, smartPlug.getType());
         values.put(Constants.Columns.USER_ID, smartPlug.getUserId());
         values.put(Constants.Columns.AUTOMATED, smartPlug.getAutomated());
-        database.getWritableDatabase().replace(Constants.TABLE_NAME, null, values);
+        long count = database.getWritableDatabase().replace(Constants.TABLE_NAME, null, values);
+        Log.d("added, count: "+count);
         if(broadcastUpdate)
             broadcastUpdate();
     }
@@ -149,12 +151,13 @@ public class SmartPlugTable {
         Integer userId;
         DoubleReceiver<Cursor, LitigyException> receiver;
 
-        public static SmartPlugLoader getInstance(DoubleReceiver<Cursor, LitigyException> receiver){
-            return new SmartPlugLoader(receiver);
+        public static SmartPlugLoader getInstance(User user, DoubleReceiver<Cursor, LitigyException> receiver){
+            return new SmartPlugLoader(user.getId(), receiver);
         }
 
-        public SmartPlugLoader(DoubleReceiver<Cursor, LitigyException> receiver) {
+        public SmartPlugLoader(Integer userId, DoubleReceiver<Cursor, LitigyException> receiver) {
             smartPlugTable = new SmartPlugTable();
+            this.userId = userId;
             this.receiver = receiver;
         }
 
@@ -164,6 +167,7 @@ public class SmartPlugTable {
             final String sql = "select * from " + Constants.TABLE_NAME + " where "
                     + Constants.Columns.USER_ID + " ="+userId+" order by "
                     + Entity.Constants.Fields.UPDATED_AT + " desc";
+            Log.d("SQL IS: "+sql);
             final Cursor cursor = smartPlugTable.getDatabase().getReadableDatabase()
                     .rawQuery(sql, null);
             if(cursor.getCount() != 0){
