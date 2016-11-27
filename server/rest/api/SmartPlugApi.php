@@ -68,8 +68,7 @@ class SmartPlugApi extends AbstractApi
         }
         $smartPlug = new SmartPlug();
         $now = Time::now();
-        $smartPlug->setId($smartPlugId)->setCreatedAt($now)->setUpdatedAt($now);
-        $smartPlug->setUserId($user->getId())->setState($VAL);
+        $smartPlug->setUserId($user->getId())->setState($VAL)->setId($smartPlugId)->setCreatedAt($now)->setUpdatedAt($now);
         $replaceSQL = SmartPlug::wrapToReplaceSQL($smartPlug);
         $res = $this->_getDatabase()->query($replaceSQL);
         if(!$res){
