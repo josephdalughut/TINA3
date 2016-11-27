@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.View;
 
+import com.litigy.lib.android.gui.dialog.DialogFragtivity;
 import com.litigy.lib.android.gui.dialog.InfoDialog;
 import com.litigy.lib.android.gui.dialog.ProgressDialog;
 import com.litigy.lib.android.gui.fragment.Fragtivity;
@@ -78,6 +79,7 @@ public class OutletAddFragment extends Fragtivity {
         fragments = new ArrayList<>();
         fragments.add(OutletAddInfoFragment.getInstance());
         fragments.add(OutletAddIDFragment.getInstance());
+        fragments.add(OutletAddNameFragment.getInstance());
         fragments.add(OutletAddTestFragment.getInstance());
         pager.setPagingEnabled(false);
         closeButton.setOnClickListener(new View.OnClickListener() {
@@ -224,7 +226,13 @@ public class OutletAddFragment extends Fragtivity {
 
     private void onSmartPlugCreated(){
         pager.setCurrentItem(2);
-        InfoDialog.getInstance(getString(R.string.smart_plug), getString(R.string.smart_plug_created_now_name), false)
+        InfoDialog.getInstance(getString(R.string.smart_plug), getString(R.string.smart_plug_created_now_name), true)
+                .withPositiveButton(getString(R.string.okay), getColor(R.color.tina_green), new InfoDialog.OnClickListener() {
+                    @Override
+                    public void onClick(View view, DialogFragtivity dialogFragtivity) {
+                        dialogFragtivity.dismissAllowingStateLoss();
+                    }
+                })
                 .show(getChildFragmentManager(), null);
     }
 

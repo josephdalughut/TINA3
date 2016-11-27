@@ -94,10 +94,12 @@ class SmartPlug extends Entity
 
     /**
      * @param string $name
+     * @return SmartPlug
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -110,10 +112,12 @@ class SmartPlug extends Entity
 
     /**
      * @param string $type
+     * @return SmartPlug
      */
     public function setType($type)
     {
         $this->type = $type;
+        return $this;
     }
 
 

@@ -66,12 +66,10 @@ class SmartPlugApi extends AbstractApi
                 return $this->_response("Not found, result is ".$result, HTTPStatusCode::$NOT_FOUND);
             }
         }
-        if($smartPlug == null){
-            $smartPlug = new SmartPlug();
-        }
+        $smartPlug = new SmartPlug();
         $now = Time::now();
+        $smartPlug->setId($smartPlugId)->setCreatedAt($now)->setUpdatedAt($now);
         $smartPlug->setUserId($user->getId())->setState($VAL);
-        $smartPlug->setCreatedAt($now)->setUpdatedAt($now);
         $replaceSQL = SmartPlug::wrapToReplaceSQL($smartPlug);
         if(!$this->_getDatabase()->query($replaceSQL)){
             return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);

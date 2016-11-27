@@ -71,4 +71,5 @@
     <string name="error_permission_not_granted">You didn\'t grant the required permissions.</string>
     <string name="hint_no_smart_plugs_added">No Smart-plugs added</string>
     <string name="hint_no_smart_plugs_added_info">when you add some, you\'ll always find them here.</string>
+    <string name="okay">Okay</string>
 </resources>

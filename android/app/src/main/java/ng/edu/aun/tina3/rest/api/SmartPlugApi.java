@@ -59,7 +59,7 @@ public class SmartPlugApi extends Api {
 
     public static void rename(@NotNull final String smartPlugId, @NotNull final String smartPlugName, @NotNull final DoubleReceiver<SmartPlug,
             LitigyException> callbackReceiver){
-        final String method = "create";
+        final String method = "rename";
         try {
             Authenticator.getInstance().getAccessToken(new DoubleReceiver<String, LitigyException>() {
                 @Override
