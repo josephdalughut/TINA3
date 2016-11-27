@@ -17,7 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b262fbb-44c5-495e-96c9-bce960177e7d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitch.java" afterPath="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitch.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/rest/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/rest/.idea/workspace.xml" />
     </list>
     <ignored path="android.iws" />
@@ -71,8 +71,8 @@
       <file leaf-file-name="OutletAddTestFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddTestFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="203" column="5" selection-start-line="203" selection-start-column="5" selection-end-line="203" selection-end-column="5" />
+            <state relative-caret-position="1020">
+              <caret line="114" column="17" selection-start-line="114" selection-start-column="17" selection-end-line="114" selection-end-column="17" />
               <folding>
                 <element signature="e#1530#1531#0" expanded="true" />
                 <element signature="e#1586#1587#0" expanded="true" />
@@ -83,11 +83,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LightSwitch.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LightSwitchStub.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitchStub.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="155" column="20" selection-start-line="155" selection-start-column="20" selection-end-line="155" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LightSwitch.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="91" column="42" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="42" />
+            <state relative-caret-position="198">
+              <caret line="90" column="42" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
               <folding>
                 <element signature="e#2046#2279#0" expanded="true" />
                 <element signature="e#2278#2279#0" expanded="true" />
@@ -109,12 +119,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SmartPlugApi.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SmartPlugApi.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/api/SmartPlugApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="490">
+              <caret line="144" column="45" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
+              <folding>
+                <element signature="e#5897#5898#0" expanded="true" />
+                <element signature="e#5967#5968#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1995,11 +2008,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_outlet_add_id.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/auth/Authenticator.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitch.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/utils/TINA3Request.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/api/SmartPlugApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddTestFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitch.java" />
       </list>
     </option>
   </component>
@@ -3448,25 +3461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitchStub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="167" column="16" selection-start-line="167" selection-start-column="16" selection-end-line="167" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="91" column="42" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="42" />
-          <folding>
-            <element signature="e#2046#2279#0" expanded="true" />
-            <element signature="e#2278#2279#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.19/2bac9e638b022ca09262960f83e8c9da93d80468/library-1.0.19-sources.jar!/com/android/volley/Request.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="896">
@@ -3496,19 +3490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddTestFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="203" column="5" selection-start-line="203" selection-start-column="5" selection-end-line="203" selection-end-column="5" />
-          <folding>
-            <element signature="e#1530#1531#0" expanded="true" />
-            <element signature="e#1586#1587#0" expanded="true" />
-            <element signature="e#3301#3302#0" expanded="true" />
-            <element signature="e#3333#3334#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/utils/TINA3Request.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="845">
@@ -3519,9 +3500,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/rest/api/SmartPlugApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+        <state relative-caret-position="490">
+          <caret line="144" column="45" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
+          <folding>
+            <element signature="e#5897#5898#0" expanded="true" />
+            <element signature="e#5967#5968#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddTestFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="114" column="17" selection-start-line="114" selection-start-column="17" selection-end-line="114" selection-end-column="17" />
+          <folding>
+            <element signature="e#1530#1531#0" expanded="true" />
+            <element signature="e#1586#1587#0" expanded="true" />
+            <element signature="e#3301#3302#0" expanded="true" />
+            <element signature="e#3333#3334#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitchStub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="155" column="20" selection-start-line="155" selection-start-column="20" selection-end-line="155" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="90" column="42" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
+          <folding>
+            <element signature="e#2046#2279#0" expanded="true" />
+            <element signature="e#2278#2279#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -86,11 +86,9 @@ public class LightSwitch extends LightSwitchStub implements View.OnTouchListener
                 switch (getStatus()){
                     case OFF:
                         setSwitchingOn();
-                        setStatus(Status.SWITCHING_ON);
                         break;
                     case ON:
                         setSwitchingOff();
-                        setStatus(Status.SWITCHING_OFF);
                         break;
                 }
                 break;
