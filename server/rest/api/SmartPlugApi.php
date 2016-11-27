@@ -348,7 +348,7 @@ class SmartPlugApi extends AbstractApi
         $smartPlugs = array();
         while ($row = mysqli_fetch_array($res, MYSQLI_NUM))
         {
-            $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
+            $smartPlug = SmartPlug::fromSQL($row);
             array_push($smartPlugs, $smartPlug);
         }
         return $this->_response($smartPlugs, HTTPStatusCode::$OK);
