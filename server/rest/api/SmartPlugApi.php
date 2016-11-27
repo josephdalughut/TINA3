@@ -72,8 +72,8 @@ class SmartPlugApi extends AbstractApi
         $now = Time::now();
         $smartPlug->setUserId($user->getId())->setState($VAL);
         $smartPlug->setCreatedAt($now)->setUpdatedAt($now);
-        $insertSQL = SmartPlug::wrapToInsertSQL($smartPlug);
-        if(!$this->_getDatabase()->query($insertSQL)){
+        $replaceSQL = SmartPlug::wrapToReplaceSQL($smartPlug);
+        if(!$this->_getDatabase()->query($replaceSQL)){
             return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
         return $this->_response($smartPlug, HTTPStatusCode::$OK);

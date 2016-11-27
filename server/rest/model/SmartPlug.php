@@ -148,7 +148,7 @@ class SmartPlug extends Entity
      * @return string
      */
     public static function wrapToReplaceSQL($outlet){
-        $sql = "insert into ".SmartPlug::$database_tableName." ("
+        $sql = "replace into ".SmartPlug::$database_tableName." ("
             .Entity::$database_tableColumn_id.", "
             .SmartPlug::$database_tableColumn_userId.", "
             .SmartPlug::$database_tableColumn_name.", "
