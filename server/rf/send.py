@@ -32,8 +32,10 @@ message = list(str(sys.argv[1]))
 while len(message) < 32:
     message.append(0)
 retry=0
+#radio.powerUp()
 while(retry < 5):
     start = time.time()
+    radio.stopListening()
     radio.write(message)
     #print("Sent the message: {}".format(message))
     radio.startListening()
@@ -57,12 +59,13 @@ while(retry < 5):
         print format(string)
         radio.stopListening()
         radio.write("")
-        radio.powerDown()
+        #radio.powerDown()
         sys.exit(0)
     radio.stopListening()
     retry = retry + 1
     time.sleep(1/100)
 print ("Error: Timed out")
 radio.stopListening()
-radio.powerDown()
+#radio.write("")
+#radio.powerDown()
 sys.exit(0)

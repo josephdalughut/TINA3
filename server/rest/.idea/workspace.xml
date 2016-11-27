@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="" />
+    <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../rf/send.py" afterPath="$PROJECT_DIR$/../rf/send.py" />
+    </list>
     <ignored path="rest.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -359,7 +361,7 @@
       <workItem from="1480155400282" duration="5634000" />
       <workItem from="1480167799020" duration="7026000" />
       <workItem from="1480190232889" duration="4714000" />
-      <workItem from="1480230553862" duration="18747000" />
+      <workItem from="1480230553862" duration="19231000" />
     </task>
     <task id="LOCAL-00021" summary="added json serializer implementation">
       <created>1479831006700</created>
@@ -708,7 +710,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86359000" />
+    <option name="totallyTimeSpent" value="86843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="18" width="1600" height="882" extended-state="6" />
