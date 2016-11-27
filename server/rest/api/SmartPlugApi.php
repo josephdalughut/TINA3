@@ -200,6 +200,7 @@ class SmartPlugApi extends AbstractApi
         $command = $smartPlug->getId()."_TO_ON";
         $script = "python ../../rf/send.py \"".$command."\"";
         $result = shell_exec($script);
+        $result = str_replace("\n", "", str_replace("\"", "", $result));
         if(preg_match('/^ERROR/', $result)){
             return $this->_response("Not found, no reply", HTTPStatusCode::$NOT_FOUND);
         }else{
@@ -259,6 +260,7 @@ class SmartPlugApi extends AbstractApi
         $command = $smartPlug->getId()."_TO_OFF";
         $script = "python ../../rf/send.py \"".$command."\"";
         $result = shell_exec($script);
+        $result = str_replace("\n", "", str_replace("\"", "", $result));
         if(preg_match('/^ERROR/', $result)){
             return $this->_response("Not found, no reply", HTTPStatusCode::$NOT_FOUND);
         }else{
@@ -385,6 +387,7 @@ class SmartPlugApi extends AbstractApi
         $command = $smartPlug->getId()."_SAY";
         $script = "python ../../rf/send.py \"".$command."\"";
         $result = shell_exec($script);
+        $result = str_replace("\n", "", str_replace("\"", "", $result));
         if(preg_match('/^ERROR/', $result)){
             return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
         }else{
