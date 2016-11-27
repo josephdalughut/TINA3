@@ -197,8 +197,10 @@ class SmartPlugApi extends AbstractApi
             return $this->_response("Forbidden", HTTPStatusCode::$FORBIDDEN);
         }
         $command = $smartPlug->getId()."_TO_ON";
-        $result = exec("python ../../rf/send.py ".$command);
-        if($result == "ERROR"){
+
+        $script = "python ../../rf/send.py \"".$command."\"";
+        $result = shell_exec($script);
+        if(preg_match('/^ERROR/', $result)){
             return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
         }else{
             $arr = $this->_responseToArr($result);
@@ -212,15 +214,9 @@ class SmartPlugApi extends AbstractApi
                 case "ON":
                 case "OFF":
                     $smartPlug->setState($VAL);
-                    $update = $this->_getDatabase()->query(
-                        "update ".SmartPlug::$database_tableName." set ".SmartPlug::$database_tableColumn_state."=".$VAL
-                        ." where ".SmartPlug::$database_tableColumn_id."='".$smartPlug->getId()."'"
-                    );
+                    $update = $this->_getDatabase()->query(SmartPlug::wrapToUpdateSQL($smartPlug));
                     if(!$update){
                         return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
-                    }
-                    if($update->num_rows<1){
-                        return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
                     }
                     break;
                 default:
@@ -260,8 +256,9 @@ class SmartPlugApi extends AbstractApi
             return $this->_response("Forbidden", HTTPStatusCode::$FORBIDDEN);
         }
         $command = $smartPlug->getId()."_TO_OFF";
-        $result = exec("python ../../rf/send.py ".$command);
-        if($result == "ERROR"){
+        $script = "python ../../rf/send.py \"".$command."\"";
+        $result = shell_exec($script);
+        if(preg_match('/^ERROR/', $result)){
             return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
         }else{
             $arr = $this->_responseToArr($result);
@@ -275,15 +272,9 @@ class SmartPlugApi extends AbstractApi
                 case "ON":
                 case "OFF":
                     $smartPlug->setState($VAL);
-                    $update = $this->_getDatabase()->query(
-                        "update ".SmartPlug::$database_tableName." set ".SmartPlug::$database_tableColumn_state."=".$VAL
-                        ." where ".SmartPlug::$database_tableColumn_id."='".$smartPlug->getId()."'"
-                    );
+                    $update = $this->_getDatabase()->query(SmartPlug::wrapToUpdateSQL($smartPlug));
                     if(!$update){
                         return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
-                    }
-                    if($update->num_rows<1){
-                        return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
                     }
                     break;
                 default:
@@ -390,9 +381,10 @@ class SmartPlugApi extends AbstractApi
         if($smartPlug->getUserId() != $user->getId()){
             return $this->_response("Forbidden", HTTPStatusCode::$FORBIDDEN);
         }
-        $command = $smartPlug->getId()."_SAY_STATE";
-        $result = exec("python ../../rf/send.py ".$command);
-        if($result == "ERROR"){
+        $command = $smartPlug->getId()."_SAY";
+        $script = "python ../../rf/send.py \"".$command."\"";
+        $result = shell_exec($script);
+        if(preg_match('/^ERROR/', $result)){
             return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
         }else{
             $arr = $this->_responseToArr($result);
@@ -406,15 +398,9 @@ class SmartPlugApi extends AbstractApi
                 case "ON":
                 case "OFF":
                     $smartPlug->setState($VAL);
-                    $update = $this->_getDatabase()->query(
-                        "update ".SmartPlug::$database_tableName." set ".SmartPlug::$database_tableColumn_state."=".$VAL
-                        ." where ".SmartPlug::$database_tableColumn_id."='".$smartPlug->getId()."'"
-                    );
+                    $update = $this->_getDatabase()->query(SmartPlug::wrapToUpdateSQL($smartPlug));
                     if(!$update){
                         return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
-                    }
-                    if($update->num_rows<1){
-                        return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
                     }
                     break;
                 default:

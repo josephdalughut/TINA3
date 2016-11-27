@@ -15,6 +15,7 @@ import ng.edu.aun.tina3.gui.custom.LightSwitchStub;
 import ng.edu.aun.tina3.gui.misc.Snackbar;
 import ng.edu.aun.tina3.rest.api.SmartPlugApi;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
+import ng.edu.aun.tina3.util.Log;
 
 /**
  * Created by joeyblack on 11/25/16.
@@ -60,7 +61,7 @@ public class OutletAddTestFragment extends Fragtivity implements LightSwitch.Lig
 
     @Override
     public void setupViews() {
-
+        lightSwitch.setLightSwitchListener(this);
     }
 
     @Override
@@ -111,9 +112,11 @@ public class OutletAddTestFragment extends Fragtivity implements LightSwitch.Lig
     public void onStateChange(LightSwitchStub.Status status) {
         switch (status){
             case SWITCHING_ON:
+                Log.d("Switching on smart plug");
                 switchOnSmartPlug();
                 break;
             case SWITCHING_OFF:
+                Log.d("Switching off smart plug");
                 switchOffSmartPlug();
                 break;
             case ON:
@@ -164,12 +167,13 @@ public class OutletAddTestFragment extends Fragtivity implements LightSwitch.Lig
 
             @Override
             public void onReceive1(SmartPlug smartPlug) {
+                Log.d("Smart plug switched on");
                 lightSwitch.switchOn();
             }
 
             @Override
             public void onReceive2(LitigyException e) {
-                lightSwitch.failSwitchOff();
+                lightSwitch.failSwitchOn();
                 Snackbar.showLong(OutletAddTestFragment.this, R.string.smart_plug_error_switch_on);
             }
         });
@@ -184,12 +188,13 @@ public class OutletAddTestFragment extends Fragtivity implements LightSwitch.Lig
 
             @Override
             public void onReceive1(SmartPlug smartPlug) {
+                Log.d("Smart plug switched off");
                 lightSwitch.switchOff();
             }
 
             @Override
             public void onReceive2(LitigyException e) {
-                lightSwitch.failSwitchOn();
+                lightSwitch.failSwitchOff();
                 Snackbar.showLong(OutletAddTestFragment.this, R.string.smart_plug_error_switch_off);
             }
         });
