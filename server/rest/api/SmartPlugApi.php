@@ -49,7 +49,7 @@ class SmartPlugApi extends AbstractApi
             }
         }
 
-        $command = $smartPlugId."_SAY_STATE";
+        $command = $smartPlugId."_SAY";
 
         $script = "python ../../rf/send.py \"".$command."\"";
         $result = shell_exec($script);
