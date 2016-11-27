@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../android/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/SmartPlug.php" afterPath="$PROJECT_DIR$/model/SmartPlug.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/SmartPlugApi.php" afterPath="$PROJECT_DIR$/api/SmartPlugApi.php" />
     </list>
     <ignored path="rest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,10 +35,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
+            <state relative-caret-position="2232">
               <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
               <folding>
                 <marker date="1479813885523" expanded="true" signature="444:851" ph="create table... if" />
@@ -57,26 +58,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SmartPlugApi.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SmartPlugApi.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+            <state relative-caret-position="288">
+              <caret line="75" column="73" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="73" />
               <folding>
-                <marker date="1480234707371" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
-                <marker date="1480234707371" expanded="true" signature="3954:4068" ph="select * fro... ${SmartPlug::$database_tableName}" />
-                <marker date="1480234707371" expanded="true" signature="5467:5588" ph="delete from " />
-                <marker date="1480234707371" expanded="true" signature="5467:5592" ph="delete from " />
-                <marker date="1480234707371" expanded="true" signature="5467:5593" ph="delete from " />
-                <marker date="1480234707371" expanded="true" signature="5467:5639" ph="delete from " />
-                <marker date="1480234707371" expanded="true" signature="5467:5640" ph="delete from " />
-                <marker date="1480234707371" expanded="true" signature="5467:5658" ph="delete from " />
-                <marker date="1480234707371" expanded="true" signature="5467:5659" ph="delete from " />
-                <marker date="1480234707371" expanded="true" signature="6579:6702" ph="select * fro... ${SmartPlug::$database_tableName}" />
-                <marker date="1480234707371" expanded="true" signature="9360:9483" ph="select * fro... ${SmartPlug::$database_tableName}" />
-                <marker date="1480234707371" expanded="true" signature="12142:12265" ph="select * fro... ${SmartPlug::$database_tableName}" />
-                <marker date="1480234707371" expanded="true" signature="13455:13575" ph="select * fro... ${SmartPlug::$database_tableName}" />
-                <marker date="1480234707371" expanded="true" signature="14829:14952" ph="select * fro... ${SmartPlug::$database_tableName}" />
+                <marker date="1480235991491" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
+                <marker date="1480235991491" expanded="true" signature="4004:4118" ph="select * fro... ${SmartPlug::$database_tableName}" />
+                <marker date="1480235991491" expanded="true" signature="5517:5638" ph="delete from " />
+                <marker date="1480235991491" expanded="true" signature="5517:5642" ph="delete from " />
+                <marker date="1480235991491" expanded="true" signature="5517:5643" ph="delete from " />
+                <marker date="1480235991491" expanded="true" signature="5517:5689" ph="delete from " />
+                <marker date="1480235991491" expanded="true" signature="5517:5690" ph="delete from " />
+                <marker date="1480235991491" expanded="true" signature="5517:5708" ph="delete from " />
+                <marker date="1480235991491" expanded="true" signature="5517:5709" ph="delete from " />
+                <marker date="1480235991491" expanded="true" signature="6629:6752" ph="select * fro... ${SmartPlug::$database_tableName}" />
+                <marker date="1480235991491" expanded="true" signature="9410:9533" ph="select * fro... ${SmartPlug::$database_tableName}" />
+                <marker date="1480235991491" expanded="true" signature="12192:12315" ph="select * fro... ${SmartPlug::$database_tableName}" />
+                <marker date="1480235991491" expanded="true" signature="13505:13625" ph="select * fro... ${SmartPlug::$database_tableName}" />
+                <marker date="1480235991491" expanded="true" signature="14879:15002" ph="select * fro... ${SmartPlug::$database_tableName}" />
               </folding>
             </state>
           </provider>
@@ -85,28 +86,12 @@
       <file leaf-file-name="SmartPlug.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+            <state relative-caret-position="245">
+              <caret line="153" column="27" selection-start-line="153" selection-start-column="27" selection-end-line="153" selection-end-column="27" />
               <folding>
                 <marker date="1480235563587" expanded="true" signature="2434:3199" ph="insert into ${SmartPlug::$database_tableName}... " />
                 <marker date="1480235563587" expanded="true" signature="3379:4138" ph="insert into ${SmartPlug::$database_tableName}... " />
                 <marker date="1480235563587" expanded="true" signature="4314:4879" ph="insert into ${SmartPlug::$database_tableName}... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Token.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/Token.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="140" column="26" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
-              <folding>
-                <marker date="1480174005227" expanded="true" signature="2661:2763" ph="select * fro... ${Session::$database_tableName}" />
-                <marker date="1480174005227" expanded="true" signature="3161:3273" ph="select * fro... ${User::$database_tableName}" />
-                <marker date="1480174005227" expanded="true" signature="3846:3948" ph="select * fro... ${Session::$database_tableName}" />
-                <marker date="1480174005227" expanded="true" signature="4596:5244" ph="insert into ${Session::$database_tableName}... " />
-                <marker date="1480174005227" expanded="true" signature="5760:6408" ph="insert into ${Session::$database_tableName}... " />
               </folding>
             </state>
           </provider>
@@ -133,8 +118,8 @@
         <option value="$PROJECT_DIR$/api/AbstractApi.php" />
         <option value="$PROJECT_DIR$/api/AuthApi.php" />
         <option value="$PROJECT_DIR$/model/Token.php" />
-        <option value="$PROJECT_DIR$/api/SmartPlugApi.php" />
         <option value="$PROJECT_DIR$/model/SmartPlug.php" />
+        <option value="$PROJECT_DIR$/api/SmartPlugApi.php" />
       </list>
     </option>
   </component>
@@ -190,20 +175,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -325,7 +296,7 @@
       <workItem from="1480155400282" duration="5634000" />
       <workItem from="1480167799020" duration="7026000" />
       <workItem from="1480190232889" duration="4714000" />
-      <workItem from="1480230553862" duration="5056000" />
+      <workItem from="1480230553862" duration="5438000" />
     </task>
     <task id="LOCAL-00001" summary="update endpoints">
       <created>1479775208384</created>
@@ -649,11 +620,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480234792322</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="update">
+      <created>1480235616657</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1480235616657</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72668000" />
+    <option name="totallyTimeSpent" value="73050000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="18" width="1600" height="882" extended-state="6" />
@@ -723,20 +701,20 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1480234707371" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="3954:4068" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="5467:5588" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5592" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5593" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5639" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5640" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5658" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5659" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="6579:6702" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="9360:9483" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="12142:12265" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="13455:13575" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="14829:14952" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="4004:4118" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="5517:5638" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5642" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5643" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5689" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5690" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5708" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5709" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="6629:6752" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="9410:9533" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="12192:12315" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="13505:13625" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="14879:15002" ph="select * fro... ${SmartPlug::$database_tableName}" />
           </folding>
         </state>
       </provider>
@@ -835,20 +813,20 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1480234707371" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="3954:4068" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="5467:5588" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5592" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5593" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5639" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5640" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5658" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5659" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="6579:6702" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="9360:9483" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="12142:12265" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="13455:13575" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="14829:14952" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="4004:4118" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="5517:5638" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5642" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5643" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5689" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5690" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5708" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5709" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="6629:6752" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="9410:9533" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="12192:12315" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="13505:13625" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="14879:15002" ph="select * fro... ${SmartPlug::$database_tableName}" />
           </folding>
         </state>
       </provider>
@@ -912,20 +890,20 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1480234707371" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="3954:4068" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="5467:5588" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5592" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5593" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5639" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5640" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5658" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5659" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="6579:6702" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="9360:9483" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="12142:12265" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="13455:13575" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="14829:14952" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="4004:4118" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="5517:5638" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5642" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5643" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5689" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5690" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5708" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5709" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="6629:6752" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="9410:9533" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="12192:12315" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="13505:13625" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="14879:15002" ph="select * fro... ${SmartPlug::$database_tableName}" />
           </folding>
         </state>
       </provider>
@@ -963,20 +941,20 @@
         <state relative-caret-position="270">
           <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding>
-            <marker date="1480234707371" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="3954:4068" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="5467:5588" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5592" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5593" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5639" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5640" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5658" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5659" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="6579:6702" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="9360:9483" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="12142:12265" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="13455:13575" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="14829:14952" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="4004:4118" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="5517:5638" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5642" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5643" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5689" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5690" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5708" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5709" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="6629:6752" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="9410:9533" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="12192:12315" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="13505:13625" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="14879:15002" ph="select * fro... ${SmartPlug::$database_tableName}" />
           </folding>
         </state>
       </provider>
@@ -1032,20 +1010,20 @@
         <state relative-caret-position="216">
           <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
           <folding>
-            <marker date="1480234707371" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="3954:4068" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="5467:5588" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5592" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5593" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5639" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5640" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5658" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5659" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="6579:6702" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="9360:9483" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="12142:12265" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="13455:13575" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="14829:14952" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="4004:4118" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="5517:5638" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5642" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5643" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5689" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5690" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5708" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5709" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="6629:6752" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="9410:9533" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="12192:12315" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="13505:13625" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="14879:15002" ph="select * fro... ${SmartPlug::$database_tableName}" />
           </folding>
         </state>
       </provider>
@@ -1213,7 +1191,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/Token.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
+        <state relative-caret-position="2430">
           <caret line="140" column="26" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
           <folding>
             <marker date="1480174005227" expanded="true" signature="2661:2763" ph="select * fro... ${Session::$database_tableName}" />
@@ -1225,33 +1203,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
+    <entry file="file://$PROJECT_DIR$/model/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+        <state relative-caret-position="2232">
+          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
           <folding>
-            <marker date="1480234707371" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="3954:4068" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="5467:5588" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5592" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5593" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5639" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5640" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5658" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="5467:5659" ph="delete from " />
-            <marker date="1480234707371" expanded="true" signature="6579:6702" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="9360:9483" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="12142:12265" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="13455:13575" ph="select * fro... ${SmartPlug::$database_tableName}" />
-            <marker date="1480234707371" expanded="true" signature="14829:14952" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1479813885523" expanded="true" signature="444:851" ph="create table... if" />
+            <marker date="1479813885523" expanded="true" signature="2043:2522" ph="insert into ${User::$database_tableName}... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+        <state relative-caret-position="245">
+          <caret line="153" column="27" selection-start-line="153" selection-start-column="27" selection-end-line="153" selection-end-column="27" />
           <folding>
             <marker date="1480235563587" expanded="true" signature="2434:3199" ph="insert into ${SmartPlug::$database_tableName}... " />
             <marker date="1480235563587" expanded="true" signature="3379:4138" ph="insert into ${SmartPlug::$database_tableName}... " />
@@ -1260,13 +1226,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/User.php">
+    <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+        <state relative-caret-position="288">
+          <caret line="75" column="73" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="73" />
           <folding>
-            <marker date="1479813885523" expanded="true" signature="444:851" ph="create table... if" />
-            <marker date="1479813885523" expanded="true" signature="2043:2522" ph="insert into ${User::$database_tableName}... " />
+            <marker date="1480235991491" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="4004:4118" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="5517:5638" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5642" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5643" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5689" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5690" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5708" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="5517:5709" ph="delete from " />
+            <marker date="1480235991491" expanded="true" signature="6629:6752" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="9410:9533" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="12192:12315" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="13505:13625" ph="select * fro... ${SmartPlug::$database_tableName}" />
+            <marker date="1480235991491" expanded="true" signature="14879:15002" ph="select * fro... ${SmartPlug::$database_tableName}" />
           </folding>
         </state>
       </provider>
