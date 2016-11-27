@@ -426,9 +426,10 @@ class SmartPlugApi extends AbstractApi
         $val_idx = strpos($value, "_", $cmd_idx + 1);
         $uuid = substr($value, 0, $uuid_idx);
         $cmd = substr($value, $uuid_idx + 1, $cmd_idx);
-        $val = substr($value, $cmd_idx + 1, $val_idx);
+        $val = substr($value, $cmd_idx, $val_idx);
         return array (
-          "UUID" => $uuid, "CMD" => $cmd, "VAL" => $val
+          "UUID" => $uuid, "CMD" => $cmd, "VAL" => $val, "UUID_IDX" => $uuid_idx,
+            "CMD_IDX" => $cmd_idx, "VAL_IDX" => $val_idx
         );
     }
 }
