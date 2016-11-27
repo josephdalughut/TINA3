@@ -63,7 +63,7 @@ class SmartPlugApi extends AbstractApi
             //$CMD = $arr["CMD"];
             $VAL = $arr["VAL"];
             if($UUID != $smartPlugId){
-                return $this->_response("Not found, result is ".$result, HTTPStatusCode::$NOT_FOUND);
+                return $this->_response("Not found, UUID mismatch", HTTPStatusCode::$NOT_FOUND);
             }
         }
         $smartPlug = new SmartPlug();
@@ -172,8 +172,8 @@ class SmartPlugApi extends AbstractApi
      * @return string
      */
     public function switchOn($args){
-        if(!$this->method == "POST"){
-            return $this->_response("only POST requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+        if(!$this->method == "PUT"){
+            return $this->_response("only PUT requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
         if(!self::checkParams($args, "id")){
             return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
@@ -190,7 +190,7 @@ class SmartPlugApi extends AbstractApi
             return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
         if($res->num_rows<1){
-            return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+            return $this->_response("Not found, query empty", HTTPStatusCode::$NOT_FOUND);
         }
         $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
         if($smartPlug->getUserId() != $user->getId()){
@@ -201,14 +201,14 @@ class SmartPlugApi extends AbstractApi
         $script = "python ../../rf/send.py \"".$command."\"";
         $result = shell_exec($script);
         if(preg_match('/^ERROR/', $result)){
-            return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+            return $this->_response("Not found, no reply", HTTPStatusCode::$NOT_FOUND);
         }else{
             $arr = $this->_responseToArr($result);
             $UUID = $arr["UUID"];
             $CMD = $arr["CMD"];
             $VAL = $arr["VAL"];
             if($UUID != $smartPlugId){
-                return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+                return $this->_response("Not found, UUID mismatch", HTTPStatusCode::$NOT_FOUND);
             }
             switch ($VAL){
                 case "ON":
@@ -220,7 +220,7 @@ class SmartPlugApi extends AbstractApi
                     }
                     break;
                 default:
-                    return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+                    return $this->_response("Not found, value not recognized: ".$VAL, HTTPStatusCode::$NOT_FOUND);
             }
             return $this->_response($smartPlug, HTTPStatusCode::$OK);
         }
@@ -232,41 +232,42 @@ class SmartPlugApi extends AbstractApi
      */
     public function switchOff($args){
         if(!$this->method == "PUT"){
-            return $this->_response("Only PUT requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
+            return $this->_response("only PUT requests supported", HTTPStatusCode::$METHOD_NOT_ALLOWED);
         }
         if(!self::checkParams($args, "id")){
             return $this->_response("required parameter not found", HTTPStatusCode::$BAD_REQUEST);
         }
         $smartPlugId = $args["id"];
         $user = Token::getUserFromRequest($this, $this->_getDatabase());
-        if(!$user instanceof User){
+        if(is_string($user)){
             return $user;
         }
-        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_id." ='".$smartPlugId->getId()."'";
+        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_id." ='".$smartPlugId."'";
         /** @var mysqli_result $res */
         $res = $this->_getDatabase()->query($findSQL);
         if(!$res){
             return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
         if($res->num_rows<1){
-            return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+            return $this->_response("Not found, query empty", HTTPStatusCode::$NOT_FOUND);
         }
         $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
         if($smartPlug->getUserId() != $user->getId()){
             return $this->_response("Forbidden", HTTPStatusCode::$FORBIDDEN);
         }
+
         $command = $smartPlug->getId()."_TO_OFF";
         $script = "python ../../rf/send.py \"".$command."\"";
         $result = shell_exec($script);
         if(preg_match('/^ERROR/', $result)){
-            return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+            return $this->_response("Not found, no reply", HTTPStatusCode::$NOT_FOUND);
         }else{
             $arr = $this->_responseToArr($result);
             $UUID = $arr["UUID"];
             $CMD = $arr["CMD"];
             $VAL = $arr["VAL"];
             if($UUID != $smartPlugId){
-                return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+                return $this->_response("Not found, UUID mismatch", HTTPStatusCode::$NOT_FOUND);
             }
             switch ($VAL){
                 case "ON":
@@ -278,7 +279,7 @@ class SmartPlugApi extends AbstractApi
                     }
                     break;
                 default:
-                    return $this->_response("Not found", HTTPStatusCode::$NOT_FOUND);
+                    return $this->_response("Not found, value not recognized: ".$VAL, HTTPStatusCode::$NOT_FOUND);
             }
             return $this->_response($smartPlug, HTTPStatusCode::$OK);
         }
