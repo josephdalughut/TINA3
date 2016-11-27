@@ -73,7 +73,7 @@ class SmartPlugApi extends AbstractApi
         $replaceSQL = SmartPlug::wrapToReplaceSQL($smartPlug);
         $res = $this->_getDatabase()->query($replaceSQL);
         if(!$res){
-            return $this->_response("Failed: user id was ".$user->getId(), HTTPStatusCode::$SERVICE_UNAVAILABLE);
+            return $this->_response("Failed: user id was ".$user->getUsername(), HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
         return $this->_response($smartPlug, HTTPStatusCode::$OK);
     }
