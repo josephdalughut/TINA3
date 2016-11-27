@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="" />
+    <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="rest.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -58,8 +60,8 @@
       <file leaf-file-name="SmartPlugApi.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1041">
-              <caret line="203" column="23" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="23" />
+            <state relative-caret-position="183">
+              <caret line="271" column="71" selection-start-line="271" selection-start-column="71" selection-end-line="271" selection-end-column="71" />
               <folding>
                 <marker date="1480246724559" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
                 <marker date="1480246724559" expanded="true" signature="3367:3381" ph="select * fro... ${SmartPlug::$database_tableName}" />
@@ -179,7 +181,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3200" />
+    <option name="x" value="-1600" />
     <option name="y" value="18" />
     <option name="width" value="1600" />
     <option name="height" value="882" />
@@ -359,7 +361,7 @@
       <workItem from="1480155400282" duration="5634000" />
       <workItem from="1480167799020" duration="7026000" />
       <workItem from="1480190232889" duration="4714000" />
-      <workItem from="1480230553862" duration="18422000" />
+      <workItem from="1480230553862" duration="18603000" />
     </task>
     <task id="LOCAL-00021" summary="added json serializer implementation">
       <created>1479831006700</created>
@@ -708,10 +710,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86034000" />
+    <option name="totallyTimeSpent" value="86215000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3200" y="18" width="1600" height="882" extended-state="6" />
+    <frame x="-1600" y="18" width="1600" height="882" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26444158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1323,8 +1325,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1041">
-          <caret line="203" column="23" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="23" />
+        <state relative-caret-position="183">
+          <caret line="271" column="71" selection-start-line="271" selection-start-column="71" selection-end-line="271" selection-end-column="71" />
           <folding>
             <marker date="1480246724559" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
             <marker date="1480246724559" expanded="true" signature="3367:3381" ph="select * fro... ${SmartPlug::$database_tableName}" />

@@ -54,7 +54,7 @@ while(retry < 5):
     #print("Out received message decodes to: {}".format(string))
     if len(string) > 1:
         #print ("Callback received:")
-        print string
+        print format(string)
         radio.stopListening()
         radio.write("")
         radio.powerDown()
