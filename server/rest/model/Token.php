@@ -138,7 +138,7 @@ class Token extends Entity{
         if(!$resUser||$resUser->num_rows<1){
             return $api->_response("user not found", HTTPStatusCode::$NOT_FOUND);
         }
-        $user = User::fromSQL(mysqli_fetch_row($res));
+        $user = User::fromSQL(mysqli_fetch_row($resUser));
         return $user;
     }
 
