@@ -75,6 +75,7 @@
                             android:gravity="center"
                             android:text="@string/id"
                             android:textColor="@color/aaa"
+                            android:visibility="invisible"
                             android:layout_marginTop="6dp"
                             app:fontAppearance="caption"
                             />
@@ -86,6 +87,7 @@
                             android:gravity="center"
                             android:textColor="@color/nine"
                             android:layout_marginTop="2dp"
+                            android:visibility="invisible"
                             app:fontAppearance="body2"
                             />
 
@@ -93,7 +95,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/automated"
+                            android:text="@string/automation"
                             android:textColor="@color/aaa"
                             android:layout_marginTop="6dp"
                             app:fontAppearance="caption"
@@ -121,6 +123,7 @@
                 android:layout_height="@dimen/height_light_switch_toolbar"
                 android:layout_gravity="bottom|right"
                 android:background="@color/transparent"
+                android:visibility="gone"
                 android:src="@mipmap/ic_action_action_delete_six"
                 />
 

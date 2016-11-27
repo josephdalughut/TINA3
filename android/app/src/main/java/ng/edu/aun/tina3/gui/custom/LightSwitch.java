@@ -142,11 +142,11 @@ public class LightSwitch extends LightSwitchStub implements View.OnTouchListener
             //setCameraDistance((getScaleBounds().bottom - getScaleBounds().top) * scaleValue);
         } else {
             if(uiStateState.equals(UIState.FLIPPING_TO_SETTINGS) && settingsUI.getVisibility()!=VISIBLE){
-                switchUI.setVisibility(View.GONE);
+                switchUI.setVisibility(View.INVISIBLE);
                 settingsUI.setVisibility(View.VISIBLE);
             }else if(uiStateState.equals(UIState.FLIPPING_TO_SWITCH) && switchUI.getVisibility()!=VISIBLE){
                 switchUI.setVisibility(View.VISIBLE);
-                settingsUI.setVisibility(View.GONE);
+                settingsUI.setVisibility(View.INVISIBLE);
             }
             float scaleValue = 1 * (value);
             setRotationY(-180 * (1f- value));
@@ -232,4 +232,6 @@ public class LightSwitch extends LightSwitchStub implements View.OnTouchListener
         if(!Value.IS.nullValue(lightSwitchListener))
             lightSwitchListener.onStateChange(status);
     }
+
+
 }

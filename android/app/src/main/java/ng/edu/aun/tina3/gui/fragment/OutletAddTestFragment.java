@@ -139,7 +139,8 @@ public class OutletAddTestFragment extends Fragtivity implements LightSwitch.Lig
     public void onAutomationChanged(boolean enabled) {
         SmartPlug smartPlug = ((OutletAddFragment)getParentFragment()).getSmartPlug();
         smartPlug.setAutomated(enabled ? 1 : 0);
-        lightSwitch.flip();
+        if(enabled)
+            lightSwitch.flip();
     }
 
 

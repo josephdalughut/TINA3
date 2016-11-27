@@ -334,11 +334,11 @@ class SmartPlugApi extends AbstractApi
         if(!$user instanceof User){
             return $user;
         }
-        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_userId." ='".$user->getId()."'";
+        $findSQL = "select * from ".SmartPlug::$database_tableName." where ".SmartPlug::$database_tableColumn_userId." =".$user->getId();
         /** @var mysqli_result $res */
         $res = $this->_getDatabase()->query($findSQL);
         if(!$res){
-            return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
+            return $this->_response("Internal error, query error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
         /*
         if($res->num_rows<1){
@@ -346,7 +346,7 @@ class SmartPlugApi extends AbstractApi
         }
         */
         $smartPlugs = array();
-        while ($row = mysqli_fetch_array($res))
+        while ($row = mysqli_fetch_array($res, MYSQLI_NUM))
         {
             $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
             array_push($smartPlugs, $smartPlug);

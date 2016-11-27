@@ -24,7 +24,7 @@ public class LightSwitchStub extends FrameLayout {
     public View shadowTop, shadowBottom, buttonIsOn, buttonIsOff, middleGradient;
     public PigressBar statePigressBar, automationPigressBar;
     public TextView stateTextView, idTextView, nameTextView;
-    public boolean automated = false, showSettings = false;
+    public boolean automated = false, showSettings = false, showDelete = false;
     public Status status = Status.OFF;
 
     public LightSwitchStub(Context context) {
@@ -68,6 +68,7 @@ public class LightSwitchStub extends FrameLayout {
         stateTextView  = (TextView) findViewById(R.id.stateTextView);
         middleGradient = findViewById(R.id.middleGradient);
         showSettings(false);
+        showDelete(false);
         setupAttrs(attrs);
     }
 
@@ -106,6 +107,16 @@ public class LightSwitchStub extends FrameLayout {
 
         }
     }
+
+    public void showDelete(boolean showDelete){
+        this.showDelete = showDelete;
+        try{
+            findViewById(R.id.deleteButton).setVisibility(showDelete ? View.VISIBLE : View.GONE);
+        }catch (Exception ignored){
+
+        }
+    }
+
 
     public void switchOff(){
         off();
