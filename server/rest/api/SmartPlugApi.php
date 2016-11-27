@@ -72,7 +72,7 @@ class SmartPlugApi extends AbstractApi
         $replaceSQL = SmartPlug::wrapToReplaceSQL($smartPlug);
         $res = $this->_getDatabase()->query($replaceSQL);
         if(!$res){
-            return $this->_response("Failed: user id was ".$user->getUsername(), HTTPStatusCode::$SERVICE_UNAVAILABLE);
+            return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
         return $this->_response($smartPlug, HTTPStatusCode::$OK);
     }
@@ -86,6 +86,21 @@ class SmartPlugApi extends AbstractApi
         $result = shell_exec($command);
         echo "Response is ".$result;
         return $this->_response($result, HTTPStatusCode::$OK);
+    }
+
+    public function testSerSP($args){
+        $findSQL = "select * from ".SmartPlug::$database_tableName;
+        /** @var mysqli_result $res */
+        $res = $this->_getDatabase()->query($findSQL);
+        if(!$res){
+            return $this->_response("Internal error", HTTPStatusCode::$SERVICE_UNAVAILABLE);
+        }
+        /** @var SmartPlug */
+        $smartPlug = null;
+        if ($res->num_rows > 0){
+            $smartPlug = SmartPlug::fromSQL(mysqli_fetch_row($res));
+        }
+        return $this->_response($smartPlug, HTTPStatusCode::$OK);
     }
 
     /**
