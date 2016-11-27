@@ -61,7 +61,7 @@ while(retry < 5):
         sys.exit(0)
     radio.stopListening()
     retry = retry + 1
-    time.sleep(1/100)
+    time.sleep(1)
 print ("Error: Timed out")
 radio.stopListening()
 radio.powerDown()
