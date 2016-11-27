@@ -53,8 +53,8 @@ class SmartPlugApi extends AbstractApi
 
         $script = "python ../../rf/send.py \"".$command."\"";
         $result = shell_exec($script);
-        $result = str_replace("\n", "", $result);
-        /*$VAL = "OFF";
+        $result = str_replace("\n", "", str_replace("\"", "", $result));
+        $VAL = "OFF";
         if (preg_match('/^ERROR/', $result)) {
             return $this->_response("Not found, return successful from script with error: ".$result, HTTPStatusCode::$NOT_FOUND);
         } else{
@@ -76,8 +76,7 @@ class SmartPlugApi extends AbstractApi
         if(!$this->_getDatabase()->query($insertSQL)){
             return $this->_response("Failed", HTTPStatusCode::$SERVICE_UNAVAILABLE);
         }
-        */
-        return $this->_response($result, HTTPStatusCode::$NOT_FOUND);
+        return $this->_response($smartPlug, HTTPStatusCode::$OK);
     }
 
     public function testPy($args){
