@@ -13,6 +13,7 @@ import ng.edu.aun.tina3.Application;
 import ng.edu.aun.tina3.rest.api.SmartPlugApi;
 import ng.edu.aun.tina3.rest.model.Entity;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
+import ng.edu.aun.tina3.util.Log;
 
 /**
  * Created by joeyblack on 11/23/16.
@@ -56,6 +57,7 @@ public class SmartPlugTable {
     }
 
     public void addSmartPlug(SmartPlug smartPlug, boolean broadcastUpdate){
+        Log.d("Adding smartplug: "+smartPlug);
         if(Value.IS.nullValue(smartPlug))
             return;
         ContentValues values = new ContentValues();
@@ -158,16 +160,19 @@ public class SmartPlugTable {
 
         @Override
         protected Void doInBackground(Void... params) {
+            Log.d("Loading smart plugs");
             final String sql = "select * from " + Constants.TABLE_NAME + " where "
-                    + Constants.Columns.USER_ID + " ='"+userId+"' order by "
+                    + Constants.Columns.USER_ID + " ="+userId+" order by "
                     + Entity.Constants.Fields.UPDATED_AT + " desc";
             final Cursor cursor = smartPlugTable.getDatabase().getReadableDatabase()
                     .rawQuery(sql, null);
             if(cursor.getCount() != 0){
+                Log.d("Smart plugs found: "+cursor.getCount()+", returning");
                 publishProgress(cursor);
                 return null;
             }
             cursor.close();
+            Log.d("No smart plugs found in database, fallback to server gets");
             SmartPlugApi.gets(new DoubleReceiver<SmartPlugApi.SmartPlugList, LitigyException>() {
                 @Override
                 public void onReceive(SmartPlugApi.SmartPlugList smartPlugs, LitigyException e) {
@@ -176,14 +181,17 @@ public class SmartPlugTable {
 
                 @Override
                 public void onReceive1(SmartPlugApi.SmartPlugList smartPlugs) {
+                    Log.d("Smart plugs received: "+smartPlugs.size());
                     for(SmartPlug smartPlug: smartPlugs){
                         smartPlugTable.addSmartPlug(smartPlug, false);
                     }
+                    Log.d("returning requery");
                     publishProgress(smartPlugTable.getDatabase().getReadableDatabase().rawQuery(sql, null));
                 }
 
                 @Override
                 public void onReceive2(LitigyException e) {
+                    Log.d("Error loading smart plugs, "+e.getMessage());
                     publishProgress(e);
                 }
             });

@@ -41,7 +41,6 @@ public class JsonUtils extends com.litigy.lib.java.util.JsonUtils {
     }
 
     public static class Data extends HashMap<String, String>{
-
     }
 
 
