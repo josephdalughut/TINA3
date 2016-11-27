@@ -103,7 +103,7 @@ public class SmartPlugApi extends Api {
                 public void onReceive1(String s) {
                     try {
                         TINA3Request.<SmartPlug>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method)).withParam("id", smartPlugId)
-                                .withCallbackReceiver(callbackReceiver).POST(SmartPlug.class);
+                                .withCallbackReceiver(callbackReceiver).DELETE(SmartPlug.class);
                     } catch (IOException e) {
                         callbackReceiver.onReceive2(LitigyException.consumeIOException(e));
                     }
@@ -122,7 +122,7 @@ public class SmartPlugApi extends Api {
 
     public static void on(@NotNull final String smartPlugId,
                           @NotNull final DoubleReceiver<SmartPlug, LitigyException> callbackReceiver){
-        final String method = "on";
+        final String method = "switchOn";
         try {
             Authenticator.getInstance().getAccessToken(new DoubleReceiver<String, LitigyException>() {
                 @Override
@@ -153,7 +153,7 @@ public class SmartPlugApi extends Api {
 
     public static void off(@NotNull final String smartPlugId,
                            @NotNull final DoubleReceiver<SmartPlug, LitigyException> callbackReceiver){
-        final String method = "off";
+        final String method = "switchOff";
         try {
             Authenticator.getInstance().getAccessToken(new DoubleReceiver<String, LitigyException>() {
                 @Override
