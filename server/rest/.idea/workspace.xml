@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="" />
     <ignored path="rest.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -181,7 +179,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1600" />
+    <option name="x" value="1600" />
     <option name="y" value="18" />
     <option name="width" value="1600" />
     <option name="height" value="882" />
@@ -361,7 +359,7 @@
       <workItem from="1480155400282" duration="5634000" />
       <workItem from="1480167799020" duration="7026000" />
       <workItem from="1480190232889" duration="4714000" />
-      <workItem from="1480230553862" duration="18603000" />
+      <workItem from="1480230553862" duration="18747000" />
     </task>
     <task id="LOCAL-00021" summary="added json serializer implementation">
       <created>1479831006700</created>
@@ -710,10 +708,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86215000" />
+    <option name="totallyTimeSpent" value="86359000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1600" y="18" width="1600" height="882" extended-state="6" />
+    <frame x="1600" y="18" width="1600" height="882" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26444158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
