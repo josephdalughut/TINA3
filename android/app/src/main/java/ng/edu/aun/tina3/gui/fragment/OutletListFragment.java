@@ -28,6 +28,7 @@ import ng.edu.aun.tina3.gui.activity.Activity;
 import ng.edu.aun.tina3.gui.custom.LightSwitchStub;
 import ng.edu.aun.tina3.gui.misc.Snackbar;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
+import ng.edu.aun.tina3.util.Value;
 
 /**
  * Created by joeyblack on 11/19/16.
@@ -121,13 +122,15 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
                     public void onReceive(SmartPlugHolder smartPlugHolder, final Cursor cursor, final Integer integer, Boolean aBoolean) {
                         String name = cursor.getString(cursor.getColumnIndex(SmartPlugTable.Constants.Columns.NAME));
                         String type = cursor.getString(cursor.getColumnIndex(SmartPlugTable.Constants.Columns.TYPE));
+                        Integer automated = cursor.getInt(cursor.getColumnIndex(SmartPlugTable.Constants.Columns.AUTOMATED));
                         String state = cursor.getString(cursor.getColumnIndex(SmartPlugTable.Constants.Columns.STATE));
-                        smartPlugHolder.lightSwitch.stateTextView.setText(name);
                         if(state.equalsIgnoreCase("on")){
-                            smartPlugHolder.lightSwitch.setStatus(LightSwitchStub.Status.ON);
+                            smartPlugHolder.lightSwitch.switchOn();
                         }else{
-                            smartPlugHolder.lightSwitch.setStatus(LightSwitchStub.Status.OFF);
+                            smartPlugHolder.lightSwitch.switchOff();
                         }
+                        smartPlugHolder.lightSwitch.stateTextView.setText(name);
+                        smartPlugHolder.lightSwitch.setAutomated(automated == 1);
                         smartPlugHolder.selectorView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

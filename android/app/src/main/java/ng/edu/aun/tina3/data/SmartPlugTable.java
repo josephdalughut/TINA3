@@ -11,7 +11,7 @@ import com.litigy.lib.java.util.Value;
 
 import ng.edu.aun.tina3.Application;
 import ng.edu.aun.tina3.rest.api.SmartPlugApi;
-import ng.edu.aun.tina3.rest.model.Entity;
+import ng.edu.aun.tina3.rest.model.abs.Entity;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
 import ng.edu.aun.tina3.rest.model.User;
 import ng.edu.aun.tina3.util.Log;
@@ -20,7 +20,7 @@ import ng.edu.aun.tina3.util.Log;
  * Created by joeyblack on 11/23/16.
  */
 
-public class SmartPlugTable {
+public class SmartPlugTable extends Table {
 
     public static class Constants {
         public static final String TABLE_NAME = "smartplugs";
@@ -31,11 +31,13 @@ public class SmartPlugTable {
         }
     }
 
-    private Database database;
-
     public SmartPlugTable(){
-        database = Database.getInstance();
-        String createStatemenet = "create table if not exists "
+        super();
+    }
+
+    @Override
+    public String getCreateStatement() {
+        return "create table if not exists "
                 + Constants.TABLE_NAME + " ( "
                 + Constants.Columns.ID + " text primary key, "
                 + Constants.Columns.NAME + " text, "
@@ -45,16 +47,6 @@ public class SmartPlugTable {
                 + Constants.Columns.AUTOMATED + " integer, "
                 + Entity.Constants.Fields.CREATED_AT + " integer, "
                 + Entity.Constants.Fields.UPDATED_AT + " integer)";
-        database.getWritableDatabase().execSQL(createStatemenet);
-    }
-
-    public Database getDatabase() {
-        return database;
-    }
-
-    public SmartPlugTable setDatabase(Database database) {
-        this.database = database;
-        return this;
     }
 
     public void addSmartPlug(SmartPlug smartPlug, boolean broadcastUpdate){
@@ -92,8 +84,8 @@ public class SmartPlugTable {
         return new AsyncTask<SmartPlug, Void, Object>(){
             @Override
             protected Object doInBackground(SmartPlug... params) {
-                addSmartPlug(smartPlug, broadcastUpdate);
-                return smartPlug;
+                addSmartPlug(params[0], broadcastUpdate);
+                return params[0];
             }
 
             @Override
@@ -113,8 +105,8 @@ public class SmartPlugTable {
         return new AsyncTask<SmartPlug, Void, Object>(){
             @Override
             protected Object doInBackground(SmartPlug... params) {
-                updateSmartPlug(smartPlug, broadcastUpdate);
-                return smartPlug;
+                updateSmartPlug(params[0], broadcastUpdate);
+                return params[0];
             }
 
             @Override
@@ -140,6 +132,7 @@ public class SmartPlugTable {
                 .setId(cursor.getString(cursor.getColumnIndex(Constants.Columns.ID)))
                 .setType(cursor.getString(cursor.getColumnIndex(Constants.Columns.TYPE)))
                 .setState(cursor.getString(cursor.getColumnIndex(Constants.Columns.STATE)))
+                .setAutomated(cursor.getInt(cursor.getColumnIndex(Constants.Columns.AUTOMATED)))
                 .setName(cursor.getString(cursor.getColumnIndex(Constants.Columns.NAME)))
                 .setCreatedAt(cursor.getLong(cursor.getColumnIndex(Entity.Constants.Fields.CREATED_AT)))
                 .setUpdatedAt(cursor.getLong(cursor.getColumnIndex(Entity.Constants.Fields.UPDATED_AT)));

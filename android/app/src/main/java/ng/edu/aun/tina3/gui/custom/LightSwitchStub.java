@@ -72,6 +72,20 @@ public class LightSwitchStub extends FrameLayout {
         setupAttrs(attrs);
     }
 
+    public boolean isAutomated() {
+        return automated;
+    }
+
+    public LightSwitchStub setAutomated(boolean automated) {
+        this.automated = automated;
+        automationPigressBar.setProgress(100);
+        automationPigressBar.setMax(100);
+        automationPigressBar.setIndeterminate(false);
+        automationPigressBar.setColor(isAutomated() ? getResources().getColor(R.color.flat_belize_hole) : getResources().getColor(R.color.ccc));
+        return this;
+    }
+
+
     private void setupAttrs(AttributeSet attributeSet){
         if(Value.IS.nullValue(attributeSet))
             return;
@@ -128,11 +142,11 @@ public class LightSwitchStub extends FrameLayout {
         setShadowHeight(shadowTop, 0);
         buttonIsOn.setBackgroundColor(getResources().getColor(R.color.light_switch_off_shade));
         buttonIsOff.setBackgroundColor(getResources().getColor(R.color.light_switch_on_shade));
-        statePigressBar.setColor(getResources().getColor(R.color.flat_alizarin));
+        statePigressBar.setColor(getResources().getColor(R.color.ccc));
         middleGradient.setBackgroundResource(R.drawable.light_switch_mid_gradient_off);
         statePigressBar.setIndeterminate(false);
         statePigressBar.setProgress(100);
-        stateTextView.setText(getResources().getString(R.string.off));
+        //stateTextView.setText(getResources().getString(R.string.off));
     }
 
     public void setSwitchingOff(){
@@ -141,9 +155,9 @@ public class LightSwitchStub extends FrameLayout {
         buttonIsOn.setBackgroundColor(getResources().getColor(R.color.light_switch_off_shade));
         buttonIsOff.setBackgroundColor(getResources().getColor(R.color.light_switch_on_shade));
         middleGradient.setBackgroundResource(R.drawable.light_switch_mid_gradient_off);
-        statePigressBar.setColor(getResources().getColor(R.color.flat_alizarin));
+        statePigressBar.setColor(getResources().getColor(R.color.ccc));
         statePigressBar.setIndeterminate(true);
-        stateTextView.setText(getResources().getString(R.string.off));
+        //stateTextView.setText(getResources().getString(R.string.off));
         setStatus(Status.SWITCHING_OFF);
     }
 
@@ -156,7 +170,7 @@ public class LightSwitchStub extends FrameLayout {
         statePigressBar.setColor(getResources().getColor(R.color.tina_green));
         statePigressBar.setIndeterminate(false);
         statePigressBar.setProgress(100);
-        stateTextView.setText(getResources().getString(R.string.on));
+        //stateTextView.setText(getResources().getString(R.string.on));
     }
 
     public void switchOn(){
@@ -172,7 +186,7 @@ public class LightSwitchStub extends FrameLayout {
         middleGradient.setBackgroundResource(R.drawable.light_switch_mid_gradient_on);
         statePigressBar.setColor(getResources().getColor(R.color.tina_green));
         statePigressBar.setIndeterminate(true);
-        stateTextView.setText(getResources().getString(R.string.on));
+        //stateTextView.setText(getResources().getString(R.string.on));
         setStatus(Status.SWITCHING_ON);
     }
 

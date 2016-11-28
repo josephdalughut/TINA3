@@ -4,6 +4,8 @@ package ng.edu.aun.tina3.rest.model;
 import com.google.gson.JsonObject;
 import com.litigy.lib.java.util.Value;
 
+import ng.edu.aun.tina3.rest.model.abs.Entity;
+
 public class User extends Entity {
 
     public static class Constants {

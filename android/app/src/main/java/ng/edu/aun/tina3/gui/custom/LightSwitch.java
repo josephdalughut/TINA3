@@ -159,12 +159,15 @@ public class LightSwitch extends LightSwitchStub implements View.OnTouchListener
 
     @Override
     public void onAnimationStart(Animator animation) {
-
+        setDrawingCacheEnabled(true);
+        setChildrenDrawingCacheEnabled(true);
     }
 
     @Override
     public void onAnimationEnd(Animator animation) {
         setUiStateState(switchUI.getVisibility()==View.VISIBLE ? UIState.SWITCH : UIState.SETTINGS);
+        setDrawingCacheEnabled(false);
+        setChildrenDrawingCacheEnabled(false);
     }
 
     @Override
@@ -204,21 +207,15 @@ public class LightSwitch extends LightSwitchStub implements View.OnTouchListener
         return this;
     }
 
-    public boolean isAutomated() {
-        return automated;
-    }
 
+    @Override
     public LightSwitchStub setAutomated(boolean automated) {
-        this.automated = automated;
+        super.setAutomated(automated);
         automatedSwitch.setOnCheckedChangeListener(null);
         automatedSwitch.setChecked(automated);
         automatedSwitch.setOnCheckedChangeListener(this);
-        automationPigressBar.setProgress(100);
-        automationPigressBar.setMax(100);
-        automationPigressBar.setIndeterminate(false);
-        automationPigressBar.setColor(isAutomated() ? getResources().getColor(R.color.flat_belize_hole) : getResources().getColor(R.color.ccc));
         return this;
-    }
+    };
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

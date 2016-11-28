@@ -5,12 +5,20 @@ import android.os.Bundle;
 
 import com.litigy.lib.java.error.LitigyException;
 import com.litigy.lib.java.generic.DoubleReceiver;
+import com.litigy.lib.java.security.Crypto;
+import com.litigy.lib.java.util.Value;
+
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import ng.edu.aun.tina3.R;
+import ng.edu.aun.tina3.auth.Authenticator;
+import ng.edu.aun.tina3.data.EventTable;
 import ng.edu.aun.tina3.gui.custom.LightSwitch;
 import ng.edu.aun.tina3.gui.custom.LightSwitchStub;
 import ng.edu.aun.tina3.gui.misc.Snackbar;
 import ng.edu.aun.tina3.rest.api.SmartPlugApi;
+import ng.edu.aun.tina3.rest.model.Event;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
 import ng.edu.aun.tina3.util.Log;
 
@@ -26,6 +34,7 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
 
     private SmartPlug smartPlug;
     private LightSwitch lightSwitch;
+    private Event event;
 
     public SmartPlug getSmartPlug() {
         return smartPlug;
@@ -76,6 +85,8 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
         smartPlug = ((OutletActionsFragment)getParentFragment()).getSmartPlug();
         lightSwitch.setLightSwitchListener(this);
         lightSwitch.showSettings(true);
+        refreshSmartPlug();
+        refreshSmartPlugAutomation();
     }
 
     @Override
@@ -115,20 +126,75 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
 
     @Override
     public void onStateChange(LightSwitchStub.Status status) {
+        DateTime now = DateTime.now(DateTimeZone.getDefault());
+        String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
         switch (status){
             case SWITCHING_OFF:
+                event = new Event().setStart(now.getMinuteOfDay()).setDate(date);
                 switchOffSmartPlug();
                 break;
             case SWITCHING_ON:
+                event = new Event().setStart(now.getMinuteOfDay()).setDate(date);
                 switchOnSmartPlug();
                 break;
             case ON:
                 ((OutletActionsFragment)getParentFragment()).getSmartPlugTable().updateSmartPlugAsync(smartPlug.setState("ON"), true, null);
+                openEvent();
                 break;
             case OFF:
                 ((OutletActionsFragment)getParentFragment()).getSmartPlugTable().updateSmartPlugAsync(smartPlug.setState("OFF"), true, null);
+                closeEvent();
                 break;
         }
+    }
+
+    private void openEvent(){
+        if(smartPlug.getAutomated()==0)
+            return;
+        try {
+            new EventTable().openEventAsync(new Event()
+                    .setStart(this.event.getStart())
+                    .setDate(this.event.getDate())
+                    .setId(Crypto.Random.uuidClear().replaceAll("-", ""))
+                    .setSmartPlugId(smartPlug.getId())
+                    .setUserId(Authenticator.getInstance().getUser(false).getId())
+                    .setStatus(Event.Status.BUILDING.ordinal()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void closeEvent(){
+        if(smartPlug.getAutomated()==0)
+            return;
+        try {
+            new EventTable().closeEventAsync( new Event()
+                    .setEnd(this.event.getStart())
+                    .setDate(this.event.getDate())
+                    .setSmartPlugId(smartPlug.getId())
+                    .setUserId(Authenticator.getInstance().getUser(false).getId()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void refreshSmartPlug(){
+        try {
+            if (smartPlug.getState().equalsIgnoreCase("on")) {
+                lightSwitch.switchOn();
+            } else {
+                lightSwitch.switchOff();
+            }
+            lightSwitch.stateTextView.setText(smartPlug.getName());
+            lightSwitch.setName(smartPlug.getName());
+            lightSwitch.setSwitchId(smartPlug.getId());
+        }catch (Exception ignored){
+
+        }
+    }
+
+    private void refreshSmartPlugAutomation(){
+        lightSwitch.setAutomated(smartPlug.getAutomated() == 1);
     }
 
     private void switchOnSmartPlug(){
@@ -175,5 +241,6 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
     @Override
     public void onAutomationChanged(boolean enabled) {
         ((OutletActionsFragment)getParentFragment()).getSmartPlugTable().updateSmartPlugAsync(smartPlug.setAutomated(enabled ? 1 : 0), true, null);
+        refreshSmartPlugAutomation();
     }
 }

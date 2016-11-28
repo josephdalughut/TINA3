@@ -8,23 +8,18 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import com.google.gson.reflect.TypeToken;
 import com.litigy.lib.java.error.LitigyException;
 import com.litigy.lib.java.generic.DoubleReceiver;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 import ng.edu.aun.tina3.auth.Authenticator;
 import ng.edu.aun.tina3.error.NotFoundException;
-import ng.edu.aun.tina3.rest.model.Entity;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
-import ng.edu.aun.tina3.rest.model.User;
 import ng.edu.aun.tina3.rest.utils.TINA3Request;
 import ng.edu.aun.tina3.util.JsonUtils;
 import ng.edu.aun.tina3.util.Log;

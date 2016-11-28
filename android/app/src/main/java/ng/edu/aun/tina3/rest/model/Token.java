@@ -1,5 +1,7 @@
 package ng.edu.aun.tina3.rest.model;
 
+import ng.edu.aun.tina3.rest.model.abs.Entity;
+
 /**
  * Created by joeyblack on 11/21/16.
  */

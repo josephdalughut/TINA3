@@ -14,53 +14,61 @@ class Event extends Entity
 
     public static $database_tableName = "events";
     public static $database_tableColumn_userId = "userId";
-    public static $database_tableColumn_outlet = "outletId";
-    public static $database_tableColumn_year = "year";
-    public static $database_tableColumn_monthOfYear = "monthOfYear";
-    public static $database_tableColumn_dayOfMonth = "dayOfMonth";
-    public static $database_tableColumn_dayOfWeek = "dayOfWeek";
-    public static $database_tableColumn_hourOfDay = "hourOfDay";
-    public static $database_tableColumn_minOfHour = "minOfHour";
-    public static $database_tableColumn_secOfMin = "secOfMin";
+    public static $database_tableColumn_smartPlugId = "smartPlugId";
+    public static $database_tableColumn_date = "date";
+    public static $database_tableColumn_start = "start";
+    public static $database_tableColumn_end = "end";
+    public static $database_tableColumn_predicted = "predicted";
+
 
     public static function _getDatabaseTableCreateStatement(){
         return "create table if not exists ".Event::$database_tableName." ("
-            .Entity::$database_tableColumn_id." int unsigned auto_increment primary key, "
+            .Entity::$database_tableColumn_id." varchar(32) primary key, "
             .Event::$database_tableColumn_userId." int, "
-            .Event::$database_tableColumn_outlet." varchar(255), "
-            .Event::$database_tableColumn_year." int(4), "
-            .Event::$database_tableColumn_monthOfYear." int(2), "
-            .Event::$database_tableColumn_dayOfMonth." int(2), "
-            .Event::$database_tableColumn_dayOfWeek." varchar(3), "
-            .Event::$database_tableColumn_hourOfDay." int(2), "
-            .Event::$database_tableColumn_minOfHour." int(2), "
-            .Event::$database_tableColumn_secOfMin." int(2), "
-            .Entity::$database_tableColumn_createdAt." float, "
-            .Entity::$database_tableColumn_updatedAt." float)";
+            .Event::$database_tableColumn_smartPlugId." varchar(255), "
+            .Event::$database_tableColumn_date." varchar(20), "
+            .Event::$database_tableColumn_start." int(4), "
+            .Event::$database_tableColumn_end." int(4), "
+            .Entity::$database_tableColumn_predicted." int(1))";
     }
 
-    /*** @var integer */
-    public $userId = Null;
-    /*** @var string */
-    public $outletId = Null;
-    /*** @var integer */
-    public $year = Null;
-    /*** @var integer */
-    public $monthOfYear = Null;
-    /*** @var integer */
-    public $dayOfMonth = Null;
-    /*** @var string */
-    public $dayOfWeek = Null;
-
-    /*** @var integer */
-    public $hourOfDay = Null;
-    /*** @var integer */
-    public $minOfHour = Null;
-    /*** @var integer */
-    public $secOfMin = Null;
+    /**
+     * @var string
+     */
+    private $id;
 
     /**
-     * @return integer
+     * @var integer
+     */
+    private $userId;
+
+    /**
+     * @var string
+     */
+    private $smartPlugId;
+
+    /**
+     * @var string
+     */
+    private $date;
+
+    /**
+     * @var float
+     */
+    private $start;
+
+    /**
+     * @var float
+     */
+    private $end;
+
+    /**
+     * @var integer
+     */
+    private $predicted;
+
+    /**
+     * @return string
      */
     public function getUserId()
     {
@@ -68,157 +76,93 @@ class Event extends Entity
     }
 
     /**
-     * @param integer $userId
-     * @return Event
+     * @param string $userId
      */
     public function setUserId($userId)
     {
         $this->userId = $userId;
-        return $this;
     }
 
     /**
      * @return string
      */
-    public function getOutletId()
+    public function getSmartPlugId()
     {
-        return $this->outletId;
+        return $this->smartPlugId;
     }
 
     /**
-     * @param string $outletId
-     * @return Event
+     * @param string $smartPlugId
      */
-    public function setOutletId($outletId)
+    public function setSmartPlugId($smartPlugId)
     {
-        $this->outletId = $outletId;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getYear()
-    {
-        return $this->year;
-    }
-
-    /**
-     * @param int $year
-     * @return Event
-     */
-    public function setYear($year)
-    {
-        $this->year = $year;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getMonthOfYear()
-    {
-        return $this->monthOfYear;
-    }
-
-    /**
-     * @param int $monthOfYear
-     * @return Event
-     */
-    public function setMonthOfYear($monthOfYear)
-    {
-        $this->monthOfYear = $monthOfYear;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDayOfMonth()
-    {
-        return $this->dayOfMonth;
-    }
-
-    /**
-     * @param int $dayOfMonth
-     * @return Event
-     */
-    public function setDayOfMonth($dayOfMonth)
-    {
-        $this->dayOfMonth = $dayOfMonth;
-        return $this;
+        $this->smartPlugId = $smartPlugId;
     }
 
     /**
      * @return string
      */
-    public function getDayOfWeek()
+    public function getDate()
     {
-        return $this->dayOfWeek;
+        return $this->date;
     }
 
     /**
-     * @param string $dayOfWeek
-     * @return Event
+     * @param string $date
      */
-    public function setDayOfWeek($dayOfWeek)
+    public function setDate($date)
     {
-        $this->dayOfWeek = $dayOfWeek;
-        return $this;
+        $this->date = $date;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getHourOfDay()
+    public function getStart()
     {
-        return $this->hourOfDay;
+        return $this->start;
     }
 
     /**
-     * @param int $hourOfDay
-     * @return Event
+     * @param float $start
      */
-    public function setHourOfDay($hourOfDay)
+    public function setStart($start)
     {
-        $this->hourOfDay = $hourOfDay;
-        return $this;
+        $this->start = $start;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getMinOfHour()
+    public function getEnd()
     {
-        return $this->minOfHour;
+        return $this->end;
     }
 
     /**
-     * @param int $minOfHour
-     * @return Event
+     * @param float $end
      */
-    public function setMinOfHour($minOfHour)
+    public function setEnd($end)
     {
-        $this->minOfHour = $minOfHour;
-        return $this;
+        $this->end = $end;
     }
 
     /**
      * @return int
      */
-    public function getSecOfMin()
+    public function getPredicted()
     {
-        return $this->secOfMin;
+        return $this->predicted;
     }
 
     /**
-     * @param int $secOfMin
-     * @return Event
+     * @param int $predicted
      */
-    public function setSecOfMin($secOfMin)
+    public function setPredicted($predicted)
     {
-        $this->secOfMin = $secOfMin;
-        return $this;
+        $this->predicted = $predicted;
     }
+
+
 
 }

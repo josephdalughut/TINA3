@@ -1,0 +1,315 @@
+package ng.edu.aun.tina3.data;
+
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.AsyncTask;
+
+import com.litigy.lib.java.error.LitigyException;
+import com.litigy.lib.java.generic.DoubleReceiver;
+import com.litigy.lib.java.util.Value;
+
+import ng.edu.aun.tina3.Application;
+import ng.edu.aun.tina3.error.ConflictException;
+import ng.edu.aun.tina3.rest.api.SmartPlugApi;
+import ng.edu.aun.tina3.rest.model.Event;
+import ng.edu.aun.tina3.rest.model.SmartPlug;
+import ng.edu.aun.tina3.rest.model.User;
+import ng.edu.aun.tina3.rest.model.abs.Entity;
+import ng.edu.aun.tina3.util.Log;
+
+/**
+ * Created by joeyblack on 11/28/16.
+ */
+
+public class EventTable extends Table {
+
+    public EventTable() {
+        super();
+    }
+
+    public static class Constants {
+        public static final String TABLE_NAME = "events";
+        public static final String UPDATE_INTENT = "ng.edu.aun.tina3.data.EventTable.UPDATE";
+        public static class Columns {
+            public static final String ID = "id",
+                    USER_ID = "userId", SMART_PLUG_ID = "smartPlugId",
+                    DATE = "date", START = "start", END = "end", PREDICTED = "predicted", STATUS = "status";
+        }
+    }
+
+
+    @Override
+    public String getCreateStatement() {
+        return "create table if not exists "
+                + Constants.TABLE_NAME + " ( "
+                + Constants.Columns.ID + " text primary key, "
+                + Constants.Columns.USER_ID + " integer, "
+                + Constants.Columns.SMART_PLUG_ID + " text, "
+                + Constants.Columns.DATE + " text, "
+                + Constants.Columns.START+ " integer, "
+                + Constants.Columns.END + " integer, "
+                + Constants.Columns.PREDICTED + " integer, "
+                + Constants.Columns.STATUS + " integer, "
+                + Entity.Constants.Fields.CREATED_AT + " integer, "
+                + Entity.Constants.Fields.UPDATED_AT + " integer)";
+    }
+
+
+    public void addEvent(Event event, boolean broadcastUpdate) throws ConflictException{
+        Log.d("Adding event: "+event);
+        checkConflictingEvent(event);
+        ContentValues values = new ContentValues();
+        values.put(Constants.Columns.ID, event.getId());
+        values.put(Constants.Columns.USER_ID, event.getUserId());
+        values.put(Constants.Columns.SMART_PLUG_ID, event.getSmartPlugId());
+        values.put(Constants.Columns.DATE, event.getDate());
+        values.put(Constants.Columns.START, event.getStart());
+        values.put(Constants.Columns.END, event.getEnd());
+        values.put(Constants.Columns.PREDICTED, event.getPredicted());
+        values.put(Constants.Columns.STATUS, event.getStatus());
+        values.put(Entity.Constants.Fields.CREATED_AT, event.getCreatedAt());
+        values.put(Entity.Constants.Fields.UPDATED_AT, event.getUpdatedAt());
+        long count = database.getWritableDatabase().replace(Constants.TABLE_NAME, null, values);
+        Log.d("added, count: "+count);
+        if(broadcastUpdate)
+            broadcastUpdate();
+    }
+
+    public void broadcastUpdate(){
+        Application.getInstance().sendBroadcast(new Intent(Constants.UPDATE_INTENT));
+    }
+
+    public void updateEvent(Event event, boolean broadcastUpdate) throws ConflictException {
+        checkConflictingEvent(event);
+        ContentValues values = new ContentValues();
+        values.put(Constants.Columns.ID, event.getId());
+        values.put(Constants.Columns.USER_ID, event.getUserId());
+        values.put(Constants.Columns.SMART_PLUG_ID, event.getSmartPlugId());
+        values.put(Constants.Columns.DATE, event.getDate());
+        values.put(Constants.Columns.START, event.getStart());
+        values.put(Constants.Columns.END, event.getEnd());
+        values.put(Constants.Columns.PREDICTED, event.getPredicted());
+        values.put(Constants.Columns.STATUS, event.getStatus());
+        values.put(Entity.Constants.Fields.CREATED_AT, event.getCreatedAt());
+        values.put(Entity.Constants.Fields.UPDATED_AT, event.getUpdatedAt());
+        database.getWritableDatabase().update(Constants.TABLE_NAME, values, Constants.Columns.ID +"='"+event.getId()+"'", null);
+        if(broadcastUpdate)
+            broadcastUpdate();
+    }
+
+    public void updateEventByNonNullFields(Event event, boolean broadcastUpdate) throws ConflictException {
+        checkConflictingEvent(event);
+        ContentValues values = new ContentValues();
+        values.put(Constants.Columns.ID, event.getId());
+        if(!Value.IS.nullValue(event.getUserId()))
+            values.put(Constants.Columns.USER_ID, event.getUserId());
+        if(!Value.IS.nullValue(event.getSmartPlugId()))
+            values.put(Constants.Columns.SMART_PLUG_ID, event.getSmartPlugId());
+        if(!Value.IS.nullValue(event.getDate()))
+            values.put(Constants.Columns.DATE, event.getDate());
+        if(!Value.IS.nullValue(event.getStart()))
+            values.put(Constants.Columns.START, event.getStart());
+        if(!Value.IS.nullValue(event.getEnd()))
+            values.put(Constants.Columns.END, event.getEnd());
+        if(!Value.IS.nullValue(event.getPredicted()))
+            values.put(Constants.Columns.PREDICTED, event.getPredicted());
+        if(!Value.IS.nullValue(event.getStatus()))
+            values.put(Constants.Columns.STATUS, event.getStatus());
+        if(!Value.IS.nullValue(event.getCreatedAt()))
+            values.put(Entity.Constants.Fields.CREATED_AT, event.getCreatedAt());
+        if(!Value.IS.nullValue(event.getUpdatedAt()))
+            values.put(Entity.Constants.Fields.UPDATED_AT, event.getUpdatedAt());
+        database.getWritableDatabase().update(Constants.TABLE_NAME, values, Constants.Columns.ID +"='"+event.getId()+"'", null);
+        if(broadcastUpdate)
+            broadcastUpdate();
+    }
+
+    private void checkConflictingEvent(Event event) throws ConflictException{
+        if(Value.IS.nullValue(event))
+            return;
+        String conflictSql = "select * from "+ Constants.TABLE_NAME + " where "
+                + Constants.Columns.USER_ID + "=" +event.getUserId() +" and "
+                + Constants.Columns.SMART_PLUG_ID + "='"+event.getSmartPlugId()+"' and "
+                + Constants.Columns.START + " between "+event.getStart() + " and "+ event.getEnd()
+                +" or "
+                + Constants.Columns.END + " between "+ event.getStart() + " and "+ event.getEnd();
+        Cursor cursor = database.getReadableDatabase().rawQuery(conflictSql, null);
+        if(cursor.getCount()>0){
+            cursor.close();
+            throw new ConflictException("");
+        }
+        cursor.close();
+    }
+
+    public void openEvent(Event event) {
+        try {
+            checkConflictingEvent(event);
+        } catch (ConflictException e) {
+            Log.d("Conflicting event found, returning");
+            return;
+        }
+        try {
+            addEvent(event, false);
+        } catch (ConflictException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void closeEvent(Event event){
+        try {
+            checkConflictingEvent(event);
+        } catch (ConflictException e) {
+            Log.d("Conflicting event found, returning");
+            return;
+        }
+
+        String closeFindQL = "select * from "+ Constants.TABLE_NAME +" where "
+                + Constants.Columns.USER_ID + "="+event.getUserId()+" and "
+                + Constants.Columns.SMART_PLUG_ID + "='"+event.getSmartPlugId()+"' and "
+                + Constants.Columns.DATE + "='"+event.getDate()+"' and "
+                + Constants.Columns.STATUS + "="+Event.Status.BUILDING+" order by "+ Constants.Columns.START
+                + " desc limit 1";
+        Cursor cursor = database.getReadableDatabase().rawQuery(closeFindQL, null);
+        if(cursor.getCount()==0){
+            cursor.close();
+            return;
+        }
+        event.setStart(cursor.getInt(cursor.getColumnIndex(Constants.Columns.START)));
+        event.setStatus(Event.Status.DONE.ordinal());
+        event.setSmartPlugId(cursor.getString(cursor.getColumnIndex(Constants.Columns.SMART_PLUG_ID)));
+        event.setUserId(event.getUserId());
+        event.setPredicted(1);
+        try {
+            addEvent(event, true);
+        } catch (ConflictException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public AsyncTask openEventAsync(Event event){
+        return new AsyncTask<Event, Void, Void>(){
+            @Override
+            protected Void doInBackground(Event... params) {
+                openEvent(params[0]);
+                return null;
+            }
+        }.execute(event);
+    }
+
+    public AsyncTask closeEventAsync(Event event){
+        return new AsyncTask<Event, Void, Void>(){
+            @Override
+            protected Void doInBackground(Event... params) {
+                closeEvent(params[0]);
+                return null;
+            }
+        }.execute(event);
+    }
+
+
+
+    public AsyncTask addEventAsync(final Event event, final boolean broadcastUpdate, final DoubleReceiver<Event, LitigyException> receiver){
+        return new AsyncTask<Event, Void, Object>(){
+            @Override
+            protected Object doInBackground(Event... params) {
+                try {
+                    addEvent(params[0], broadcastUpdate);
+                } catch (ConflictException e) {
+                    return e;
+                }
+                return params[0];
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                if(Value.IS.nullValue(receiver))
+                    return;
+                if(o instanceof Event){
+                    receiver.onReceive1((Event) o);
+                }else{
+                    receiver.onReceive2((LitigyException)o);
+                }
+            }
+        }.execute(event);
+    }
+
+    public AsyncTask updateSmartPlugAsync(final Event event, final boolean broadcastUpdate, final DoubleReceiver<Event, LitigyException> receiver){
+        return new AsyncTask<Event, Void, Object>(){
+            @Override
+            protected Object doInBackground(Event... params) {
+                try {
+                    updateEvent(params[0], broadcastUpdate);
+                } catch (ConflictException e) {
+                    e.printStackTrace();
+                    return e;
+                }
+                return params[0];
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                if(Value.IS.nullValue(receiver))
+                    return;
+                if(o instanceof Event){
+                    receiver.onReceive1((Event)o);
+                }else{
+                    receiver.onReceive2((LitigyException)o);
+                }
+            }
+        }.execute(event);
+    }
+
+
+    public static class EventLoader extends AsyncTask<Void, Object, Void>{
+
+        EventTable eventTable;
+        Integer userId;
+        DoubleReceiver<Cursor, LitigyException> receiver;
+        String date;
+
+        public static EventLoader getInstance(String date, User user, DoubleReceiver<Cursor, LitigyException> receiver){
+            return new EventLoader(date, user.getId(), receiver);
+        }
+
+        public EventLoader(String date, Integer userId, DoubleReceiver<Cursor, LitigyException> receiver) {
+            eventTable = new EventTable();
+            this.date = date;
+            this.userId = userId;
+            this.receiver = receiver;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            Log.d("Loading event");
+            final String sql = "select * from " + Constants.TABLE_NAME + " where "
+                    + Constants.Columns.USER_ID + " ="+userId+" and "
+                    + Constants.Columns.DATE + "='"+ date+"' and "
+                    + Constants.Columns.STATUS +"!="+Event.Status.BUILDING.ordinal()+" order by "
+                    + Constants.Columns.START + " asc";
+            Log.d("SQL IS: "+sql);
+            final Cursor cursor = eventTable.getDatabase().getReadableDatabase()
+                    .rawQuery(sql, null);
+            publishProgress(cursor);
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Object... values) {
+            if(receiver == null)
+                return;
+            if(values[0] instanceof Cursor){
+                receiver.onReceive1((Cursor) values[0]);
+            }else{
+                receiver.onReceive2((LitigyException)values[0]);
+            }
+        }
+
+        public EventLoader load(){
+            return (EventLoader) this.execute();
+        }
+
+    }
+
+}
