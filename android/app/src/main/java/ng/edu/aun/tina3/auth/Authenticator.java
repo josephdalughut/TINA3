@@ -28,11 +28,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import ng.edu.aun.tina3.Application;
 import ng.edu.aun.tina3.R;
+import ng.edu.aun.tina3.data.Database;
+import ng.edu.aun.tina3.data.Preferences;
 import ng.edu.aun.tina3.rest.api.AuthApi;
 import ng.edu.aun.tina3.rest.model.Token;
 import ng.edu.aun.tina3.rest.model.User;
 import ng.edu.aun.tina3.error.ConflictException;
 import ng.edu.aun.tina3.error.NotFoundException;
+import ng.edu.aun.tina3.service.ActionService;
+import ng.edu.aun.tina3.service.PredictionService;
 import ng.edu.aun.tina3.util.JsonUtils;
 import ng.edu.aun.tina3.util.Log;
 
@@ -346,6 +350,12 @@ public class Authenticator extends AbstractAccountAuthenticator {
                 }, null);
             }
         }
+        Application.getInstance().stopService(new Intent(Application.getInstance(), PredictionService.class));
+        Application.getInstance().stopService(new Intent(Application.getInstance(), ActionService.class));
+        ActionService.cancelAlarm(Application.getInstance());
+        PredictionService.AlarmScheduler.cancelAlarm(Application.getInstance());
+        Database.getInstance().reset();
+        Preferences.getInstance().reset();
         user = null;
     }
 

@@ -41,6 +41,11 @@ public class Database extends SQLiteOpenHelper {
         return getWritableDatabase(Constants.PASSWORD);
     }
 
+    public void reset(){
+        getWritableDatabase().delete(EventTable.Constants.TABLE_NAME, null, null);
+        getWritableDatabase().delete(SmartPlugTable.Constants.TABLE_NAME, null, null);
+    }
+
     public SQLiteDatabase getReadableDatabase(){
         return getReadableDatabase(Constants.PASSWORD);
     }

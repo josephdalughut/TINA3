@@ -122,7 +122,7 @@
                 android:layout_width="@dimen/height_light_switch_toolbar"
                 android:layout_height="@dimen/height_light_switch_toolbar"
                 android:layout_gravity="bottom|right"
-                android:background="@color/transparent"
+                android:background="@drawable/selector_dark"
                 android:visibility="gone"
                 android:src="@mipmap/ic_action_action_delete_six"
                 />
@@ -132,7 +132,7 @@
                 android:layout_width="@dimen/height_light_switch_toolbar"
                 android:layout_height="@dimen/height_light_switch_toolbar"
                 android:layout_gravity="top|left"
-                android:background="@color/transparent"
+                android:background="@drawable/selector_dark"
                 android:src="@mipmap/ic_action_navigation_close_six"
                 />
 
@@ -152,6 +152,7 @@
                 app:cardBackgroundColor="@color/aaa"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="0dp"
+                android:background="@drawable/selector_dark_rectangle"
                 android:clickable="true"
                 >
 
@@ -161,6 +162,7 @@
                     android:layout_height="match_parent"
                     app:cardBackgroundColor="#9B9B9B"
                     app:cardCornerRadius="4dp"
+                    android:clickable="false"
                     app:cardElevation="0dp"
                     >
 
@@ -169,6 +171,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardCornerRadius="4dp"
+                        android:clickable="false"
                         app:cardElevation="4dp"
                         >
 
@@ -194,6 +197,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
+                                        android:clickable="false"
                                         android:background="@color/light_switch_off_shade"
                                         android:id="@+id/buttonIsOn"
                                         />
@@ -204,6 +208,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
                                         app:cardElevation="0dp"
+                                        android:clickable="false"
                                         app:cardBackgroundColor="@color/light_switch_shadow"
                                         android:layout_gravity="top"
                                         app:cardCornerRadius="1dp"
@@ -319,7 +324,7 @@
                     android:layout_width="35dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
-                    android:background="@color/transparent"
+                    android:background="@drawable/selector_dark"
                     android:src="@mipmap/ic_action_action_settings_six"
                     />
 

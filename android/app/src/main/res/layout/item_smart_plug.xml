@@ -19,6 +19,7 @@
     <View
         android:id="@+id/selectorView"
         android:clickable="true"
+        android:background="@drawable/selector_dark_rectangle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

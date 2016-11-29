@@ -44,6 +44,7 @@
         android:layout_height="@dimen/height_toolbar"
         android:orientation="horizontal"
         android:clickable="true"
+        android:background="@drawable/selector_dark_rectangle"
         android:id="@+id/settingsButton"
         >
 
@@ -74,6 +75,7 @@
         android:orientation="horizontal"
         android:id="@+id/aboutButton"
         android:clickable="true"
+        android:background="@drawable/selector_dark_rectangle"
         >
 
         <ImageButton

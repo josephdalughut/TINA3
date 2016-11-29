@@ -11,6 +11,7 @@ import com.litigy.lib.java.util.Value;
 
 import ng.edu.aun.tina3.Application;
 import ng.edu.aun.tina3.rest.api.SmartPlugApi;
+import ng.edu.aun.tina3.rest.model.Event;
 import ng.edu.aun.tina3.rest.model.abs.Entity;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
 import ng.edu.aun.tina3.rest.model.User;
@@ -101,6 +102,31 @@ public class SmartPlugTable extends Table {
         }.execute(smartPlug);
     }
 
+    public SmartPlug.SmartPlugList getSmartPlugsForUser(Integer userId){
+        SmartPlug.SmartPlugList smartPlugs = new SmartPlug.SmartPlugList();
+        Cursor cursor = getDatabase().getReadableDatabase().rawQuery("select * from "+ Constants.TABLE_NAME + " where "+ Constants.Columns.USER_ID + "="+userId+"", null);
+        if(cursor.moveToFirst()){
+            do{
+                smartPlugs.add(SmartPlugTable.from(cursor));
+            }while (cursor.moveToNext());
+
+        }
+        cursor.close();
+        return smartPlugs;
+    }
+
+    public SmartPlug getSmartPlug(Event event){
+        Cursor cursor = getDatabase().getReadableDatabase().rawQuery("select * from "+
+                Constants.TABLE_NAME + " where "+Constants.Columns.ID + "='"+event.getSmartPlugId()+"'", null);
+        if(cursor.moveToFirst()){
+            SmartPlug smartPlug = from(cursor);
+            cursor.close();
+            return smartPlug;
+        }
+        cursor.close();
+        return null;
+    }
+
     public AsyncTask updateSmartPlugAsync(final SmartPlug smartPlug, final boolean broadcastUpdate, final DoubleReceiver<SmartPlug, LitigyException> receiver){
         return new AsyncTask<SmartPlug, Void, Object>(){
             @Override
@@ -170,14 +196,14 @@ public class SmartPlugTable extends Table {
             }
             cursor.close();
             Log.d("No smart plugs found in database, fallback to server gets");
-            SmartPlugApi.gets(new DoubleReceiver<SmartPlugApi.SmartPlugList, LitigyException>() {
+            SmartPlugApi.gets(new DoubleReceiver<SmartPlug.SmartPlugList, LitigyException>() {
                 @Override
-                public void onReceive(SmartPlugApi.SmartPlugList smartPlugs, LitigyException e) {
+                public void onReceive(SmartPlug.SmartPlugList smartPlugs, LitigyException e) {
 
                 }
 
                 @Override
-                public void onReceive1(SmartPlugApi.SmartPlugList smartPlugs) {
+                public void onReceive1(SmartPlug.SmartPlugList smartPlugs) {
                     Log.d("Smart plugs received: "+smartPlugs.size());
                     for(SmartPlug smartPlug: smartPlugs){
                         smartPlugTable.addSmartPlug(smartPlug, false);

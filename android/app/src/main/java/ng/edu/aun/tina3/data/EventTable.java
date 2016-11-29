@@ -11,9 +11,7 @@ import com.litigy.lib.java.util.Value;
 
 import ng.edu.aun.tina3.Application;
 import ng.edu.aun.tina3.error.ConflictException;
-import ng.edu.aun.tina3.rest.api.SmartPlugApi;
 import ng.edu.aun.tina3.rest.model.Event;
-import ng.edu.aun.tina3.rest.model.SmartPlug;
 import ng.edu.aun.tina3.rest.model.User;
 import ng.edu.aun.tina3.rest.model.abs.Entity;
 import ng.edu.aun.tina3.util.Log;
@@ -55,10 +53,24 @@ public class EventTable extends Table {
                 + Entity.Constants.Fields.UPDATED_AT + " integer)";
     }
 
+    public static Event fromCursor(Cursor cursor){
+        return (Event) new Event().setId(cursor.getString(cursor.getColumnIndex(Constants.Columns.ID)))
+                .setUserId(cursor.getInt(cursor.getColumnIndex(Constants.Columns.USER_ID)))
+                .setSmartPlugId(cursor.getString(cursor.getColumnIndex(Constants.Columns.SMART_PLUG_ID)))
+                .setDate(cursor.getString(cursor.getColumnIndex(Constants.Columns.DATE)))
+                .setStart(cursor.getInt(cursor.getColumnIndex(Constants.Columns.STATUS)))
+                .setEnd(cursor.getInt(cursor.getColumnIndex(Constants.Columns.END)))
+                .setPredicted(cursor.getInt(cursor.getColumnIndex(Constants.Columns.PREDICTED)))
+                .setStatus(cursor.getInt(cursor.getColumnIndex(Constants.Columns.STATUS)))
+                .setCreatedAt(cursor.getLong(cursor.getColumnIndex(Entity.Constants.Fields.CREATED_AT)))
+                .setUpdatedAt(cursor.getLong(cursor.getColumnIndex(Entity.Constants.Fields.UPDATED_AT)));
+    }
 
-    public void addEvent(Event event, boolean broadcastUpdate) throws ConflictException{
+
+    public void addEvent(Event event, boolean checkOnConflict, boolean broadcastUpdate) throws ConflictException{
         Log.d("Adding event: "+event);
-        checkConflictingEvent(event);
+        if(checkOnConflict)
+            checkConflictingEvent(event);
         ContentValues values = new ContentValues();
         values.put(Constants.Columns.ID, event.getId());
         values.put(Constants.Columns.USER_ID, event.getUserId());
@@ -80,8 +92,9 @@ public class EventTable extends Table {
         Application.getInstance().sendBroadcast(new Intent(Constants.UPDATE_INTENT));
     }
 
-    public void updateEvent(Event event, boolean broadcastUpdate) throws ConflictException {
-        checkConflictingEvent(event);
+    public void updateEvent(Event event, boolean checkOnConflict, boolean broadcastUpdate) throws ConflictException {
+        if(checkOnConflict)
+            checkConflictingEvent(event);
         ContentValues values = new ContentValues();
         values.put(Constants.Columns.ID, event.getId());
         values.put(Constants.Columns.USER_ID, event.getUserId());
@@ -125,6 +138,43 @@ public class EventTable extends Table {
             broadcastUpdate();
     }
 
+    public Event getTopSignificantEvent(Integer userId){
+        String sql = "select * from "+ Constants.TABLE_NAME + " where "
+                + Constants.Columns.USER_ID + "="+userId+" and "
+                + Constants.Columns.STATUS + "=" + Event.Status.SCHEDULED + " or "
+                + Constants.Columns.STATUS + "=" + Event.Status.ONGOING + " limit 1";
+        Cursor cursor = getDatabase().getReadableDatabase().rawQuery(sql, null);
+        if(!cursor.moveToFirst())
+            return null;
+        Event event =  fromCursor(cursor);
+        cursor.close();
+        return event;
+    }
+
+    public void closeAllCurrentlyBuildingEvents(Integer userId, String smartPlug){
+        String sql = "delete from "+ Constants.TABLE_NAME + " where "
+                + Constants.Columns.USER_ID + "="+userId+" and "
+                + Constants.Columns.STATUS + "="+ Event.Status.BUILDING+"";
+        getDatabase().getWritableDatabase().rawQuery(sql, null).close();
+    }
+
+    public Event.EventList getAllDoneEvents(Integer userId, String smartPlugId, String date){
+        Event.EventList events = new Event.EventList();
+        String sql = "select * from "+ Constants.TABLE_NAME + " where "
+                + Constants.Columns.USER_ID+"="+userId+" and "
+                + Constants.Columns.SMART_PLUG_ID + "='"+smartPlugId+"' and "
+                + Constants.Columns.DATE + "='"+date+"' and "
+                + Constants.Columns.STATUS+"="+ Event.Status.DONE+"";
+        Cursor cursor = getDatabase().getReadableDatabase().rawQuery(sql, null);
+        if(cursor.moveToFirst()){
+            do {
+                events.add(fromCursor(cursor));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return events;
+    }
+
     private void checkConflictingEvent(Event event) throws ConflictException{
         if(Value.IS.nullValue(event))
             return;
@@ -137,12 +187,13 @@ public class EventTable extends Table {
         Cursor cursor = database.getReadableDatabase().rawQuery(conflictSql, null);
         if(cursor.getCount()>0){
             cursor.close();
-            throw new ConflictException("");
+            throw new ConflictException("error: conflicting event");
         }
         cursor.close();
     }
 
-    public void openEvent(Event event) {
+    public void openPotentialEvent(Event event) {
+        Log.d("Opening event");
         try {
             checkConflictingEvent(event);
         } catch (ConflictException e) {
@@ -150,13 +201,15 @@ public class EventTable extends Table {
             return;
         }
         try {
-            addEvent(event, false);
+            addEvent(event, true, false);
+            Log.d("Added event");
         } catch (ConflictException e) {
             e.printStackTrace();
         }
     }
 
-    public void closeEvent(Event event){
+    public void closeLastOpenEvent(Event event){
+        Log.d("Closing event");
         try {
             checkConflictingEvent(event);
         } catch (ConflictException e) {
@@ -168,22 +221,29 @@ public class EventTable extends Table {
                 + Constants.Columns.USER_ID + "="+event.getUserId()+" and "
                 + Constants.Columns.SMART_PLUG_ID + "='"+event.getSmartPlugId()+"' and "
                 + Constants.Columns.DATE + "='"+event.getDate()+"' and "
-                + Constants.Columns.STATUS + "="+Event.Status.BUILDING+" order by "+ Constants.Columns.START
+                + Constants.Columns.STATUS + "="+Event.Status.BUILDING.ordinal()+" order by "+ Constants.Columns.START
                 + " desc limit 1";
         Cursor cursor = database.getReadableDatabase().rawQuery(closeFindQL, null);
         if(cursor.getCount()==0){
+            Log.d("No suitable events found to be closed");
             cursor.close();
             return;
         }
-        event.setStart(cursor.getInt(cursor.getColumnIndex(Constants.Columns.START)));
-        event.setStatus(Event.Status.DONE.ordinal());
-        event.setSmartPlugId(cursor.getString(cursor.getColumnIndex(Constants.Columns.SMART_PLUG_ID)));
-        event.setUserId(event.getUserId());
-        event.setPredicted(1);
-        try {
-            addEvent(event, true);
-        } catch (ConflictException e) {
-            e.printStackTrace();
+        if(cursor.moveToFirst()) {
+            Log.d("Suitable event found to close, closing");
+            event.setId(cursor.getString(cursor.getColumnIndex(Constants.Columns.ID)));
+            event.setStart(cursor.getInt(cursor.getColumnIndex(Constants.Columns.START)));
+            event.setStatus(Event.Status.DONE.ordinal());
+            event.setSmartPlugId(cursor.getString(cursor.getColumnIndex(Constants.Columns.SMART_PLUG_ID)));
+            event.setUserId(event.getUserId());
+            event.setPredicted(1);
+            try {
+                addEvent(event, false, true);
+                Log.d("Closed event: "+event.getId());
+            } catch (ConflictException e) {
+                Log.d("Exception closing event: is "+e.getMessage());
+                e.printStackTrace();
+            }
         }
     }
 
@@ -191,7 +251,7 @@ public class EventTable extends Table {
         return new AsyncTask<Event, Void, Void>(){
             @Override
             protected Void doInBackground(Event... params) {
-                openEvent(params[0]);
+                openPotentialEvent(params[0]);
                 return null;
             }
         }.execute(event);
@@ -201,7 +261,7 @@ public class EventTable extends Table {
         return new AsyncTask<Event, Void, Void>(){
             @Override
             protected Void doInBackground(Event... params) {
-                closeEvent(params[0]);
+                closeLastOpenEvent(params[0]);
                 return null;
             }
         }.execute(event);
@@ -214,7 +274,7 @@ public class EventTable extends Table {
             @Override
             protected Object doInBackground(Event... params) {
                 try {
-                    addEvent(params[0], broadcastUpdate);
+                    addEvent(params[0], true, broadcastUpdate);
                 } catch (ConflictException e) {
                     return e;
                 }
@@ -234,12 +294,12 @@ public class EventTable extends Table {
         }.execute(event);
     }
 
-    public AsyncTask updateSmartPlugAsync(final Event event, final boolean broadcastUpdate, final DoubleReceiver<Event, LitigyException> receiver){
+    public AsyncTask updateSmartPlugAsync(final Event event, final boolean checkOnConflict, final boolean broadcastUpdate, final DoubleReceiver<Event, LitigyException> receiver){
         return new AsyncTask<Event, Void, Object>(){
             @Override
             protected Object doInBackground(Event... params) {
                 try {
-                    updateEvent(params[0], broadcastUpdate);
+                    updateEvent(params[0], checkOnConflict, broadcastUpdate);
                 } catch (ConflictException e) {
                     e.printStackTrace();
                     return e;
@@ -263,20 +323,22 @@ public class EventTable extends Table {
 
     public static class EventLoader extends AsyncTask<Void, Object, Void>{
 
-        EventTable eventTable;
+        public EventTable eventTable;
         Integer userId;
+        String smartPlugId;
         DoubleReceiver<Cursor, LitigyException> receiver;
         String date;
 
-        public static EventLoader getInstance(String date, User user, DoubleReceiver<Cursor, LitigyException> receiver){
-            return new EventLoader(date, user.getId(), receiver);
+        public static EventLoader getInstance(String date, User user, String smartPlugId, DoubleReceiver<Cursor, LitigyException> receiver){
+            return new EventLoader(date, user.getId(), smartPlugId, receiver);
         }
 
-        public EventLoader(String date, Integer userId, DoubleReceiver<Cursor, LitigyException> receiver) {
+        public EventLoader(String date, Integer userId, String smartPlugId, DoubleReceiver<Cursor, LitigyException> receiver) {
             eventTable = new EventTable();
             this.date = date;
             this.userId = userId;
             this.receiver = receiver;
+            this.smartPlugId = smartPlugId;
         }
 
         @Override
@@ -286,8 +348,9 @@ public class EventTable extends Table {
             final String sql = "select * from " + Constants.TABLE_NAME + " where "
                     + Constants.Columns.USER_ID + " ="+userId+" and "
                     + Constants.Columns.DATE + "='"+ date+"' and "
-                    + Constants.Columns.STATUS +"!="+Event.Status.BUILDING.ordinal()+" order by "
-                    + Constants.Columns.START + " asc";
+                    + Constants.Columns.STATUS +"!="+Event.Status.BUILDING.ordinal()
+                    +" order by "
+                    + Constants.Columns.START + " desc";
             Log.d("SQL IS: "+sql);
             final Cursor cursor = eventTable.getDatabase().getReadableDatabase()
                     .rawQuery(sql, null);

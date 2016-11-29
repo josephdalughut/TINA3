@@ -22,7 +22,7 @@
         <ImageButton
             android:layout_width="@dimen/height_toolbar"
             android:layout_height="match_parent"
-            android:background="@color/transparent"
+            android:background="@drawable/selector_light"
             android:src="@mipmap/ic_action_navigation_close"
             android:id="@+id/closeButton"
             />

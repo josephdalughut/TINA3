@@ -125,14 +125,14 @@ public class OutletAddEventFragment extends BroadcastFragtivity implements TimeP
             @Override
             public void onClick(View v) {
                 settingOn = true;
-                pickTime();
+                pickTime(on);
             }
         });
         offTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 settingOn = false;
-                pickTime();
+                pickTime(off);
             }
         });
         try {
@@ -142,10 +142,9 @@ public class OutletAddEventFragment extends BroadcastFragtivity implements TimeP
         }
     }
 
-    private void pickTime(){
-        DateTime now = DateTime.now(DateTimeZone.getDefault());
-        int hourOfDay = now.hourOfDay().get();
-        int minuteOfHour = now.minuteOfHour().get();
+    private void pickTime(int minute){
+        int minuteOfHour = minute % 60;
+        int hourOfDay = (minute - minuteOfHour) / 60;
         TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), this, hourOfDay, minuteOfHour, false);
         timePickerDialog.show();
     }
@@ -156,7 +155,16 @@ public class OutletAddEventFragment extends BroadcastFragtivity implements TimeP
         if(currentMinute>1435){
             throw new ConflictException("");
         }
-        padSetTime(currentMinute + 1);
+        int rem = 1440 - currentMinute;
+        boolean has30Mins = rem > 30;
+        if(has30Mins){
+            on = currentMinute + 10;
+            off = on + 10;
+        }else{
+            on = currentMinute + 2;
+            off = on + 1;
+        }
+        refreshTime();
     }
 
     private void refreshTime(){
@@ -164,14 +172,16 @@ public class OutletAddEventFragment extends BroadcastFragtivity implements TimeP
         int onHour = (on - onMinHour) / 60;
         int offMinHour = off % 60;
         int offHour = (off - offMinHour) / 60;
-        String onHourText = onHour < 12 ? Value.TO.stringValue(onHour) : Value.TO.stringValue(24 - onHour);
+        String onHourText = onHour < 12 ? Value.TO.stringValue(onHour) : Value.TO.stringValue(onHour - 12);
+        String onMinText = onMinHour > 9 ? Value.TO.stringValue(onMinHour) : "0"+Value.TO.stringValue(onMinHour);
         String onMer = onHour < 12 ? "AM" : "PM";
 
-        String offHourText = offHour < 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(24 - offHour);
+        String offHourText = offHour < 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(offHour - 12);
+        String offMinText = offMinHour > 9 ? Value.TO.stringValue(offMinHour) : "0"+Value.TO.stringValue(offMinHour);
         String offMer = offHour < 12 ? "AM" : "PM";
 
-        onTime.setText(onHourText + ":" + onMinHour + " "+ onMer);
-        offTime.setText(offHourText + ":" + offMinHour + " "+ offMer);
+        onTime.setText(onHourText + ":" + onMinText + " "+ onMer);
+        offTime.setText(offHourText + ":" + offMinText + " "+ offMer);
 
         int duration = off - on;
         if(duration < 60) {
@@ -180,8 +190,8 @@ public class OutletAddEventFragment extends BroadcastFragtivity implements TimeP
             durationHint.setText("1 hour");
         }else{
             int mins = duration % 60;
-            int hour = (duration - mins / 60);
-            durationHint.setText(hour + (hour == 1 ? " hour, " : " hours, " + mins + (mins == 1 ? " minute." : " minutes.")));
+            int hour = (duration - mins) / 60;
+            durationHint.setText(hour + (hour == 1 ? " hour, " : " hours, ") + mins + (mins == 1 ? " minute." : " minutes."));
         }
     }
 

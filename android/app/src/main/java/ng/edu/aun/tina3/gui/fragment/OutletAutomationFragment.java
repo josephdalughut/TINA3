@@ -1,10 +1,12 @@
 package ng.edu.aun.tina3.gui.fragment;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,11 +32,14 @@ import org.joda.time.DateTimeZone;
 import ng.edu.aun.tina3.R;
 import ng.edu.aun.tina3.auth.Authenticator;
 import ng.edu.aun.tina3.data.EventTable;
+import ng.edu.aun.tina3.data.Preferences;
 import ng.edu.aun.tina3.data.SmartPlugTable;
 import ng.edu.aun.tina3.gui.activity.Activity;
 import ng.edu.aun.tina3.gui.misc.Snackbar;
 import ng.edu.aun.tina3.rest.model.Event;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
+import ng.edu.aun.tina3.service.PredictionService;
+import ng.edu.aun.tina3.util.Log;
 import ng.edu.aun.tina3.util.Time;
 
 /**
@@ -43,7 +48,7 @@ import ng.edu.aun.tina3.util.Time;
 
 public class OutletAutomationFragment extends BroadcastFragtivity implements SwipeRefreshLayout.OnRefreshListener, DoubleReceiver<Cursor, LitigyException> {
 
-    private TextView dateTextView;
+    private TextView dateTextView, infoTextView;
     private FloatingActionButton addButton;
     private SwipeRefreshLayout refreshLayout;
     private RecyclerView recyclerView;
@@ -64,7 +69,20 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
 
     @Override
     public void onIntent(Intent intent) {
-        onRefresh(true);
+        switch(intent.getAction()){
+            case EventTable.Constants.UPDATE_INTENT:
+                onRefresh(true);
+                break;
+            case PredictionService.Constants.INTENT_PREDICTION_STARTED:
+                onPredictionStarted();
+                break;
+            case PredictionService.Constants.INTENT_PREDICTION_SUCCESS:
+                onPredictionSuccess();
+                break;
+            case PredictionService.Constants.INTENT_PREDICTION_FAIL:
+                onPredictionError(intent.getIntExtra("statusCode", LitigyException.Mappings.ServiceUnvailableException), intent.getStringExtra("message"));
+                break;
+        }
     }
 
     @Override
@@ -92,6 +110,7 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
         dateTextView = (TextView) findViewById(R.id.dateTextView);
         addButton = (FloatingActionButton) findViewById(R.id.addButton);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshLayout);
+        infoTextView = (TextView) findViewById(R.id.infoTextView);
         cover = (ImageView) findViewById(R.id.cover);
         error = findViewById(R.id.error);
         empty = findViewById(R.id.empty);
@@ -159,14 +178,15 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
                         int onHour = (on - onMinHour) / 60;
                         int offMinHour = off % 60;
                         int offHour = (off - offMinHour) / 60;
-                        String onHourText = onHour < 12 ? Value.TO.stringValue(onHour) : Value.TO.stringValue(24 - onHour);
+                        String onHourText = onHour < 12 ? Value.TO.stringValue(onHour) : Value.TO.stringValue(onHour - 12);
+                        String onMinText = onMinHour > 9 ? Value.TO.stringValue(onMinHour) : "0"+Value.TO.stringValue(onMinHour);
                         String onMer = onHour < 12 ? "AM" : "PM";
 
-                        String offHourText = offHour < 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(24 - offHour);
+                        String offHourText = offHour < 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(offHour - 12);
+                        String offMinText = offMinHour > 9 ? Value.TO.stringValue(offMinHour) : "0"+Value.TO.stringValue(offMinHour);
                         String offMer = offHour < 12 ? "AM" : "PM";
 
-                        String onTime = onHourText + ":" + onMinHour + " "+ onMer;
-                        String offTime = offHourText + ":" + offMinHour + " "+ offMer;
+                        String when = "from "+ (onHourText + ":" + onMinText + " "+ onMer) + " to "+(offHourText + ":" + offMinText + " "+ offMer);
                         String durationText;
                         int duration = off - on;
                         if(duration < 60) {
@@ -175,22 +195,25 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
                             durationText = ("1 hour");
                         }else{
                             int mins = duration % 60;
-                            int hour = (duration - mins / 60);
-                            durationText = (hour + (hour == 1 ? " hour, " : " hours, " + mins + (mins == 1 ? " minute." : " minutes.")));
+                            int hour = (duration - mins) / 60;
+                            durationText = (hour + (hour == 1 ? " hour, " : " hours, ") + mins + (mins == 1 ? " minute." : " minutes."));
                         }
-                        eventHolder.when.setText("from "+onTime + " to "+offTime);
+                        eventHolder.when.setText(when);
                         eventHolder.duration.setText(durationText);
                         eventHolder.status.setVisibility(View.VISIBLE);
                         int status = cursor.getInt(cursor.getColumnIndex(EventTable.Constants.Columns.STATUS));
                         switch (Event.Status.values()[status]){
                             case SCHEDULED:
-                                eventHolder.status.setColor( predicted ? getColor(R.color.ccc) : R.color.flat_belize_hole);
+                                eventHolder.status.setColor( predicted ? getColor(R.color.flat_belize_hole) : getColor(R.color.ccc));
+                                eventHolder.what.setTextColor(getColor(R.color.nine));
+                                eventHolder.what.setText(getString(R.string.auto_control_smart_plug));
+                                eventHolder.icon.setBackgroundTintList(ColorStateList.valueOf(getColor(R.color.ccc)));
                                 break;
-                            case ONGOING:
+                            case ONGOING: case DONE:
                                 eventHolder.status.setColor(getColor(R.color.tina_green));
-                                break;
-                            case DONE:
-                                eventHolder.status.setVisibility(View.GONE);
+                                eventHolder.what.setTextColor(getColor(R.color.tina_green));
+                                eventHolder.what.setText(getString(R.string.auto_controlled_smart_plug));
+                                eventHolder.icon.setBackgroundTintList(ColorStateList.valueOf(getColor(R.color.tina_green)));
                                 break;
                         }
                     }
@@ -217,7 +240,11 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
                 });
         recyclerView.setAdapter(adapter);
         refreshDate();
-        onRefresh(true);
+        if(Preferences.getInstance().isPredicting()){
+            onPredictionStarted();
+        }else{
+            onRefresh(true);
+        }
     }
 
     private void refreshDate(){
@@ -232,6 +259,40 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
         builder.append(".");
         dateTextView.setText(builder.toString());
         setCoverImage(R.drawable.stub);
+    }
+
+    private void onPredictionStarted(){
+        refreshDate();
+        adapter.setCursor(null);
+        empty.setVisibility(View.GONE);
+        error.setVisibility(View.GONE);
+        refreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                refreshLayout.setRefreshing(true);
+            }
+        });
+        infoTextView.setText(getString(R.string.hint_predicting));
+    }
+
+    private void onPredictionSuccess(){
+        onRefresh(true);
+    }
+
+    private void onPredictionError(int statusCode, String message){
+        onRefresh(false);
+        LitigyException e = new LitigyException(statusCode, message);
+        Log.d("Error from prediction: "+message);
+        switch (e.toServiceException()){
+            case InternetUnavailableException:
+                Snackbar.showLong(OutletAutomationFragment.this, R.string.error_internet_unavailable);
+                break;
+            default:
+                Snackbar.showLong(OutletAutomationFragment.this, R.string.error_service_unavailable);
+                break;
+        }
+        error.setVisibility(View.VISIBLE);
+        refreshLayout.setEnabled(true);
     }
 
     private void setCoverImage(int res){
@@ -274,11 +335,17 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
 
     @Override
     public void onReceive1(Cursor cursor) {
+        if(Preferences.getInstance().isPredicting())
+            return;
         now = DateTime.now(DateTimeZone.getDefault());
         onRefresh(false);
         adapter.setCursor(cursor);
         error.setVisibility(View.GONE);
+        infoTextView.setText(adapter.isEmpty()? getString(R.string.no_today_predictions) :
+                (adapter.getCount() == 1 ? getString(R.string.one_predicted) : ""+adapter.getCount()
+                        + " " + getString(R.string.predictions)));
         empty.setVisibility(adapter.isEmpty() ? View.VISIBLE : View.GONE);
+        refreshLayout.setEnabled(false);
     }
 
     @Override
@@ -286,6 +353,7 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
         onRefresh(false);
         error.setVisibility(adapter.isEmpty() ? View.VISIBLE: View.GONE);
         empty.setVisibility(View.GONE);
+        infoTextView.setText("");
         switch (e.toServiceException()){
             case InternetUnavailableException:
                 Snackbar.showLong(OutletAutomationFragment.this, R.string.error_internet_unavailable);
@@ -301,6 +369,8 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
 
         PigressBar status;
         TextView what, when, duration, name;
+        CardView card;
+        FloatingActionButton icon;
 
         public EventHolder(View itemView) {
             super(itemView);
@@ -309,6 +379,8 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
             duration = (TextView) findViewById(R.id.duration);
             when = (TextView) findViewById(R.id.when);
             name = (TextView) findViewById(R.id.name);
+            card = (CardView) findViewById(R.id.card);
+            icon = (FloatingActionButton) findViewById(R.id.icon);
         }
 
         private View findViewById(int res){
@@ -326,9 +398,18 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
         });
         if(!refresh)
             return;
+        infoTextView.setText(getString(R.string.hint_predicting));
         try {
             String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
-            EventTable.EventLoader.getInstance(date, Authenticator.getInstance().getUser(false), this).load();
+            if(!Preferences.getInstance().lastPredicted().contentEquals(date)){
+                if(Preferences.getInstance().isPredicting()){
+                    onPredictionStarted();
+                }else{
+                    getActivity().getApplicationContext().startService(new Intent(getContext(), PredictionService.class));
+                }
+            }else {
+                EventTable.EventLoader.getInstance(date, Authenticator.getInstance().getUser(false), ((OutletActionsFragment) getParentFragment()).getSmartPlug().getId(), this).load();
+            }
         } catch (Exception e) {
             onRefresh(false);
             Snackbar.showLong(this, getString(R.string.error_no_accounts));

@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import ng.edu.aun.tina3.rest.api.SmartPlugApi;
+import ng.edu.aun.tina3.rest.model.Event;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
 import ng.edu.aun.tina3.rest.model.User;
 
@@ -19,7 +19,9 @@ public class JsonUtils extends com.litigy.lib.java.util.JsonUtils {
     static{
         registerSerializer(User.class, new User.UserSerializer(), new User.UserDerserialzier());
         registerSerializer(SmartPlug.class, new SmartPlug.SmartPlugSerializer(), new SmartPlug.SmartPlugDeserializer());
-        registerSerializer(SmartPlugApi.SmartPlugList.class, new SmartPlugApi.SmartPlugList.SmartPlugListSerializer(), new SmartPlugApi.SmartPlugList.SmartPlugListDeserializer());
+        registerSerializer(SmartPlug.SmartPlugList.class, new SmartPlug.SmartPlugList.SmartPlugListSerializer(), new SmartPlug.SmartPlugList.SmartPlugListDeserializer());
+        registerSerializer(Event.class, new Event.EventSerializer(), new Event.EventDeserializer());
+        registerSerializer(Event.EventList.class, new Event.EventList.EventListSerializer(), new Event.EventList.EventListDeserializer());
     }
 
     public static <T> T fromJson(String jsonString, Class<T> tClass){

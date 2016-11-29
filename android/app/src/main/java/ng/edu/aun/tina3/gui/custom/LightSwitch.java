@@ -21,7 +21,7 @@ import ng.edu.aun.tina3.R;
  * Created by joeyblack on 11/24/16.
  */
 
-public class LightSwitch extends LightSwitchStub implements View.OnTouchListener, ValueAnimator.AnimatorUpdateListener, Animator.AnimatorListener, CompoundButton.OnCheckedChangeListener {
+public class LightSwitch extends LightSwitchStub implements View.OnTouchListener, ValueAnimator.AnimatorUpdateListener, Animator.AnimatorListener, CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
 
     private String name, switchId;
@@ -51,7 +51,7 @@ public class LightSwitch extends LightSwitchStub implements View.OnTouchListener
     @Override
     public void init(AttributeSet attrs){
         super.init(attrs);
-        findViewById(R.id.selector).setOnTouchListener(this);
+        findViewById(R.id.selector).setOnClickListener(this);
         switchUI = findViewById(R.id.switchUI);
         settingsUI = findViewById(R.id.settingsUI);
         automatedSwitch = (SwitchCompat) findViewById(R.id.automatedSwitch);
@@ -83,17 +83,9 @@ public class LightSwitch extends LightSwitchStub implements View.OnTouchListener
 
                 break;
             case MotionEvent.ACTION_UP:
-                switch (getStatus()){
-                    case OFF:
-                        setSwitchingOn();
-                        break;
-                    case ON:
-                        setSwitchingOff();
-                        break;
-                }
-                break;
+
         }
-        return true;
+        return false;
     }
 
     public String getName() {
@@ -187,6 +179,18 @@ public class LightSwitch extends LightSwitchStub implements View.OnTouchListener
     public LightSwitchStub setLightSwitchListener(LightSwitchListener lightSwitchListener) {
         this.lightSwitchListener = lightSwitchListener;
         return this;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (getStatus()){
+            case OFF:
+                setSwitchingOn();
+                break;
+            case ON:
+                setSwitchingOff();
+                break;
+        }
     }
 
     public interface LightSwitchListener {

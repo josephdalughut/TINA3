@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
@@ -8,108 +8,117 @@
     android:clickable="true"
     >
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_toolbar"
-        android:elevation="@dimen/elevation_default_app_bar"
-        android:background="@color/tina_green"
-        app:contentInsetEnd="0dp"
-        app:contentInsetLeft="0dp"
-        app:contentInsetRight="0dp"
-        app:contentInsetStart="0dp"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
-
-            <ImageButton
-                android:layout_width="@dimen/height_toolbar"
-                android:layout_height="match_parent"
-                android:background="@color/transparent"
-                android:id="@+id/backButton"
-                android:src="@mipmap/ic_action_navigation_arrow_back"
-                />
-
-            <com.litigy.lib.android.gui.view.textView.TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|left"
-                android:textColor="@color/white"
-                android:text="@string/login"
-                android:textAllCaps="true"
-                app:fontAppearance="title"
-                />
-
-        </LinearLayout>
-
-    </android.support.v7.widget.Toolbar>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingTop="@dimen/margin_page"
-        android:paddingLeft="@dimen/height_toolbar"
-        android:paddingRight="@dimen/height_toolbar"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         >
 
-        <android.support.design.widget.TextInputLayout
+        <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/height_toolbar"
+            android:elevation="@dimen/elevation_default_app_bar"
+            android:background="@color/tina_green"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            >
 
-            <com.litigy.lib.android.gui.view.editText.EditText
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_toolbar"
-                android:textColor="@color/three"
-                app:fontAppearance="button"
-                android:gravity="left"
-                android:lines="1"
-                android:hint="@string/hint_aun_id"
-                android:id="@+id/id"
-                android:maxLength="9"
-                android:imeOptions="actionNext"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
                 >
 
-                <requestFocus/>
+                <ImageButton
+                    android:layout_width="@dimen/height_toolbar"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_light"
+                    android:id="@+id/backButton"
+                    android:src="@mipmap/ic_action_navigation_arrow_back"
+                    />
 
-            </com.litigy.lib.android.gui.view.editText.EditText>
+                <com.litigy.lib.android.gui.view.textView.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:textColor="@color/white"
+                    android:text="@string/login"
+                    android:textAllCaps="true"
+                    app:fontAppearance="title"
+                    />
 
-        </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
 
-        <android.support.design.widget.TextInputLayout
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="@dimen/margin_page"
+            android:paddingLeft="@dimen/height_toolbar"
+            android:paddingRight="@dimen/height_toolbar"
+            android:orientation="vertical"
+            >
 
-            <com.litigy.lib.android.gui.view.editText.EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_toolbar"
-                android:textColor="@color/three"
-                app:fontAppearance="button"
-                android:gravity="left"
-                android:lines="1"
-                android:hint="@string/hint_password"
-                android:id="@+id/password"
-                android:inputType="textPassword"
-                android:maxLength="20"
-                android:imeOptions="actionDone"
-                >
+                android:layout_height="wrap_content">
+
+                <com.litigy.lib.android.gui.view.editText.EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_toolbar"
+                    android:textColor="@color/three"
+                    app:fontAppearance="button"
+                    android:gravity="left"
+                    android:lines="1"
+                    android:hint="@string/hint_aun_id"
+                    android:id="@+id/id"
+                    android:maxLength="9"
+                    android:imeOptions="actionNext"
+                    >
+
+                    <requestFocus/>
+
+                </com.litigy.lib.android.gui.view.editText.EditText>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.litigy.lib.android.gui.view.editText.EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_toolbar"
+                    android:textColor="@color/three"
+                    app:fontAppearance="button"
+                    android:gravity="left"
+                    android:lines="1"
+                    android:hint="@string/hint_password"
+                    android:id="@+id/password"
+                    android:inputType="textPassword"
+                    android:maxLength="20"
+                    android:imeOptions="actionDone"
+                    >
 
 
-            </com.litigy.lib.android.gui.view.editText.EditText>
+                </com.litigy.lib.android.gui.view.editText.EditText>
 
-        </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
+    <ng.edu.aun.tina3.gui.layout.FloatingFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_page"
         android:gravity="right"
+        android:layout_gravity="bottom"
         >
 
         <com.litigy.lib.android.gui.view.button.Button
@@ -123,6 +132,6 @@
             android:backgroundTint="@color/tina_green"
             />
 
-    </LinearLayout>
+    </ng.edu.aun.tina3.gui.layout.FloatingFrameLayout>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

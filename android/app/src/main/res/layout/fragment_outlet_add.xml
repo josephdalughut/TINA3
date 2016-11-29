@@ -23,7 +23,7 @@
             <ImageButton
                 android:layout_width="@dimen/height_toolbar"
                 android:layout_height="match_parent"
-                android:background="@color/transparent"
+                android:background="@drawable/selector_light"
                 android:src="@mipmap/ic_action_navigation_close"
                 android:id="@+id/closeButton"
                 />
@@ -56,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_marginBottom="@dimen/height_toolbar"
             >
 
             <com.litigy.lib.android.gui.pager.NaughtyPager
@@ -67,26 +68,27 @@
 
         </FrameLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/margin_page_half"
-            >
-
-
-            <com.litigy.lib.android.gui.view.button.Button
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_toolbar"
-                android:layout_gravity="right"
-                app:backgroundTint="@color/white"
-                android:textColor="@color/tina_green"
-                android:text="@string/next"
-                android:id="@+id/nextButton"
-                />
-
-        </FrameLayout>
-
     </LinearLayout>
+
+    <ng.edu.aun.tina3.gui.layout.FloatingFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_page_half"
+        android:layout_gravity="bottom"
+        >
+
+
+        <com.litigy.lib.android.gui.view.button.Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_toolbar"
+            android:layout_gravity="right"
+            app:backgroundTint="@color/white"
+            android:textColor="@color/tina_green"
+            android:text="@string/next"
+            android:id="@+id/nextButton"
+            />
+
+    </ng.edu.aun.tina3.gui.layout.FloatingFrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

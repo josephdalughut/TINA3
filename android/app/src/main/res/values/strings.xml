@@ -64,7 +64,7 @@
     <string name="smart_plug_add_learn_switch_learned">You\'re good to go.</string>
     <string name="smart_plug_error_switch_off">Your Smart-plug couldn\'t be switched off. Please try again</string>
     <string name="smart_plug_error_switch_on">Your Smart-plug couldn\'t be switched on. Please try again.</string>
-    <string name="no_events">No auto-control events for today.</string>
+    <string name="no_events">No predictions for today.</string>
     <string name="permission">Permission</string>
     <string name="info_permission_add_accounts">To use this application, you need to grant it permission to add contacts and accounts.</string>
     <string name="grant">Grant</string>
@@ -74,12 +74,18 @@
     <string name="okay">Okay</string>
     <string name="error_no_accounts">No valid accounts found on your device. Please logout and login again.</string>
     <string name="add_an_event">Add Auto-Control</string>
-    <string name="auto_control_smart_plug">Auto-Control </string>
-    <string name="switch_on_at">ON:</string>
-    <string name="switch_off_at">OFF:</string>
+    <string name="auto_control_smart_plug">Switch on </string>
+    <string name="auto_controlled_smart_plug">Switched on </string>
+    <string name="switch_on_at">FROM:</string>
+    <string name="switch_off_at">TO:</string>
     <string name="duration_hint">2 hours</string>
     <string name="error_event_past">It\'s already time for this event. Please adjust and try again.</string>
     <string name="error_almost_event_epoch">It\'s almost 12am, please wait a bit</string>
     <string name="addding_event">adding</string>
     <string name="error_conflicting_events">You already have scheduled auto-control events within this time period. Please adjust the time for your event.</string>
+    <string name="no_today_predictions">No predictions for today.</string>
+    <string name="one_predicted">1 prediction for today.</string>
+    <string name="predictions">predictions for today.</string>
+    <string name="hint_predicting">predicting...</string>
+    <string name="prediction_service">Prediction Service</string>
 </resources>

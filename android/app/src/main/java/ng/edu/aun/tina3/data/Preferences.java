@@ -13,6 +13,11 @@ import ng.edu.aun.tina3.Application;
 
 public class Preferences extends SecureSharedPreferences {
 
+    public static class Constants {
+        public static final String IS_PREDICTING = "isPredicting";
+        public static final String LAST_PREDICTED = "lastPredicted";
+    }
+
     private static Preferences instance;
 
     public static Preferences getInstance(){
@@ -36,4 +41,27 @@ public class Preferences extends SecureSharedPreferences {
     public String getPassword() {
         return "80WXXFOip192roZJ2Gul9CYPGIlIq6F4";
     }
+
+    public boolean isPredicting(){
+        return getBoolean(Constants.IS_PREDICTING, false);
+    }
+
+    public Preferences setIsPredicting(boolean isPredicting){
+        edit().putBoolean(Constants.IS_PREDICTING, isPredicting).commit();
+        return this;
+    }
+
+    public String lastPredicted(){
+        return getString(Constants.LAST_PREDICTED, null);
+    }
+
+    public Preferences setLastPredicted(String lastPredicted){
+        edit().putString(Constants.LAST_PREDICTED, lastPredicted).commit();
+        return this;
+    }
+
+    public void reset(){
+        edit().clear().commit();
+    }
+
 }

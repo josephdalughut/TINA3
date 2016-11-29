@@ -20,6 +20,7 @@
             android:layout_height="0dp"
             android:clipChildren="false"
             android:layout_weight="1"
+            android:layout_marginBottom="@dimen/height_toolbar"
             >
 
             <com.litigy.lib.android.gui.pager.NaughtyPager
@@ -32,6 +33,15 @@
             </com.litigy.lib.android.gui.pager.NaughtyPager>
 
         </FrameLayout>
+
+
+    </LinearLayout>
+
+    <ng.edu.aun.tina3.gui.layout.FloatingFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        >
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
@@ -71,6 +81,7 @@
                         android:layout_weight="1"
                         android:textColor="@color/ccc"
                         android:text="@string/control"
+                        android:background="@drawable/selector_dark_rectangle"
                         android:textAllCaps="true"
                         android:gravity="center"
                         app:fontAppearance="body2"
@@ -89,6 +100,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textAllCaps="true"
+                        android:background="@drawable/selector_dark_rectangle"
                         android:text="@string/automation"
                         android:textColor="@color/ccc"
                         android:gravity="center"
@@ -102,7 +114,6 @@
 
         </android.support.v7.widget.Toolbar>
 
-    </LinearLayout>
-
+    </ng.edu.aun.tina3.gui.layout.FloatingFrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

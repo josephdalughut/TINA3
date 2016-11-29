@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/data/EventTable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/data/Table.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddEventFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/Event.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_add_event.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/Entity.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/abs/Entity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/layout/FloatingFrameLayout.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/layout/ViewGroupUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/layout/ViewGroupUtilsHoneycomb.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/api/EventApi.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/service/ActionService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/service/PredictionService.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/dialog/TimePickerDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/dialog_pick_time.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../android/.idea/libraries/androidLib_0_1_4_.xml" afterPath="$PROJECT_DIR$/../../android/.idea/libraries/androidLib_0_1_5_.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../android/app/libs/androidLib-0.1.4.aar" afterPath="$PROJECT_DIR$/../../android/app/libs/androidLib-0.1.5.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
@@ -20,15 +24,32 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.idea/misc.xml" afterPath="$PROJECT_DIR$/../../android/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../android/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/app.iml" afterPath="$PROJECT_DIR$/../../android/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/build.gradle" afterPath="$PROJECT_DIR$/../../android/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/data/EventTable.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/data/EventTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/data/Preferences.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/data/Preferences.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/data/SmartPlugTable.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/data/SmartPlugTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitch.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitchStub.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/custom/LightSwitchStub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletControlFragment.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletControlFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletListFragment.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletListFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddEventFragment.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddEventFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAutomationFragment.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAutomationFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/api/SmartPlugApi.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/api/SmartPlugApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/Event.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/Event.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/SmartPlug.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/SmartPlug.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/Token.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/Token.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/User.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/rest/model/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/util/JsonUtils.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/util/JsonUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_about.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_about.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_login.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_login.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_actions.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_actions.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_add.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_add.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_add_event.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_add_event.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_automation.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_automation.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_list.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_list.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_list_navigation.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_outlet_list_navigation.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_settings.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_signup.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_signup.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_welcome.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/fragment_welcome.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/item_event.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/item_event.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/item_smart_plug.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/item_smart_plug.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/layout/layout_light_switch.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/layout/layout_light_switch.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/../../android/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/EventApi.php" afterPath="$PROJECT_DIR$/api/EventApi.php" />
@@ -56,8 +77,87 @@
       <file leaf-file-name="EventApi.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/EventApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="252">
+              <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
+              <folding>
+                <marker date="1480451287318" expanded="true" signature="1693:1706" ph="select * fro... " />
+                <marker date="1480451287318" expanded="true" signature="1693:1707" ph="select * fro... ${Event::}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1756" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1757" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1796" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1797" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1798" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1812" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1813" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1814" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1828" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1865" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1866" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1879" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1880" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1881" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1939" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1940" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1981" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:1983" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="1693:8525" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3282" ph="select * fro... " />
+                <marker date="1480451287318" expanded="true" signature="3269:3283" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3319" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3320" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3360" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3361" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3375" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3376" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3377" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3435" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3456" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3457" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3458" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3516" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3518" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3519" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3520" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3542" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3543" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3559" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480451287318" expanded="true" signature="3269:3561" ph="select * fro... ${Event::$database_tableName}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json.php" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/json.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="517">
+              <caret line="123" column="9" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Token.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/Token.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="32" />
+              <folding>
+                <marker date="1480236213811" expanded="true" signature="2661:2763" ph="select * fro... ${Session::$database_tableName}" />
+                <marker date="1480236213811" expanded="true" signature="3161:3273" ph="select * fro... ${User::$database_tableName}" />
+                <marker date="1480236213811" expanded="true" signature="3850:3952" ph="select * fro... ${Session::$database_tableName}" />
+                <marker date="1480236213811" expanded="true" signature="4600:5248" ph="insert into ${Session::$database_tableName}... " />
+                <marker date="1480236213811" expanded="true" signature="5764:6412" ph="insert into ${Session::$database_tableName}... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Time.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/Time.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -66,8 +166,8 @@
       <file leaf-file-name="SmartPlugApi.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="265" column="14" selection-start-line="265" selection-start-column="14" selection-end-line="265" selection-end-column="14" />
+            <state relative-caret-position="-144">
+              <caret line="352" column="9" selection-start-line="347" selection-start-column="8" selection-end-line="352" selection-end-column="9" />
               <folding>
                 <marker date="1480246724559" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
                 <marker date="1480246724559" expanded="true" signature="3367:3381" ph="select * fro... ${SmartPlug::$database_tableName}" />
@@ -91,14 +191,50 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SmartPlug.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="647">
+              <caret line="204" column="5" selection-start-line="190" selection-start-column="4" selection-end-line="204" selection-end-column="5" />
+              <folding>
+                <marker date="1480235563587" expanded="true" signature="2434:3199" ph="insert into ${SmartPlug::$database_tableName}... " />
+                <marker date="1480235563587" expanded="true" signature="3379:4138" ph="insert into ${SmartPlug::$database_tableName}... " />
+                <marker date="1480235563587" expanded="true" signature="4314:4879" ph="insert into ${SmartPlug::$database_tableName}... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Event.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/Event.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="31" column="54" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
+            <state relative-caret-position="508">
+              <caret line="86" column="20" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
               <folding>
-                <marker date="1480326462911" expanded="true" signature="641:1151" ph="create table... if" />
+                <marker date="1480414123750" expanded="true" signature="700:1271" ph="create table... if" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserApi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/UserApi.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="42" />
+              <folding>
+                <marker date="1479813220975" expanded="true" signature="826:944" ph="select * fro... ${User::$database_tableName}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractApi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,8 +261,8 @@
         <option value="$PROJECT_DIR$/model/Token.php" />
         <option value="$PROJECT_DIR$/model/User.php" />
         <option value="$PROJECT_DIR$/api/SmartPlugApi.php" />
-        <option value="$PROJECT_DIR$/api/EventApi.php" />
         <option value="$PROJECT_DIR$/model/Event.php" />
+        <option value="$PROJECT_DIR$/api/EventApi.php" />
       </list>
     </option>
   </component>
@@ -138,10 +274,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1600" />
-    <option name="y" value="18" />
-    <option name="width" value="1600" />
-    <option name="height" value="882" />
+    <option name="x" value="801" />
+    <option name="y" value="39" />
+    <option name="width" value="798" />
+    <option name="height" value="860" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -169,83 +305,10 @@
     </navigator>
     <panes>
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -322,6 +385,7 @@
       <workItem from="1480277054343" duration="2483000" />
       <workItem from="1480301609212" duration="5761000" />
       <workItem from="1480326358849" duration="996000" />
+      <workItem from="1480374299640" duration="14539000" />
     </task>
     <task id="LOCAL-00021" summary="added json serializer implementation">
       <created>1479831006700</created>
@@ -670,13 +734,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101698000" />
+    <option name="totallyTimeSpent" value="116237000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1600" y="18" width="1600" height="882" extended-state="6" />
+    <frame x="801" y="39" width="798" height="860" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2169448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29761904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -735,52 +799,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/AuthApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
-          <folding>
-            <marker date="1480173562195" expanded="true" signature="948:1066" ph="select * fro... ${User::$database_tableName}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Token.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2304">
-          <caret line="133" column="15" selection-start-line="133" selection-start-column="15" selection-end-line="133" selection-end-column="15" />
-          <folding>
-            <marker date="1480236213811" expanded="true" signature="2661:2763" ph="select * fro... ${Session::$database_tableName}" />
-            <marker date="1480236213811" expanded="true" signature="3161:3273" ph="select * fro... ${User::$database_tableName}" />
-            <marker date="1480236213811" expanded="true" signature="3850:3952" ph="select * fro... ${Session::$database_tableName}" />
-            <marker date="1480236213811" expanded="true" signature="4600:5248" ph="insert into ${Session::$database_tableName}... " />
-            <marker date="1480236213811" expanded="true" signature="5764:6412" ph="insert into ${Session::$database_tableName}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/UserApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <marker date="1479813220975" expanded="true" signature="826:944" ph="select * fro... ${User::$database_tableName}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2484">
-          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-          <folding>
-            <marker date="1480235563587" expanded="true" signature="2434:3199" ph="insert into ${SmartPlug::$database_tableName}... " />
-            <marker date="1480235563587" expanded="true" signature="3379:4138" ph="insert into ${SmartPlug::$database_tableName}... " />
-            <marker date="1480235563587" expanded="true" signature="4314:4879" ph="insert into ${SmartPlug::$database_tableName}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1179,47 +1197,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Token.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="124" column="80" selection-start-line="124" selection-start-column="80" selection-end-line="124" selection-end-column="80" />
-          <folding>
-            <marker date="1480236213811" expanded="true" signature="2661:2763" ph="select * fro... ${Session::$database_tableName}" />
-            <marker date="1480236213811" expanded="true" signature="3161:3273" ph="select * fro... ${User::$database_tableName}" />
-            <marker date="1480236213811" expanded="true" signature="3850:3952" ph="select * fro... ${Session::$database_tableName}" />
-            <marker date="1480236213811" expanded="true" signature="4600:5248" ph="insert into ${Session::$database_tableName}... " />
-            <marker date="1480236213811" expanded="true" signature="5764:6412" ph="insert into ${Session::$database_tableName}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/util/JSONUtil.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="701">
           <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="107" column="20" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
-          <folding>
-            <marker date="1480235563587" expanded="true" signature="2434:3199" ph="insert into ${SmartPlug::$database_tableName}... " />
-            <marker date="1480235563587" expanded="true" signature="3379:4138" ph="insert into ${SmartPlug::$database_tableName}... " />
-            <marker date="1480235563587" expanded="true" signature="4314:4879" ph="insert into ${SmartPlug::$database_tableName}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/UserApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="42" />
-          <folding>
-            <marker date="1479813220975" expanded="true" signature="826:944" ph="select * fro... ${User::$database_tableName}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1233,36 +1215,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/Api.php">
+    <entry file="file://$PROJECT_DIR$/model/ModelAck.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="130" column="73" selection-start-line="130" selection-start-column="73" selection-end-line="130" selection-end-column="73" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/UserApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="42" />
+          <folding>
+            <marker date="1479813220975" expanded="true" signature="826:944" ph="select * fro... ${User::$database_tableName}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/Time.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/date_c.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="316" column="20" selection-start-line="316" selection-start-column="20" selection-end-line="316" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="204" column="5" selection-start-line="190" selection-start-column="4" selection-end-line="204" selection-end-column="5" />
+          <folding>
+            <marker date="1480235563587" expanded="true" signature="2434:3199" ph="insert into ${SmartPlug::$database_tableName}... " />
+            <marker date="1480235563587" expanded="true" signature="3379:4138" ph="insert into ${SmartPlug::$database_tableName}... " />
+            <marker date="1480235563587" expanded="true" signature="4314:4879" ph="insert into ${SmartPlug::$database_tableName}... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="54" column="88" selection-start-line="54" selection-start-column="88" selection-end-line="54" selection-end-column="88" />
+        <state relative-caret-position="435">
+          <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="31" column="54" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
-          <folding>
-            <marker date="1480326462911" expanded="true" signature="641:1151" ph="create table... if" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/SmartPlugApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="265" column="14" selection-start-line="265" selection-start-column="14" selection-end-line="265" selection-end-column="14" />
+        <state relative-caret-position="-144">
+          <caret line="352" column="9" selection-start-line="347" selection-start-column="8" selection-end-line="352" selection-end-column="9" />
           <folding>
             <marker date="1480246724559" expanded="true" signature="979:1093" ph="select * fro... ${SmartPlug::$database_tableName}" />
             <marker date="1480246724559" expanded="true" signature="3367:3381" ph="select * fro... ${SmartPlug::$database_tableName}" />
@@ -1285,11 +1295,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/Event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="86" column="20" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
+          <folding>
+            <marker date="1480414123750" expanded="true" signature="700:1271" ph="create table... if" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Token.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <marker date="1480236213811" expanded="true" signature="2661:2763" ph="select * fro... ${Session::$database_tableName}" />
+            <marker date="1480236213811" expanded="true" signature="3161:3273" ph="select * fro... ${User::$database_tableName}" />
+            <marker date="1480236213811" expanded="true" signature="3850:3952" ph="select * fro... ${Session::$database_tableName}" />
+            <marker date="1480236213811" expanded="true" signature="4600:5248" ph="insert into ${Session::$database_tableName}... " />
+            <marker date="1480236213811" expanded="true" signature="5764:6412" ph="insert into ${Session::$database_tableName}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/Api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2250">
+          <caret line="130" column="73" selection-start-line="130" selection-start-column="73" selection-end-line="130" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/json.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="123" column="9" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/EventApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="252">
+          <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
+          <folding>
+            <marker date="1480451287318" expanded="true" signature="1693:1706" ph="select * fro... " />
+            <marker date="1480451287318" expanded="true" signature="1693:1707" ph="select * fro... ${Event::}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1756" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1757" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1796" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1797" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1798" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1812" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1813" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1814" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1828" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1865" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1866" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1879" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1880" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1881" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1939" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1940" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1981" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:1983" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="1693:8525" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3282" ph="select * fro... " />
+            <marker date="1480451287318" expanded="true" signature="3269:3283" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3319" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3320" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3360" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3361" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3375" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3376" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3377" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3435" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3456" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3457" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3458" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3516" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3518" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3519" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3520" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3542" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3543" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3559" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480451287318" expanded="true" signature="3269:3561" ph="select * fro... ${Event::$database_tableName}" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -41,6 +41,24 @@
                 android:resource="@xml/authenticator" />
         </service>
 
+        <service android:name=".service.PredictionService"
+            android:exported="false"
+            android:enabled="true"
+            android:label="@string/prediction_service"
+            />
+
+        <receiver android:name=".service.PredictionService$AlarmScheduler"
+            android:enabled="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+
+        </receiver>
+
+        <receiver android:name=".service.ActionService$ActionReceiver"/>
+        <receiver android:name=".service.PredictionService$AlarmTask"/>
+
     </application>
 
 </manifest>

@@ -98,12 +98,15 @@
 
             <com.litigy.lib.android.gui.view.textView.TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/height_toolbar"
                 android:layout_marginTop="@dimen/margin_page"
                 android:textColor="@color/bbb"
                 android:layout_gravity="center"
+                android:paddingLeft="@dimen/margin_page"
+                android:paddingRight="@dimen/margin_page"
                 android:gravity="center"
                 android:autoLink="web"
+                android:background="@drawable/selector_dark_rectangle"
                 android:textColorLink="@color/tina_green"
                 android:text="@string/welcome_learn_more"
                 />
