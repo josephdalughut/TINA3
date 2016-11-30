@@ -173,11 +173,11 @@ public class OutletAddEventFragment extends BroadcastFragtivity implements TimeP
         int onHour = (on - onMinHour) / 60;
         int offMinHour = off % 60;
         int offHour = (off - offMinHour) / 60;
-        String onHourText = onHour <= 12 ? Value.TO.stringValue(onHour) : Value.TO.stringValue(onHour - 12);
+        String onHourText = onHour == 0 ? "12" : onHour <= 12 ? Value.TO.stringValue(onHour) : Value.TO.stringValue(onHour - 12);
         String onMinText = onMinHour > 9 ? Value.TO.stringValue(onMinHour) : "0"+Value.TO.stringValue(onMinHour);
         String onMer = onHour < 12 ? "AM" : "PM";
 
-        String offHourText = offHour <= 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(offHour - 12);
+        String offHourText = offHour == 0 ? "12" : offHour  <= 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(offHour - 12);
         String offMinText = offMinHour > 9 ? Value.TO.stringValue(offMinHour) : "0"+Value.TO.stringValue(offMinHour);
         String offMer = offHour < 12 ? "AM" : "PM";
 

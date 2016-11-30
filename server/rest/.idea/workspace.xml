@@ -2,6 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/../../android/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.idea/misc.xml" afterPath="$PROJECT_DIR$/../../android/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../android/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddEventFragment.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAddEventFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAutomationFragment.java" afterPath="$PROJECT_DIR$/../../android/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAutomationFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/EventApi.php" afterPath="$PROJECT_DIR$/api/EventApi.php" />
     </list>
@@ -27,30 +39,30 @@
       <file leaf-file-name="EventApi.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/EventApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="244" column="42" selection-start-line="244" selection-start-column="42" selection-end-line="244" selection-end-column="42" />
+            <state relative-caret-position="371">
+              <caret line="155" column="89" selection-start-line="155" selection-start-column="89" selection-end-line="155" selection-end-column="89" />
               <folding>
-                <marker date="1480537480290" expanded="true" signature="2403:2416" ph="select * fro... " />
-                <marker date="1480537480290" expanded="true" signature="2403:2417" ph="select * fro... ${Event::}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2466" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2467" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2506" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2507" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2508" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2522" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2523" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2524" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2538" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2575" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2576" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2589" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2590" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2591" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2649" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2650" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2691" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="2403:2693" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480537480290" expanded="true" signature="4147:4437" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2416" ph="select * fro... " />
+                <marker date="1480538646618" expanded="true" signature="2403:2417" ph="select * fro... ${Event::}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2466" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2467" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2506" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2507" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2508" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2522" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2523" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2524" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2538" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2575" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2576" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2589" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2590" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2591" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2649" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2650" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2691" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="2403:2693" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480538646618" expanded="true" signature="4147:4437" ph="select * fro... ${Event::$database_tableName}" />
               </folding>
             </state>
           </provider>
@@ -324,14 +336,7 @@
       <workItem from="1480374299640" duration="14539000" />
       <workItem from="1480463879919" duration="3715000" />
       <workItem from="1480510137231" duration="2933000" />
-      <workItem from="1480514901731" duration="13372000" />
-    </task>
-    <task id="LOCAL-00053" summary="update">
-      <created>1480237244774</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1480237244774</updated>
+      <workItem from="1480514901731" duration="14196000" />
     </task>
     <task id="LOCAL-00054" summary="update">
       <created>1480237523559</created>
@@ -669,11 +674,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480537362040</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="update">
+      <created>1480537493598</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1480537493598</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136257000" />
+    <option name="totallyTimeSpent" value="137081000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="18" width="1600" height="882" extended-state="6" />
@@ -1270,30 +1282,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/EventApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="244" column="42" selection-start-line="244" selection-start-column="42" selection-end-line="244" selection-end-column="42" />
+        <state relative-caret-position="371">
+          <caret line="155" column="89" selection-start-line="155" selection-start-column="89" selection-end-line="155" selection-end-column="89" />
           <folding>
-            <marker date="1480537480290" expanded="true" signature="2403:2416" ph="select * fro... " />
-            <marker date="1480537480290" expanded="true" signature="2403:2417" ph="select * fro... ${Event::}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2466" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2467" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2506" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2507" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2508" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2522" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2523" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2524" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2538" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2575" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2576" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2589" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2590" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2591" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2649" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2650" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2691" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="2403:2693" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480537480290" expanded="true" signature="4147:4437" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2416" ph="select * fro... " />
+            <marker date="1480538646618" expanded="true" signature="2403:2417" ph="select * fro... ${Event::}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2466" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2467" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2506" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2507" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2508" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2522" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2523" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2524" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2538" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2575" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2576" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2589" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2590" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2591" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2649" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2650" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2691" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="2403:2693" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480538646618" expanded="true" signature="4147:4437" ph="select * fro... ${Event::$database_tableName}" />
           </folding>
         </state>
       </provider>
