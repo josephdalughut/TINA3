@@ -271,7 +271,8 @@ class Event extends Entity
         return $event;
     }
 
-    function __construct(array $data)
+
+    function fromArray(array $data)
     {
         if(isset($data[Entity::$database_tableColumn_id]))
             $this->setId($data[Entity::$database_tableColumn_id]);
