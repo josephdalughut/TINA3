@@ -157,7 +157,7 @@ class EventApi extends AbstractApi
         if(sizeof($predictedEvents)==0)
             return $this->_response("No predicted events", HTTPStatusCode::$BAD_REQUEST);
         if(sizeof($predictedEvents)>0)
-            return $this->_response("Predicted events: ".sizeof($predictedEvents), HTTPStatusCode::$BAD_REQUEST);
+            return $this->_response("Predicted events: ".$this->_response($predictedEvents, HTTPStatusCode::$OK), HTTPStatusCode::$BAD_REQUEST);
         return $this->_response($predictedEvents, HTTPStatusCode::$OK);
     }
 
