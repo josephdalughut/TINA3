@@ -181,6 +181,7 @@ public class EventTable extends Table {
     public void closeAllPreviousPredictions(Integer userId, String smartPlugId, String date){
         String sql = ""+Constants.Columns.USER_ID+"="+userId+" and "
                 + Constants.Columns.SMART_PLUG_ID+"='"+smartPlugId+"' and "
+                + Constants.Columns.PREDICTED + "="+1+" and "
                 + Constants.Columns.DATE+"='"+date+"'";
         getDatabase().getWritableDatabase().delete(Constants.TABLE_NAME,
                 sql
@@ -233,7 +234,7 @@ public class EventTable extends Table {
                 + Constants.Columns.USER_ID + "="+event.getUserId()+" and "
                 + Constants.Columns.SMART_PLUG_ID + "='"+event.getSmartPlugId()+"' and "
                 + Constants.Columns.DATE + "='"+event.getDate()+"' and "
-                + Constants.Columns.STATUS + "="+Event.Status.BUILDING.ordinal()+" order by "+ Constants.Columns.START
+                + Constants.Columns.STATUS + "="+Event.Status.ONGOING.ordinal()+" order by "+ Constants.Columns.START
                 + " desc limit 1";
         Cursor cursor = database.getReadableDatabase().rawQuery(closeFindQL, null);
         if(cursor.getCount()==0){
@@ -248,7 +249,7 @@ public class EventTable extends Table {
             event.setStatus(Event.Status.DONE.ordinal());
             event.setSmartPlugId(cursor.getString(cursor.getColumnIndex(Constants.Columns.SMART_PLUG_ID)));
             event.setUserId(event.getUserId());
-            event.setPredicted(1);
+            event.setPredicted(0);
             try {
                 addEvent(event, false, true);
                 Log.d("Closed event: "+event.getId());

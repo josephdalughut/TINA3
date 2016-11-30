@@ -187,29 +187,39 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
 
                         int onMinHour = on % 60;
                         int onHour = (on - onMinHour) / 60;
-                        int offMinHour = off % 60;
-                        int offHour = (off - offMinHour) / 60;
+
                         String onHourText = onHour == 0 ?  "12" : onHour <= 12 ? Value.TO.stringValue(onHour) : Value.TO.stringValue(onHour - 12);
                         String onMinText = onMinHour > 9 ? Value.TO.stringValue(onMinHour) : "0"+Value.TO.stringValue(onMinHour);
                         String onMer = onHour < 12 ? "AM" : "PM";
 
-                        String offHourText = offHour == 0 ? "12" : offHour <= 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(offHour - 12);
-                        String offMinText = offMinHour > 9 ? Value.TO.stringValue(offMinHour) : "0"+Value.TO.stringValue(offMinHour);
-                        String offMer = offHour < 12 ? "AM" : "PM";
+                        String durationText = "";
+                        int offMinHour = off % 60;
+                        int offHour = (off - offMinHour) / 60;
+                        if(!Value.IS.nullValue(off)){
+                            String offHourText = offHour == 0 ? "12" : offHour <= 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(offHour - 12);
+                            String offMinText = offMinHour > 9 ? Value.TO.stringValue(offMinHour) : "0"+Value.TO.stringValue(offMinHour);
+                            String offMer = offHour < 12 ? "AM" : "PM";
+                            String when = ""+ (onHourText + ":" + onMinText + " "+ onMer) + " - "+(offHourText + ":" + offMinText + " "+ offMer);
+                            eventHolder.when.setText(when);
 
-                        String when = "from "+ (onHourText + ":" + onMinText + " "+ onMer) + " to "+(offHourText + ":" + offMinText + " "+ offMer);
-                        String durationText;
-                        int duration = off - on;
-                        if(duration < 60) {
-                            durationText = (duration + (duration == 1 ? " minute." : " minutes."));
-                        }else if (duration == 60){
-                            durationText = ("1 hour");
+                            int duration = off - on;
+                            if(duration < 60) {
+                                durationText = (duration + (duration == 1 ? " minute." : " minutes."));
+                            }else if (duration == 60){
+                                durationText = ("1 hour");
+                            }else{
+                                int mins = duration % 60;
+                                int hour = (duration - mins) / 60;
+                                durationText = (hour + (hour == 1 ? " hour, " : " hours, ") + mins + (mins == 1 ? " minute." : " minutes."));
+                            }
                         }else{
-                            int mins = duration % 60;
-                            int hour = (duration - mins) / 60;
-                            durationText = (hour + (hour == 1 ? " hour, " : " hours, ") + mins + (mins == 1 ? " minute." : " minutes."));
+                            String when = ""+ (onHourText + ":" + onMinText + " "+ onMer);
+                            eventHolder.when.setText(when);
+                            durationText = "";
                         }
-                        eventHolder.when.setText(when);
+
+
+
                         eventHolder.name.setText(smartPlugName);
                         eventHolder.duration.setText(durationText);
                         eventHolder.status.setVisibility(View.VISIBLE);
@@ -436,8 +446,8 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
             return;
         infoTextView.setText(getString(R.string.hint_predicting));
         try {
-            //String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
-            String date = "mine";
+            String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
+            //String date = "mine";
             String lastPredicted = Preferences.getInstance().lastPredicted();
             if(Value.IS.emptyValue(lastPredicted) || !lastPredicted.equals(date)){
                 Log.d(LOG_TAG, "Today hasn't been predicted");

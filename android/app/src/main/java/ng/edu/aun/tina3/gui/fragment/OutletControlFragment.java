@@ -83,7 +83,11 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
         lightSwitch.setLightSwitchListener(this);
         lightSwitch.showSettings(true);
         refreshSmartPlug();
-        refreshSmartPlugAutomation();
+        try {
+            refreshSmartPlugAutomation();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void reloadSmartPlug(){
@@ -95,9 +99,13 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
 
             @Override
             protected void onPostExecute(SmartPlug smartPlug) {
-                OutletControlFragment.this.smartPlug = smartPlug;
-                refreshSmartPlug();
-                refreshSmartPlugAutomation();
+                try {
+                    OutletControlFragment.this.smartPlug = smartPlug;
+                    refreshSmartPlug();
+                    refreshSmartPlugAutomation();
+                }catch (Exception ignored){
+
+                }
             }
         }.execute(smartPlug.getId());
     }
@@ -171,7 +179,8 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
                     .setId(Crypto.Random.uuidClear().replaceAll("-", ""))
                     .setSmartPlugId(smartPlug.getId())
                     .setUserId(Authenticator.getInstance().getUser(false).getId())
-                    .setStatus(Event.Status.BUILDING.ordinal()));
+                    .setPredicted(0)
+                    .setStatus(Event.Status.ONGOING.ordinal()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -206,7 +215,7 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
         }
     }
 
-    private void refreshSmartPlugAutomation(){
+    private void refreshSmartPlugAutomation() throws Exception{
         lightSwitch.setAutomated(smartPlug.getAutomated() == 1);
     }
 
@@ -254,6 +263,10 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
     @Override
     public void onAutomationChanged(boolean enabled) {
         ((OutletActionsFragment)getParentFragment()).getSmartPlugTable().updateSmartPlugAsync(smartPlug.setAutomated(enabled ? 1 : 0), true, null);
-        refreshSmartPlugAutomation();
+        try {
+            refreshSmartPlugAutomation();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

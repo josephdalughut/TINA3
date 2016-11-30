@@ -65,6 +65,7 @@ public class PredictionService extends IntentService {
         String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
         if(Value.IS.SAME.stringValue(Preferences.getInstance().lastPredicted(), date)){
             Log.d(LOG_TAG, "Today has already been predicted ("+date+"), returning");
+            onSuccess(date);
             stopSelf();
             return;
         }
