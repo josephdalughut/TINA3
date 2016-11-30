@@ -112,7 +112,9 @@ class EventApi extends AbstractApi
         $daysToConsider = 1;
 
         $firstDay = $now->sub(new DateInterval('P'.($daysToConsider+1).'D'));
-        $lastDay = $now->sub(new DateInterval('P1D'));
+        $lastDay = new DateTime();
+        $lastDay->setDate(intval($arr[0]), intval($arr[1]), intval($arr[2]));
+        $lastDay = $lastDay->sub(new DateInterval('P1D'));
         $firstDayDate = $firstDay->format("Y_m_d");
         $lastDayDate = $lastDay->format("Y_m_d");
         if(strlen($firstDayDate)> 0)
