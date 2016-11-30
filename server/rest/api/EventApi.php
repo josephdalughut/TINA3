@@ -42,7 +42,7 @@ class EventApi extends AbstractApi
         foreach ($objects as $object){
             /** Event */
             $event = new Event();
-            $event = $event->fromArray(json_decode($object, true));
+            $event->fromArray(json_decode($object, true));
             array_push($events, $event);
         }
         $training = $this->train($user->getId(), $events);
