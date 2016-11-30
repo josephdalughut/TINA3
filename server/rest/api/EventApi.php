@@ -37,7 +37,7 @@ class EventApi extends AbstractApi
         }
 
         /** @var array $events */
-        $events = json_decode($args["yesterday"]);
+        $events = json_decode($args["yesterday"], true);
         $training = $this->train($user->getId(), $events);
         if(is_string($training))
             return $training;
