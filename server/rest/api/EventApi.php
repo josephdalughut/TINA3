@@ -152,9 +152,13 @@ class EventApi extends AbstractApi
             return $this->_response(Array(), HTTPStatusCode::$OK);
         $variance = 20;
         $criticalDays = $this->groupByZScores($variance, $criticalDays);
-        if(sizeof($criticalDays)>0)
-            return $this->_response(sizeof($criticalDays), HTTPStatusCode::$BAD_REQUEST);
-        return $this->_response($this->groupToSingleEvents($smartPlugId, $userId, $date, $criticalDays), HTTPStatusCode::$OK);
+
+        $predictedEvents = $this->groupToSingleEvents($smartPlugId, $userId, $date, $criticalDays);
+        if(sizeof($predictedEvents)==0)
+            return $this->_response("No predicted events", HTTPStatusCode::$BAD_REQUEST);
+        if(sizeof($predictedEvents)>0)
+            return $this->_response("Predicted events: ".sizeof($predictedEvents), HTTPStatusCode::$BAD_REQUEST);
+        return $this->_response($predictedEvents, HTTPStatusCode::$OK);
     }
 
 
