@@ -139,7 +139,7 @@ class EventApi extends AbstractApi
         for ($i = $daysToConsider; $i >= 0; $i--){
             $now = new DateTime();
             $now->setDate(intval($arr[0]), intval($arr[1]), intval($arr[2]));
-            $day = $now->sub(new DateInterval('P'.($daysToConsider+1).'D'));
+            $day = $now->sub(new DateInterval('P'.($i+1).'D'));
             $isset =  isset($mapOfEventLists[$day->format("Y_m_d")]);
             $profile .= $isset ? "1" : "0";
             if($isset){
