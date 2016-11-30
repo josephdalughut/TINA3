@@ -228,9 +228,9 @@ class EventApi extends AbstractApi
         foreach ($events as $event){
             $sumOfMillis+=$event->getStart();
         }
-        $mean = floatval($sumOfMillis) / floatval(sizeof($events));
+        $mean = $sumOfMillis / sizeof($events);
         foreach ($events as $event){
-            $z = floatval($event->getStart() - $mean) / floatval($variance);
+            $z = ($event->getStart() - $mean) / $variance;
             if(!isset($groupedEvents[$z]))
                 $groupedEvents[$z] = Array();
             array_push($groupedEvents[$z], $event);
@@ -259,7 +259,7 @@ class EventApi extends AbstractApi
             }
             $meanStart = floatval($meanStart) / floatval(sizeof($eventGroup));
             $meanDuration = floatval($meanDuration) / floatval(sizeof($eventGroup));
-            $predictedEvent->setDate($date)->setStart($meanStart)->setEnd($meanDuration)
+            $predictedEvent->setDate($date)->setStart($meanStart)->setEnd($predictedEvent->getStart()+$meanDuration)
                 ->setId(Crypt::UUIDClear())->setSmartPlugId($smartPlugId)->setUserId($userId)
                 ->setPredicted(1)->setStatus(1);
             array_push($predictedEvents, $predictedEvent);
