@@ -148,10 +148,10 @@ class EventApi extends AbstractApi
                 }
             }
         }
-        if(strlen($profile) > 0)
-            return $this->_response("profile: ".$profile, HTTPStatusCode::$BAD_REQUEST);
+        if(!$this->pred($profile, "0"))
+            return $this->_response("no predicted events", HTTPStatusCode::$BAD_REQUEST);
         if(!$this->pred($profile, "1"))
-            return $this->_response(Array(), HTTPStatusCode::$OK);
+            return $this->_response("one predicted event", HTTPStatusCode::$BAD_REQUEST);
 
         $variance = 20;
         $criticalDays = $this->groupByZScores($variance, $criticalDays);

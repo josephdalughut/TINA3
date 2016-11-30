@@ -21,7 +21,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b262fbb-44c5-495e-96c9-bce960177e7d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/rest/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/rest/.idea/workspace.xml" />
     </list>
     <ignored path="android.iws" />
