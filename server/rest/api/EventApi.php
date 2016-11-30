@@ -106,6 +106,7 @@ class EventApi extends AbstractApi
      * @return string
      */
     private function predictStatus($userId, $date, $smartPlugId){
+        $realDate = $date;
         $arr = explode("_", $date);
         $now = new DateTime();
         $now->setDate(intval($arr[0]), intval($arr[1]), intval($arr[2]));
@@ -153,7 +154,7 @@ class EventApi extends AbstractApi
         $variance = 20;
         $criticalDays = $this->groupByZScores($variance, $criticalDays);
 
-        $predictedEvents = $this->groupToSingleEvents($smartPlugId, $userId, $date, $criticalDays);
+        $predictedEvents = $this->groupToSingleEvents($smartPlugId, $userId, $realDate, $criticalDays);
         if(sizeof($predictedEvents)==0)
             return $this->_response("No predicted events", HTTPStatusCode::$BAD_REQUEST);
         if(sizeof($predictedEvents)>0)
