@@ -115,6 +115,8 @@ class EventApi extends AbstractApi
         $lastDay = new DateTime("-1 day");
         $firstDayDate = $firstDay->format("Y_m_d");
         $lastDayDate = $lastDay->format("Y_m_d");
+        if(strlen($firstDayDate)> 0)
+            return $this->_response($firstDayDate, HTTPStatusCode::$BAD_REQUEST);
         $selectSQL = "select * from ".Event::$database_tableName." where ".Event::$database_tableColumn_userId."=".$userId." and "
             .Event::$database_tableColumn_smartPlugId."='".$smartPlugId."' and "
             .Event::$database_tableColumn_date."  between '".$firstDayDate."' and '".$lastDayDate."' ";
