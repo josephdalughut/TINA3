@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../android/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/EventApi.php" afterPath="$PROJECT_DIR$/api/EventApi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/Event.php" afterPath="$PROJECT_DIR$/model/Event.php" />
     </list>
     <ignored path="rest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EventApi.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EventApi.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/EventApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
+            <state relative-caret-position="179">
+              <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
               <folding>
                 <marker date="1480531903094" expanded="true" signature="2328:2341" ph="select * fro... " />
                 <marker date="1480531903094" expanded="true" signature="2328:2342" ph="select * fro... ${Event::}" />
@@ -56,16 +57,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Event.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Event.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/Event.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="286" column="63" selection-start-line="286" selection-start-column="63" selection-end-line="286" selection-end-column="63" />
+            <state relative-caret-position="575">
+              <caret line="294" column="32" selection-start-line="294" selection-start-column="32" selection-end-line="294" selection-end-column="32" />
               <folding>
-                <marker date="1480521708896" expanded="true" signature="700:1269" ph="create table... if" />
-                <marker date="1480521708896" expanded="true" signature="700:1270" ph="create table... if" />
-                <marker date="1480521708896" expanded="true" signature="700:1272" ph="create table... if" />
-                <marker date="1480521708896" expanded="true" signature="700:1398" ph="create table... if" />
+                <marker date="1480532140718" expanded="true" signature="700:1269" ph="create table... if" />
+                <marker date="1480532140718" expanded="true" signature="700:1270" ph="create table... if" />
+                <marker date="1480532140718" expanded="true" signature="700:1272" ph="create table... if" />
+                <marker date="1480532140718" expanded="true" signature="700:1398" ph="create table... if" />
               </folding>
             </state>
           </provider>
@@ -153,8 +154,8 @@
         <option value="$PROJECT_DIR$/model/User.php" />
         <option value="$PROJECT_DIR$/api/SmartPlugApi.php" />
         <option value="$PROJECT_DIR$/api/AbstractApi.php" />
-        <option value="$PROJECT_DIR$/model/Event.php" />
         <option value="$PROJECT_DIR$/api/EventApi.php" />
+        <option value="$PROJECT_DIR$/model/Event.php" />
       </list>
     </option>
   </component>
@@ -324,14 +325,7 @@
       <workItem from="1480374299640" duration="14539000" />
       <workItem from="1480463879919" duration="3715000" />
       <workItem from="1480510137231" duration="2933000" />
-      <workItem from="1480514901731" duration="7792000" />
-    </task>
-    <task id="LOCAL-00037" summary="update">
-      <created>1480193870510</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1480193870510</updated>
+      <workItem from="1480514901731" duration="8030000" />
     </task>
     <task id="LOCAL-00038" summary="update">
       <created>1480195165523</created>
@@ -669,11 +663,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480531793287</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="update">
+      <created>1480531910596</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1480531910596</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130677000" />
+    <option name="totallyTimeSpent" value="130915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="18" width="1600" height="882" extended-state="6" />
@@ -1255,23 +1256,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="286" column="63" selection-start-line="286" selection-start-column="63" selection-end-line="286" selection-end-column="63" />
-          <folding>
-            <marker date="1480521708896" expanded="true" signature="700:1269" ph="create table... if" />
-            <marker date="1480521708896" expanded="true" signature="700:1270" ph="create table... if" />
-            <marker date="1480521708896" expanded="true" signature="700:1272" ph="create table... if" />
-            <marker date="1480521708896" expanded="true" signature="700:1398" ph="create table... if" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/EventApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
+        <state relative-caret-position="179">
+          <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
           <folding>
             <marker date="1480531903094" expanded="true" signature="2328:2341" ph="select * fro... " />
             <marker date="1480531903094" expanded="true" signature="2328:2342" ph="select * fro... ${Event::}" />
@@ -1294,6 +1282,19 @@
             <marker date="1480531903094" expanded="true" signature="2328:2616" ph="select * fro... ${Event::$database_tableName}" />
             <marker date="1480531903094" expanded="true" signature="2328:2618" ph="select * fro... ${Event::$database_tableName}" />
             <marker date="1480531903094" expanded="true" signature="3934:4224" ph="select * fro... ${Event::$database_tableName}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="294" column="32" selection-start-line="294" selection-start-column="32" selection-end-line="294" selection-end-column="32" />
+          <folding>
+            <marker date="1480532140718" expanded="true" signature="700:1269" ph="create table... if" />
+            <marker date="1480532140718" expanded="true" signature="700:1270" ph="create table... if" />
+            <marker date="1480532140718" expanded="true" signature="700:1272" ph="create table... if" />
+            <marker date="1480532140718" expanded="true" signature="700:1398" ph="create table... if" />
           </folding>
         </state>
       </provider>

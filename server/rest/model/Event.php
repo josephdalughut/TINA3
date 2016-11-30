@@ -276,23 +276,23 @@ class Event extends Entity
         if(isset($data[Entity::$database_tableColumn_id]))
             $this->setId($data[Entity::$database_tableColumn_id]);
         if(isset($data[Event::$database_tableColumn_userId]))
-            $this->setDate($data[Event::$database_tableColumn_userId]);
+            $this->setUserId($data[Event::$database_tableColumn_userId]);
         if(isset($data[Event::$database_tableColumn_smartPlugId]))
-            $this->setDate($data[Event::$database_tableColumn_smartPlugId]);
+            $this->setSmartPlugId($data[Event::$database_tableColumn_smartPlugId]);
         if(isset($data[Event::$database_tableColumn_date]))
-            $this->setStart($data[Event::$database_tableColumn_date]);
+            $this->setDate($data[Event::$database_tableColumn_date]);
         if(isset($data[Event::$database_tableColumn_start]))
             $this->setStart($data[Event::$database_tableColumn_start]);
         if(isset($data[Event::$database_tableColumn_end]))
-            $this->setStart($data[Event::$database_tableColumn_end]);
+            $this->setEnd($data[Event::$database_tableColumn_end]);
         if(isset($data[Event::$database_tableColumn_status]))
-            $this->setStart($data[Event::$database_tableColumn_status]);
+            $this->setStatus($data[Event::$database_tableColumn_status]);
         if(isset($data[Event::$database_tableColumn_predicted]))
-            $this->setStart($data[Event::$database_tableColumn_predicted]);
+            $this->setPredicted($data[Event::$database_tableColumn_predicted]);
         if(isset($data[Entity::$database_tableColumn_createdAt]))
-            $this->setId($data[Entity::$database_tableColumn_createdAt]);
+            $this->setCreatedAt($data[Entity::$database_tableColumn_createdAt]);
         if(isset($data[Entity::$database_tableColumn_updatedAt]))
-            $this->setId($data[Entity::$database_tableColumn_updatedAt]);
+            $this->setUpdatedAt($data[Entity::$database_tableColumn_updatedAt]);
     }
 
 }
