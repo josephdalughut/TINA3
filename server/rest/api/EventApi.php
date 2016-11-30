@@ -135,8 +135,8 @@ class EventApi extends AbstractApi
             array_push($mapOfEventLists[$date], $event);
         }
         $profile = "";
-        /** @var array $criticalDays */
-        $criticalDays = Array();
+        /** @var array $profileDays */
+        $profileDays = Array();
         for ($i = $daysToConsider; $i >= 0; $i--){
             $now = new DateTime();
             $now->setDate(intval($arr[0]), intval($arr[1]), intval($arr[2]));
@@ -145,15 +145,29 @@ class EventApi extends AbstractApi
             $profile .= $isset ? "1" : "0";
             if($isset){
                 foreach ($mapOfEventLists[$day->format("Y_m_d")] as $criticalDay) {
-                    array_push($criticalDays, $criticalDay);
+                    array_push($profileDays, $criticalDay);
                 }
             }
         }
         if(!$this->pred($profile, "1"))
             return $this->_response(Array(), HTTPStatusCode::$OK);
+        $criticalDays = Array();
+        for ($i = $daysToConsider; $i >= 0; $i--){
+            if($profile[$i] != "1")
+                break;
+            $now = new DateTime();
+            $now->setDate(intval($arr[0]), intval($arr[1]), intval($arr[2]));
+            $day = $now->sub(new DateInterval('P'.($i+1).'D'));
+            $d = $day->format("Y_m_d");
+            if(isset($mapOfEventLists[$d])){
+                foreach ($mapOfEventLists[$d] as $criticalDay){
+                    array_push($criticalDays, $criticalDay);
+                }
+            }
+
+        }
         $variance = 20;
         $criticalDays = $this->groupByZScores($variance, $criticalDays);
-
         $predictedEvents = $this->groupToSingleEvents($smartPlugId, $userId, $realDate, $criticalDays);
         return $this->_response($predictedEvents, HTTPStatusCode::$OK);
     }
