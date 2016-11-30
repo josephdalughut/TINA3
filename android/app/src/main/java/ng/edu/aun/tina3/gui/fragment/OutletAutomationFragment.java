@@ -436,8 +436,8 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
             return;
         infoTextView.setText(getString(R.string.hint_predicting));
         try {
-            String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
-            //String date = "mine";
+            //String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
+            String date = "mine";
             String lastPredicted = Preferences.getInstance().lastPredicted();
             if(Value.IS.emptyValue(lastPredicted) || !lastPredicted.equals(date)){
                 Log.d(LOG_TAG, "Today hasn't been predicted");

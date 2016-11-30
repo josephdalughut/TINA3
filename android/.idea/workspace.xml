@@ -30,9 +30,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAutomationFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/gui/fragment/OutletAutomationFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/service/PredictionService.java" afterPath="$PROJECT_DIR$/app/src/main/java/ng/edu/aun/tina3/service/PredictionService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/rest/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/rest/.idea/workspace.xml" />
     </list>
     <ignored path="android.iws" />
@@ -2012,7 +2010,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1601" />
+    <option name="x" value="-3201" />
     <option name="y" value="-3" />
     <option name="width" value="1602" />
     <option name="height" value="904" />
@@ -3012,7 +3010,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1601" y="-3" width="1602" height="904" extended-state="6" />
+    <frame x="-3201" y="-3" width="1602" height="904" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
