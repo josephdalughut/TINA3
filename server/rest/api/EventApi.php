@@ -37,10 +37,12 @@ class EventApi extends AbstractApi
         }
 
         /** @var array $events */
-        $eventsJson = json_decode($args["yesterday"], true);
+        $objects = json_decode($args["yesterday"], true);
         $events = Array();
-        foreach ($eventsJson as $item){
-            array_push($events, new Event(json_decode($item, true)));
+        foreach ($objects as $object){
+            /** Event */
+            $event = json_decode($object);
+            array_push($events, $event);
         }
         $training = $this->train($user->getId(), $events);
         if(is_string($training))
