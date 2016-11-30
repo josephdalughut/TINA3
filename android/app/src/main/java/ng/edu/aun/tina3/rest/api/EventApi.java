@@ -1,5 +1,7 @@
 package ng.edu.aun.tina3.rest.api;
 
+import android.util.Log;
+
 import com.litigy.lib.java.error.LitigyException;
 import com.litigy.lib.java.generic.DoubleReceiver;
 
@@ -33,10 +35,12 @@ public class EventApi extends Api {
                 @Override
                 public void onReceive1(String s) {
                     try {
+                        String yesterdayJson = JsonUtils.toJson(yesterday);
+                        Log.d("TinaDebug", "yesterdays json: "+yesterdayJson);
                         TINA3Request.<Event.EventList>withAuthorization(s).withEndpoint(buildEndpoint(PATH, method))
                                 .withParam("date", date)
                                 .withParam("smartPlugId", smartPlugId)
-                                .withParam("yesterday", JsonUtils.toJson(yesterday))
+                                .withParam("yesterday", yesterdayJson)
                                 .withCallbackReceiver(callbackReceiver).POST(Event.EventList.class);
                     } catch (IOException e) {
                         callbackReceiver.onReceive2(LitigyException.consumeIOException(e));
