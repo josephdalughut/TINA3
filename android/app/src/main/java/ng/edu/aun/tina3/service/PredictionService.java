@@ -122,7 +122,7 @@ public class PredictionService extends IntentService {
                 @Override
                 public void onReceive1(Event.EventList events) {
                     Log.d(LOG_TAG, "Successfully predicted "+events.size() + " events, caching");
-                    //eventTable.closeAllPreviousPredictions(user.getId(), smartPlug.getId(), date);
+                    eventTable.closeAllPreviousPredictions(user.getId(), smartPlug.getId(), date);
                     for(Event event: events){
                         try {
                             eventTable.addEvent(event, false, false);

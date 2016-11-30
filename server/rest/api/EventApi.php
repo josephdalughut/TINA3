@@ -154,7 +154,7 @@ class EventApi extends AbstractApi
         $criticalDays = Array();
         for ($i = $daysToConsider; $i >= 0; $i--){
             if($profile[$i] != "1")
-                break;
+                continue;
             $now = new DateTime();
             $now->setDate(intval($arr[0]), intval($arr[1]), intval($arr[2]));
             $day = $now->sub(new DateInterval('P'.($i+1).'D'));
