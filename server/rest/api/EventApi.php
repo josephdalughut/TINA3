@@ -51,7 +51,20 @@ class EventApi extends AbstractApi
         return $prediction;
     }
 
-
+    /**
+     * @param array $args
+     * @return string
+     */
+    public function toJson($args){
+        $objects = json_decode($args["json"], true);
+        $events = Array();
+        foreach ($objects as $object){
+            /** Event */
+            $event = new Event(json_decode($object, true));
+            array_push($events, $event);
+        }
+        return $this->_response($events[0], HTTPStatusCode::$OK);
+    }
 
     /**
      * @param $userId
