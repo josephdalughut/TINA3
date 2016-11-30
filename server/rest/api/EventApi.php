@@ -76,7 +76,7 @@ class EventApi extends AbstractApi
             $insertSQL = Event::wrapToReplaceSQL($event);
             $res = $this->_getDatabase()->query($insertSQL);
             if(!$res)
-                return $this->_response("Internal error, error adding events to db", HTTPStatusCode::$INTERNAL_SERVER_ERROR);
+                return $this->_response("Internal error, error adding events to db ".$this->_getDatabase()->error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
         return true;
     }

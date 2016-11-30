@@ -31,7 +31,9 @@ class Event extends Entity
             .Event::$database_tableColumn_start." int(4), "
             .Event::$database_tableColumn_end." int(4), "
             .Event::$database_tableColumn_status." int(1), "
-            .Event::$database_tableColumn_predicted." int(1))";
+            .Event::$database_tableColumn_predicted." int(1), "
+            .Entity::$database_tableColumn_createdAt." float, "
+            .Entity::$database_tableColumn_updatedAt." float)";
     }
 
     /**

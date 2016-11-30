@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f693ff78-bf6d-4552-b4ed-bb48477f23f5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../android/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../android/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/EventApi.php" afterPath="$PROJECT_DIR$/api/EventApi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/Event.php" afterPath="$PROJECT_DIR$/model/Event.php" />
     </list>
     <ignored path="rest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,45 +26,108 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EventApi.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EventApi.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/EventApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+            <state relative-caret-position="497">
+              <caret line="75" column="39" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
               <folding>
-                <marker date="1480511791953" expanded="true" signature="1850:1863" ph="select * fro... " />
-                <marker date="1480511791953" expanded="true" signature="1850:1864" ph="select * fro... ${Event::}" />
-                <marker date="1480511791953" expanded="true" signature="1850:1913" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:1914" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:1953" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:1954" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:1955" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:1969" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:1970" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:1971" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:1985" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:2022" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:2023" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:2036" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:2037" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:2038" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:2096" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:2097" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:2138" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="1850:2140" ph="select * fro... ${Event::$database_tableName}" />
-                <marker date="1480511791953" expanded="true" signature="3426:3716" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1863" ph="select * fro... " />
+                <marker date="1480512049348" expanded="true" signature="1850:1864" ph="select * fro... ${Event::}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1913" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1914" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1953" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1954" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1955" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1969" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1970" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1971" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:1985" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:2022" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:2023" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:2036" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:2037" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:2038" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:2096" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:2097" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:2138" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="1850:2140" ph="select * fro... ${Event::$database_tableName}" />
+                <marker date="1480512049348" expanded="true" signature="3456:3746" ph="select * fro... ${Event::$database_tableName}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Event.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Event.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/Event.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="271" column="13" selection-start-line="271" selection-start-column="13" selection-end-line="271" selection-end-column="13" />
+            <state relative-caret-position="269">
+              <caret line="264" column="34" selection-start-line="264" selection-start-column="34" selection-end-line="264" selection-end-column="34" />
               <folding>
-                <marker date="1480511596028" expanded="true" signature="700:1270" ph="create table... if" />
+                <marker date="1480512128510" expanded="true" signature="700:1269" ph="create table... if" />
+                <marker date="1480512128510" expanded="true" signature="700:1270" ph="create table... if" />
+                <marker date="1480512128510" expanded="true" signature="700:1272" ph="create table... if" />
+                <marker date="1480512128510" expanded="true" signature="700:1398" ph="create table... if" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthApi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/AuthApi.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1188">
+              <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+              <folding>
+                <marker date="1480173562195" expanded="true" signature="948:1066" ph="select * fro... ${User::$database_tableName}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Api.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/Api.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="728">
+              <caret line="130" column="74" selection-start-line="130" selection-start-column="74" selection-end-line="130" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractApi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="512">
+              <caret line="66" column="43" selection-start-line="66" selection-start-column="43" selection-end-line="66" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SmartPlug.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+              <folding>
+                <marker date="1480235563587" expanded="true" signature="2434:3199" ph="insert into ${SmartPlug::$database_tableName}... " />
+                <marker date="1480235563587" expanded="true" signature="3379:4138" ph="insert into ${SmartPlug::$database_tableName}... " />
+                <marker date="1480235563587" expanded="true" signature="4314:4879" ph="insert into ${SmartPlug::$database_tableName}... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+              <folding>
+                <element signature="e#7#92#0#PHP" expanded="true" />
+                <marker date="1480238249539" expanded="true" signature="444:851" ph="create table... if" />
+                <marker date="1480238249539" expanded="true" signature="2041:2520" ph="insert into ${User::$database_tableName}... " />
               </folding>
             </state>
           </provider>
@@ -89,8 +155,8 @@
         <option value="$PROJECT_DIR$/model/User.php" />
         <option value="$PROJECT_DIR$/api/SmartPlugApi.php" />
         <option value="$PROJECT_DIR$/api/AbstractApi.php" />
-        <option value="$PROJECT_DIR$/model/Event.php" />
         <option value="$PROJECT_DIR$/api/EventApi.php" />
+        <option value="$PROJECT_DIR$/model/Event.php" />
       </list>
     </option>
   </component>
@@ -259,14 +325,7 @@
       <workItem from="1480326358849" duration="996000" />
       <workItem from="1480374299640" duration="14539000" />
       <workItem from="1480463879919" duration="3715000" />
-      <workItem from="1480510137231" duration="1780000" />
-    </task>
-    <task id="LOCAL-00029" summary="updated smartplug api">
-      <created>1480173245526</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1480173245526</updated>
+      <workItem from="1480510137231" duration="2002000" />
     </task>
     <task id="LOCAL-00030" summary="updated smartplug api">
       <created>1480173599825</created>
@@ -604,11 +663,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480511809626</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="update">
+      <created>1480511920117</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1480511920117</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121732000" />
+    <option name="totallyTimeSpent" value="121954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="18" width="1600" height="882" extended-state="6" />
@@ -910,6 +976,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,16 +1090,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/AuthApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
-          <folding>
-            <marker date="1480173562195" expanded="true" signature="948:1066" ph="select * fro... ${User::$database_tableName}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/DatabaseConstants.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1052,6 +1109,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="701">
           <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1089,18 +1147,6 @@
         <state relative-caret-position="254">
           <caret line="316" column="20" selection-start-line="316" selection-start-column="20" selection-end-line="316" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3582">
-          <caret line="204" column="5" selection-start-line="190" selection-start-column="4" selection-end-line="204" selection-end-column="5" />
-          <folding>
-            <marker date="1480235563587" expanded="true" signature="2434:3199" ph="insert into ${SmartPlug::$database_tableName}... " />
-            <marker date="1480235563587" expanded="true" signature="3379:4138" ph="insert into ${SmartPlug::$database_tableName}... " />
-            <marker date="1480235563587" expanded="true" signature="4314:4879" ph="insert into ${SmartPlug::$database_tableName}... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1152,14 +1198,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/Api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
-          <caret line="130" column="74" selection-start-line="130" selection-start-column="74" selection-end-line="130" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/util/HTTPStatusCode.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -1168,10 +1206,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/EventApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="75" column="39" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
+          <folding>
+            <marker date="1480512049348" expanded="true" signature="1850:1863" ph="select * fro... " />
+            <marker date="1480512049348" expanded="true" signature="1850:1864" ph="select * fro... ${Event::}" />
+            <marker date="1480512049348" expanded="true" signature="1850:1913" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:1914" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:1953" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:1954" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:1955" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:1969" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:1970" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:1971" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:1985" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:2022" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:2023" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:2036" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:2037" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:2038" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:2096" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:2097" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:2138" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="1850:2140" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512049348" expanded="true" signature="3456:3746" ph="select * fro... ${Event::$database_tableName}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/Api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="130" column="74" selection-start-line="130" selection-start-column="74" selection-end-line="130" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="66" column="43" selection-start-line="66" selection-start-column="43" selection-end-line="66" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/AuthApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+          <folding>
+            <marker date="1480173562195" expanded="true" signature="948:1066" ph="select * fro... ${User::$database_tableName}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SmartPlug.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+          <folding>
+            <marker date="1480235563587" expanded="true" signature="2434:3199" ph="insert into ${SmartPlug::$database_tableName}... " />
+            <marker date="1480235563587" expanded="true" signature="3379:4138" ph="insert into ${SmartPlug::$database_tableName}... " />
+            <marker date="1480235563587" expanded="true" signature="4314:4879" ph="insert into ${SmartPlug::$database_tableName}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        <state relative-caret-position="450">
+          <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
           <folding>
             <element signature="e#7#92#0#PHP" expanded="true" />
             <marker date="1480238249539" expanded="true" signature="444:851" ph="create table... if" />
@@ -1180,50 +1286,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/AbstractApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="66" column="43" selection-start-line="66" selection-start-column="43" selection-end-line="66" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/Event.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="271" column="13" selection-start-line="271" selection-start-column="13" selection-end-line="271" selection-end-column="13" />
+        <state relative-caret-position="269">
+          <caret line="264" column="34" selection-start-line="264" selection-start-column="34" selection-end-line="264" selection-end-column="34" />
           <folding>
-            <marker date="1480511596028" expanded="true" signature="700:1270" ph="create table... if" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/EventApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-          <folding>
-            <marker date="1480511791953" expanded="true" signature="1850:1863" ph="select * fro... " />
-            <marker date="1480511791953" expanded="true" signature="1850:1864" ph="select * fro... ${Event::}" />
-            <marker date="1480511791953" expanded="true" signature="1850:1913" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:1914" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:1953" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:1954" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:1955" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:1969" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:1970" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:1971" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:1985" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:2022" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:2023" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:2036" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:2037" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:2038" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:2096" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:2097" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:2138" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="1850:2140" ph="select * fro... ${Event::$database_tableName}" />
-            <marker date="1480511791953" expanded="true" signature="3426:3716" ph="select * fro... ${Event::$database_tableName}" />
+            <marker date="1480512128510" expanded="true" signature="700:1269" ph="create table... if" />
+            <marker date="1480512128510" expanded="true" signature="700:1270" ph="create table... if" />
+            <marker date="1480512128510" expanded="true" signature="700:1272" ph="create table... if" />
+            <marker date="1480512128510" expanded="true" signature="700:1398" ph="create table... if" />
           </folding>
         </state>
       </provider>
