@@ -63,7 +63,7 @@ class EventApi extends AbstractApi
         //    $event = new Event(json_decode($object, true));
         //    array_push($events, $event);
         //}
-        return $this->_response($objects[0], HTTPStatusCode::$OK);
+        return $this->_response($objects, HTTPStatusCode::$OK);
     }
 
     /**
