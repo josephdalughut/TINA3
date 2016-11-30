@@ -64,9 +64,9 @@ class AbstractApi
         if(!$conn->query(User::_getDatabaseTableCreateStatement())){
             return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
-        //if(!$conn->query(Event::_getDatabaseTableCreateStatement())){
-        //    return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
-        //}
+        if(!$conn->query(Event::_getDatabaseTableCreateStatement())){
+            return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
+        }
         if(!$conn->query(SmartPlug::_getDatabaseTableCreateStatement())){
             return $this->_response($conn->connect_error, HTTPStatusCode::$INTERNAL_SERVER_ERROR);
         }
