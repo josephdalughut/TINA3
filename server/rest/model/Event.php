@@ -273,13 +273,26 @@ class Event extends Entity
 
     function __construct(array $data)
     {
-        foreach($data as $key => $val)
-        {
-            if(property_exists(__CLASS__,$key))
-            {
-                $this->$key =  $val;
-            }
-        }
+        if(isset($data[Entity::$database_tableColumn_id]))
+            $this->setId($data[Entity::$database_tableColumn_id]);
+        if(isset($data[Event::$database_tableColumn_userId]))
+            $this->setDate($data[Event::$database_tableColumn_userId]);
+        if(isset($data[Event::$database_tableColumn_smartPlugId]))
+            $this->setDate($data[Event::$database_tableColumn_smartPlugId]);
+        if(isset($data[Event::$database_tableColumn_date]))
+            $this->setStart($data[Event::$database_tableColumn_date]);
+        if(isset($data[Event::$database_tableColumn_start]))
+            $this->setStart($data[Event::$database_tableColumn_start]);
+        if(isset($data[Event::$database_tableColumn_end]))
+            $this->setStart($data[Event::$database_tableColumn_end]);
+        if(isset($data[Event::$database_tableColumn_status]))
+            $this->setStart($data[Event::$database_tableColumn_status]);
+        if(isset($data[Event::$database_tableColumn_predicted]))
+            $this->setStart($data[Event::$database_tableColumn_predicted]);
+        if(isset($data[Entity::$database_tableColumn_createdAt]))
+            $this->setId($data[Entity::$database_tableColumn_createdAt]);
+        if(isset($data[Entity::$database_tableColumn_updatedAt]))
+            $this->setId($data[Entity::$database_tableColumn_updatedAt]);
     }
 
 }

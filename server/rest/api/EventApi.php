@@ -41,7 +41,7 @@ class EventApi extends AbstractApi
         $events = Array();
         foreach ($objects as $object){
             /** Event */
-            $event = json_decode($object);
+            $event = new Event(json_decode($object, true));
             array_push($events, $event);
         }
         $training = $this->train($user->getId(), $events);
@@ -50,6 +50,7 @@ class EventApi extends AbstractApi
         $prediction = $this->predictStatus($user->getId(), $date, $smartPlugId);
         return $prediction;
     }
+
 
 
     /**
