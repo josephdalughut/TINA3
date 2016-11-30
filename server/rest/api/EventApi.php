@@ -243,6 +243,7 @@ class EventApi extends AbstractApi
      * @param integer $userId
      * @param string $date
      * @param array $eventGroups
+     * @return array
      */
     private function groupToSingleEvents($smartPlugId, $userId, $date, $eventGroups){
         /** @var array $predictedEvents */
@@ -263,6 +264,7 @@ class EventApi extends AbstractApi
                 ->setPredicted(1)->setStatus(1);
             array_push($predictedEvents, $predictedEvent);
         }
+        return $predictedEvents;
     }
 
 }
