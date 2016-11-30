@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v4.content.WakefulBroadcastReceiver;
+import android.util.Log;
 
 import com.litigy.lib.java.error.LitigyException;
 import com.litigy.lib.java.generic.DoubleReceiver;
@@ -27,13 +28,16 @@ import ng.edu.aun.tina3.rest.api.EventApi;
 import ng.edu.aun.tina3.rest.model.Event;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
 import ng.edu.aun.tina3.rest.model.User;
-import ng.edu.aun.tina3.util.Log;
 
 /**
  * Created by joeyblack on 11/29/16.
  */
 
 public class PredictionService extends IntentService {
+
+    public static volatile boolean PREDICTING = false;
+
+    public static String LOG_TAG = "PredictionService";
 
     public static class Constants {
         public static final String INTENT_PREDICTION_STARTED = "ng.edu.aun.tina3.service.PredictionService.STARTED";
@@ -56,12 +60,14 @@ public class PredictionService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Log.d("Prediction service started.");
+        PREDICTING = true;
+        Log.d(LOG_TAG, "Prediction service started.");
         Preferences.getInstance().setIsPredicting(true);
         DateTime now = DateTime.now(DateTimeZone.getDefault());
         String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
         DateTime yesterday = now.minusDays(1);
         String yesterdayDate = Value.TO.stringValue(yesterday.getYear() + "_" + yesterday.getMonthOfYear() + "_" + yesterday.getDayOfMonth());
+        Log.d(LOG_TAG, "Today? "+date+", yesterday: "+yesterdayDate);
         try {
             startPrediction(date, yesterdayDate);
             onSuccess(date);
@@ -75,11 +81,13 @@ public class PredictionService extends IntentService {
     }
 
     private void startPrediction(final String date, final String yesterday) throws LitigyException{
+        Log.d(LOG_TAG, "Prediction started");
         getApplicationContext().sendBroadcast(new Intent(Constants.INTENT_PREDICTION_STARTED));
         User u;
         try {
             u = Authenticator.getInstance().getUser(false);
         } catch (Exception e) {
+            Log.d(LOG_TAG, "Prediction returned prematurely, no user!");
             onSuccess(date);
             return;
         }
@@ -87,6 +95,7 @@ public class PredictionService extends IntentService {
         SmartPlugTable smartPlugTable = new SmartPlugTable();
         SmartPlug.SmartPlugList smartPlugs = smartPlugTable.getSmartPlugsForUser(user.getId());
         if(smartPlugs.isEmpty()){
+            Log.d(LOG_TAG, "No smart plugs found, returning");
             onSuccess(date);
         }else{
             predict(user, date, yesterday, smartPlugs);
@@ -94,9 +103,11 @@ public class PredictionService extends IntentService {
     }
 
     private void predict(User user, final String date, String yesterday, SmartPlug.SmartPlugList smartPlugList){
+        Log.d(LOG_TAG, "Going to predict for "+smartPlugList.size()+" smart plug(s)");
         final EventTable eventTable = new EventTable();
         for(final SmartPlug smartPlug: smartPlugList){
             final Event.EventList yesterdaysEvents = eventTable.getAllDoneEvents(user.getId(), smartPlug.getId(), yesterday);
+            Log.d(LOG_TAG, "Going to predict for "+yesterdaysEvents.size()+" events, calling Prediction API");
             EventApi.predict(date,  smartPlug.getId(), yesterdaysEvents, new DoubleReceiver<Event.EventList, LitigyException>() {
                 @Override
                 public void onReceive(Event.EventList events, LitigyException e) {
@@ -105,6 +116,7 @@ public class PredictionService extends IntentService {
 
                 @Override
                 public void onReceive1(Event.EventList events) {
+                    Log.d(LOG_TAG, "Successfully predicted "+events.size() + " events, caching");
                     for(Event event: events){
                         try {
                             eventTable.addEvent(event, false, false);
@@ -112,10 +124,12 @@ public class PredictionService extends IntentService {
                             e.printStackTrace();
                         }
                     }
+                    onSuccess(date);
                 }
 
                 @Override
                 public void onReceive2(LitigyException e) {
+                    Log.d(LOG_TAG, "Error predicting events, is: "+e.getMessage());
                     onError(e);
                 }
             });
@@ -137,10 +151,13 @@ public class PredictionService extends IntentService {
 
     public static class AlarmScheduler extends BroadcastReceiver {
 
+        private static String LOG_TAG = "AlarmScheduler";
+
         @Override
         public void onReceive(Context context, Intent receivedIntent) {
             switch (receivedIntent.getAction()){
                 case Intent.ACTION_BOOT_COMPLETED:
+                    Log.d(LOG_TAG, "Boot completed, setting prediction alarm");
                     setAlarm(context);
                     break;
             }
@@ -150,6 +167,7 @@ public class PredictionService extends IntentService {
             try {
                 User user = Authenticator.getInstance().getUser(false);
             } catch (Exception e) {
+                Log.d(LOG_TAG, "Couldn't set prediction alarm, user is null");
                 return;
             }
             Calendar calendar = Calendar.getInstance();
@@ -161,9 +179,11 @@ public class PredictionService extends IntentService {
             PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
             alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                     AlarmManager.INTERVAL_DAY, alarmIntent);
+            Log.d(LOG_TAG, "Alarm set for "+calendar.getTimeInMillis() + " (millis)");
         }
 
         public static void cancelAlarm(Context context){
+            Log.d(LOG_TAG, "Cancelling Prediction alarm");
             AlarmManager alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(context, AlarmTask.class);
             PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
@@ -173,11 +193,19 @@ public class PredictionService extends IntentService {
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        PREDICTING = false;
+    }
 
     public static class AlarmTask extends WakefulBroadcastReceiver{
 
+        private static String LOG_TAG = "AlarmTask";
+
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.d(LOG_TAG, "Prediction Alarm Task called, starting Prediction Service at "+System.currentTimeMillis());
             startWakefulService(context, new Intent(context, PredictionService.class));
         }
     }

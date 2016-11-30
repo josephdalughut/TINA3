@@ -141,8 +141,8 @@ public class EventTable extends Table {
     public Event getTopSignificantEvent(Integer userId){
         String sql = "select * from "+ Constants.TABLE_NAME + " where "
                 + Constants.Columns.USER_ID + "="+userId+" and "
-                + Constants.Columns.STATUS + "=" + Event.Status.SCHEDULED + " or "
-                + Constants.Columns.STATUS + "=" + Event.Status.ONGOING + " limit 1";
+                + Constants.Columns.STATUS + "=" + Event.Status.SCHEDULED.ordinal() + " or "
+                + Constants.Columns.STATUS + "=" + Event.Status.ONGOING.ordinal() + " limit 1";
         Cursor cursor = getDatabase().getReadableDatabase().rawQuery(sql, null);
         if(!cursor.moveToFirst())
             return null;
@@ -154,7 +154,7 @@ public class EventTable extends Table {
     public void closeAllCurrentlyBuildingEvents(Integer userId, String smartPlug){
         String sql = "delete from "+ Constants.TABLE_NAME + " where "
                 + Constants.Columns.USER_ID + "="+userId+" and "
-                + Constants.Columns.STATUS + "="+ Event.Status.BUILDING+"";
+                + Constants.Columns.STATUS + "="+ Event.Status.BUILDING.ordinal()+"";
         getDatabase().getWritableDatabase().rawQuery(sql, null).close();
     }
 
@@ -164,7 +164,7 @@ public class EventTable extends Table {
                 + Constants.Columns.USER_ID+"="+userId+" and "
                 + Constants.Columns.SMART_PLUG_ID + "='"+smartPlugId+"' and "
                 + Constants.Columns.DATE + "='"+date+"' and "
-                + Constants.Columns.STATUS+"="+ Event.Status.DONE+"";
+                + Constants.Columns.STATUS+"="+ Event.Status.DONE.ordinal()+"";
         Cursor cursor = getDatabase().getReadableDatabase().rawQuery(sql, null);
         if(cursor.moveToFirst()){
             do {

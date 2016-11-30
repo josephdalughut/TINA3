@@ -9,6 +9,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,6 @@ import ng.edu.aun.tina3.gui.misc.Snackbar;
 import ng.edu.aun.tina3.rest.model.Event;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
 import ng.edu.aun.tina3.service.PredictionService;
-import ng.edu.aun.tina3.util.Log;
 import ng.edu.aun.tina3.util.Time;
 
 /**
@@ -47,6 +47,8 @@ import ng.edu.aun.tina3.util.Time;
  */
 
 public class OutletAutomationFragment extends BroadcastFragtivity implements SwipeRefreshLayout.OnRefreshListener, DoubleReceiver<Cursor, LitigyException> {
+
+    public static final String LOG_TAG = "AutomationFragment";
 
     private TextView dateTextView, infoTextView;
     private FloatingActionButton addButton;
@@ -64,22 +66,29 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
 
     @Override
     public String[] getIntentActions() {
-        return new String[]{EventTable.Constants.UPDATE_INTENT};
+        return new String[]{EventTable.Constants.UPDATE_INTENT, PredictionService.Constants.INTENT_PREDICTION_FAIL,
+                PredictionService.Constants.INTENT_PREDICTION_STARTED,
+                PredictionService.Constants.INTENT_PREDICTION_SUCCESS,
+        };
     }
 
     @Override
     public void onIntent(Intent intent) {
         switch(intent.getAction()){
             case EventTable.Constants.UPDATE_INTENT:
+                Log.d(LOG_TAG, "Event added, updating");
                 onRefresh(true);
                 break;
             case PredictionService.Constants.INTENT_PREDICTION_STARTED:
+                Log.d(LOG_TAG, "Prediction Service Started");
                 onPredictionStarted();
                 break;
             case PredictionService.Constants.INTENT_PREDICTION_SUCCESS:
+                Log.d(LOG_TAG, "Prediction Service Success");
                 onPredictionSuccess();
                 break;
             case PredictionService.Constants.INTENT_PREDICTION_FAIL:
+                Log.d(LOG_TAG, "Prediction Service Failed");
                 onPredictionError(intent.getIntExtra("statusCode", LitigyException.Mappings.ServiceUnvailableException), intent.getStringExtra("message"));
                 break;
         }
@@ -240,9 +249,11 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
                 });
         recyclerView.setAdapter(adapter);
         refreshDate();
-        if(Preferences.getInstance().isPredicting()){
+        if(PredictionService.PREDICTING){
+            Log.d(LOG_TAG, "Wanted to call on refresh, but Prediction Service is already predicting");
             onPredictionStarted();
         }else{
+            Log.d(LOG_TAG, "Prediction service isn't predicting, refreshing");
             onRefresh(true);
         }
     }
@@ -282,7 +293,7 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
     private void onPredictionError(int statusCode, String message){
         onRefresh(false);
         LitigyException e = new LitigyException(statusCode, message);
-        Log.d("Error from prediction: "+message);
+        Log.d(LOG_TAG, "Error from prediction: "+message);
         switch (e.toServiceException()){
             case InternetUnavailableException:
                 Snackbar.showLong(OutletAutomationFragment.this, R.string.error_internet_unavailable);
@@ -401,16 +412,22 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
         infoTextView.setText(getString(R.string.hint_predicting));
         try {
             String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
-            if(!Preferences.getInstance().lastPredicted().contentEquals(date)){
-                if(Preferences.getInstance().isPredicting()){
+            String lastPredicted = Preferences.getInstance().lastPredicted();
+            if(Value.IS.emptyValue(lastPredicted) || !lastPredicted.equals(date)){
+                Log.d(LOG_TAG, "Today hasn't been predicted");
+                if(PredictionService.PREDICTING){
+                    Log.d(LOG_TAG, "... but prediction service is already predicting, cool");
                     onPredictionStarted();
                 }else{
+                    Log.d(LOG_TAG, "... darn-it prediction service. Let's just start you then");
                     getActivity().getApplicationContext().startService(new Intent(getContext(), PredictionService.class));
                 }
             }else {
+                Log.d(LOG_TAG, "Today has been predicted. Nice");
                 EventTable.EventLoader.getInstance(date, Authenticator.getInstance().getUser(false), ((OutletActionsFragment) getParentFragment()).getSmartPlug().getId(), this).load();
             }
         } catch (Exception e) {
+            Log.d(LOG_TAG, "Exception (which shouldn't have occurred) with message: "+e.getMessage());
             onRefresh(false);
             Snackbar.showLong(this, getString(R.string.error_no_accounts));
         }
