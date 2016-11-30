@@ -75,7 +75,8 @@
     <string name="error_no_accounts">No valid accounts found on your device. Please logout and login again.</string>
     <string name="add_an_event">Add Auto-Control</string>
     <string name="auto_control_smart_plug">Switch on </string>
-    <string name="auto_controlled_smart_plug">Switched on </string>
+    <string name="auto_control_smart_plug_fail">Failed to switch on </string>
+    <string name="auto_controlled_smart_plug">Used </string>
     <string name="switch_on_at">FROM:</string>
     <string name="switch_off_at">TO:</string>
     <string name="duration_hint">2 hours</string>

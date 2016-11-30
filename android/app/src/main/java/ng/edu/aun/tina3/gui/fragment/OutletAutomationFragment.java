@@ -25,6 +25,7 @@ import com.litigy.lib.java.generic.DoubleConsumer;
 import com.litigy.lib.java.generic.DoubleReceiver;
 import com.litigy.lib.java.generic.QuatroReceiver;
 import com.litigy.lib.java.generic.Receiver;
+import com.litigy.lib.java.generic.TripleReceiver;
 import com.litigy.lib.java.util.Value;
 
 import org.joda.time.DateTime;
@@ -46,7 +47,7 @@ import ng.edu.aun.tina3.util.Time;
  * Created by joeyblack on 11/24/16.
  */
 
-public class OutletAutomationFragment extends BroadcastFragtivity implements SwipeRefreshLayout.OnRefreshListener, DoubleReceiver<Cursor, LitigyException> {
+public class OutletAutomationFragment extends BroadcastFragtivity implements SwipeRefreshLayout.OnRefreshListener, TripleReceiver<Cursor, int[], LitigyException> {
 
     public static final String LOG_TAG = "AutomationFragment";
 
@@ -101,7 +102,8 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
 
     @Override
     public void destroy() {
-
+        if(!Value.IS.nullValue(adapter))
+            adapter.release();
     }
 
     @Override
@@ -177,7 +179,7 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
                 }).setViewReceiver(new QuatroReceiver<EventHolder, Cursor, Integer, Boolean>() {
                     @Override
                     public void onReceive(EventHolder eventHolder, Cursor cursor, Integer integer, Boolean aBoolean) {
-                        eventHolder.name.setText(smartPlug.getName());
+                        String smartPlugName = Value.IS.emptyValue(smartPlug.getName()) ? "Smart-plug" : smartPlug.getName();
                         int on = cursor.getInt(cursor.getColumnIndex(EventTable.Constants.Columns.START));
                         int off = cursor.getInt(cursor.getColumnIndex(EventTable.Constants.Columns.END));
 
@@ -187,11 +189,11 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
                         int onHour = (on - onMinHour) / 60;
                         int offMinHour = off % 60;
                         int offHour = (off - offMinHour) / 60;
-                        String onHourText = onHour < 12 ? Value.TO.stringValue(onHour) : Value.TO.stringValue(onHour - 12);
+                        String onHourText = onHour <= 12 ? Value.TO.stringValue(onHour) : Value.TO.stringValue(onHour - 12);
                         String onMinText = onMinHour > 9 ? Value.TO.stringValue(onMinHour) : "0"+Value.TO.stringValue(onMinHour);
                         String onMer = onHour < 12 ? "AM" : "PM";
 
-                        String offHourText = offHour < 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(offHour - 12);
+                        String offHourText = offHour <= 12 ? Value.TO.stringValue(offHour) : Value.TO.stringValue(offHour - 12);
                         String offMinText = offMinHour > 9 ? Value.TO.stringValue(offMinHour) : "0"+Value.TO.stringValue(offMinHour);
                         String offMer = offHour < 12 ? "AM" : "PM";
 
@@ -208,6 +210,7 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
                             durationText = (hour + (hour == 1 ? " hour, " : " hours, ") + mins + (mins == 1 ? " minute." : " minutes."));
                         }
                         eventHolder.when.setText(when);
+                        eventHolder.name.setText(smartPlugName);
                         eventHolder.duration.setText(durationText);
                         eventHolder.status.setVisibility(View.VISIBLE);
                         int status = cursor.getInt(cursor.getColumnIndex(EventTable.Constants.Columns.STATUS));
@@ -218,11 +221,23 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
                                 eventHolder.what.setText(getString(R.string.auto_control_smart_plug));
                                 eventHolder.icon.setBackgroundTintList(ColorStateList.valueOf(getColor(R.color.ccc)));
                                 break;
-                            case ONGOING: case DONE:
+                            case ONGOING:
+                                eventHolder.status.setColor(getColor(R.color.flat_belize_hole));
+                                eventHolder.what.setTextColor(getColor(R.color.tina_green));
+                                eventHolder.what.setText("Switched on ");
+                                eventHolder.icon.setBackgroundTintList(ColorStateList.valueOf(getColor(R.color.flat_belize_hole)));
+                                break;
+                            case DONE:
                                 eventHolder.status.setColor(getColor(R.color.tina_green));
                                 eventHolder.what.setTextColor(getColor(R.color.tina_green));
                                 eventHolder.what.setText(getString(R.string.auto_controlled_smart_plug));
                                 eventHolder.icon.setBackgroundTintList(ColorStateList.valueOf(getColor(R.color.tina_green)));
+                                break;
+                            case FAILED:
+                                eventHolder.status.setColor(getColor(R.color.flat_alizarin));
+                                eventHolder.what.setTextColor(getColor(R.color.nine));
+                                eventHolder.what.setText(getString(R.string.auto_control_smart_plug_fail));
+                                eventHolder.icon.setBackgroundTintList(ColorStateList.valueOf(getColor(R.color.flat_alizarin)));
                                 break;
                         }
                     }
@@ -340,41 +355,6 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
         onRefresh(true);
     }
 
-    @Override
-    public void onReceive(Cursor cursor, LitigyException e) {
-    }
-
-    @Override
-    public void onReceive1(Cursor cursor) {
-        if(Preferences.getInstance().isPredicting())
-            return;
-        now = DateTime.now(DateTimeZone.getDefault());
-        onRefresh(false);
-        adapter.setCursor(cursor);
-        error.setVisibility(View.GONE);
-        infoTextView.setText(adapter.isEmpty()? getString(R.string.no_today_predictions) :
-                (adapter.getCount() == 1 ? getString(R.string.one_predicted) : ""+adapter.getCount()
-                        + " " + getString(R.string.predictions)));
-        empty.setVisibility(adapter.isEmpty() ? View.VISIBLE : View.GONE);
-        refreshLayout.setEnabled(false);
-    }
-
-    @Override
-    public void onReceive2(LitigyException e) {
-        onRefresh(false);
-        error.setVisibility(adapter.isEmpty() ? View.VISIBLE: View.GONE);
-        empty.setVisibility(View.GONE);
-        infoTextView.setText("");
-        switch (e.toServiceException()){
-            case InternetUnavailableException:
-                Snackbar.showLong(OutletAutomationFragment.this, R.string.error_internet_unavailable);
-                break;
-            default:
-                Snackbar.showLong(OutletAutomationFragment.this, R.string.error_service_unavailable);
-                break;
-        }
-    }
-
 
     private class EventHolder extends RecyclerView.ViewHolder{
 
@@ -399,6 +379,51 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
         }
     }
 
+    @Override
+    public void onReceive(Cursor cursor, int[] args, LitigyException e) {
+    }
+
+    @Override
+    public void onReceive1(Cursor cursor) {
+        if(Preferences.getInstance().isPredicting())
+            return;
+        now = DateTime.now(DateTimeZone.getDefault());
+        onRefresh(false);
+        adapter.setCursor(cursor);
+        error.setVisibility(View.GONE);
+        empty.setVisibility(adapter.isEmpty() ? View.VISIBLE : View.GONE);
+        refreshLayout.setEnabled(false);
+    }
+
+    @Override
+    public void onReceive2(int[] ints) {
+        int scheduled = ints[0];
+        int predicted = ints[1];
+        if(scheduled == 0 && predicted == 0){
+            infoTextView.setText("No events scheduled or predicted for today.");
+        }else{
+            infoTextView.setText(""+ scheduled + (scheduled == 1 ? " event" : " events") + " scheduled, "
+            + predicted + (predicted == 1 ? " event" : " events") + " predicted."
+            );
+        }
+    }
+
+    @Override
+    public void onReceive3(LitigyException e) {
+        onRefresh(false);
+        error.setVisibility(adapter.isEmpty() ? View.VISIBLE: View.GONE);
+        empty.setVisibility(View.GONE);
+        infoTextView.setText("");
+        switch (e.toServiceException()){
+            case InternetUnavailableException:
+                Snackbar.showLong(OutletAutomationFragment.this, R.string.error_internet_unavailable);
+                break;
+            default:
+                Snackbar.showLong(OutletAutomationFragment.this, R.string.error_service_unavailable);
+                break;
+        }
+    }
+
     private void onRefresh(final boolean refresh){
         now = DateTime.now(DateTimeZone.getDefault());
         refreshLayout.post(new Runnable() {
@@ -412,6 +437,7 @@ public class OutletAutomationFragment extends BroadcastFragtivity implements Swi
         infoTextView.setText(getString(R.string.hint_predicting));
         try {
             String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
+            //String date = "mine";
             String lastPredicted = Preferences.getInstance().lastPredicted();
             if(Value.IS.emptyValue(lastPredicted) || !lastPredicted.equals(date)){
                 Log.d(LOG_TAG, "Today hasn't been predicted");

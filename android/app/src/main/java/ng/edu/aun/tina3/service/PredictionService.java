@@ -60,18 +60,21 @@ public class PredictionService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        PREDICTING = true;
-        Log.d(LOG_TAG, "Prediction service started.");
-        Preferences.getInstance().setIsPredicting(true);
+        Log.d(LOG_TAG, "Prediction service called.");
         DateTime now = DateTime.now(DateTimeZone.getDefault());
         String date = Value.TO.stringValue(now.getYear() + "_" + now.getMonthOfYear() + "_" + now.getDayOfMonth());
+        if(Value.IS.SAME.stringValue(Preferences.getInstance().lastPredicted(), date)){
+            Log.d(LOG_TAG, "Today has already been predicted ("+date+"), returning");
+            stopSelf();
+            return;
+        }
+        PREDICTING = true;
+        Preferences.getInstance().setIsPredicting(true);
         DateTime yesterday = now.minusDays(1);
         String yesterdayDate = Value.TO.stringValue(yesterday.getYear() + "_" + yesterday.getMonthOfYear() + "_" + yesterday.getDayOfMonth());
         Log.d(LOG_TAG, "Today? "+date+", yesterday: "+yesterdayDate);
         try {
             startPrediction(date, yesterdayDate);
-            onSuccess(date);
-            ActionService.setAlarm(this);
         } catch (LitigyException e) {
             e.printStackTrace();
             onError(e);
@@ -97,12 +100,14 @@ public class PredictionService extends IntentService {
         if(smartPlugs.isEmpty()){
             Log.d(LOG_TAG, "No smart plugs found, returning");
             onSuccess(date);
+            smartPlugTable.release();
         }else{
             predict(user, date, yesterday, smartPlugs);
         }
+        smartPlugTable.release();
     }
 
-    private void predict(User user, final String date, String yesterday, SmartPlug.SmartPlugList smartPlugList){
+    private void predict(final User user, final String date, String yesterday, SmartPlug.SmartPlugList smartPlugList){
         Log.d(LOG_TAG, "Going to predict for "+smartPlugList.size()+" smart plug(s)");
         final EventTable eventTable = new EventTable();
         for(final SmartPlug smartPlug: smartPlugList){
@@ -117,6 +122,7 @@ public class PredictionService extends IntentService {
                 @Override
                 public void onReceive1(Event.EventList events) {
                     Log.d(LOG_TAG, "Successfully predicted "+events.size() + " events, caching");
+                    //eventTable.closeAllPreviousPredictions(user.getId(), smartPlug.getId(), date);
                     for(Event event: events){
                         try {
                             eventTable.addEvent(event, false, false);
@@ -124,12 +130,17 @@ public class PredictionService extends IntentService {
                             e.printStackTrace();
                         }
                     }
+                    if(!events.isEmpty()){
+                        ActionService.setAlarm(PredictionService.this);
+                    }
+                    eventTable.release();
                     onSuccess(date);
                 }
 
                 @Override
                 public void onReceive2(LitigyException e) {
                     Log.d(LOG_TAG, "Error predicting events, is: "+e.getMessage());
+                    eventTable.release();
                     onError(e);
                 }
             });
@@ -170,15 +181,23 @@ public class PredictionService extends IntentService {
                 Log.d(LOG_TAG, "Couldn't set prediction alarm, user is null");
                 return;
             }
+
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
-            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.HOUR, 0);
+            calendar.set(Calendar.AM_PM, Calendar.AM);
 
-            AlarmManager alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(context, AlarmTask.class);
             PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-            alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                    AlarmManager.INTERVAL_DAY, alarmIntent);
+
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.cancel(alarmIntent);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
+
+            //alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+            //        AlarmManager.INTERVAL_DAY, alarmIntent);
             Log.d(LOG_TAG, "Alarm set for "+calendar.getTimeInMillis() + " (millis)");
         }
 

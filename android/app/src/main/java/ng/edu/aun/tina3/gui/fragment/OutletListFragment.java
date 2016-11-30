@@ -64,7 +64,8 @@ public class OutletListFragment extends BroadcastFragtivity implements DrawerLay
 
     @Override
     public void destroy() {
-
+        if(!com.litigy.lib.java.util.Value.IS.nullValue(adapter))
+            adapter.release();
     }
 
     @Override

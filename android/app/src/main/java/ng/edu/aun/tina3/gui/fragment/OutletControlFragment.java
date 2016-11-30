@@ -1,8 +1,10 @@
 package ng.edu.aun.tina3.gui.fragment;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
+import com.litigy.lib.android.gui.view.progress.PigressBar;
 import com.litigy.lib.java.error.LitigyException;
 import com.litigy.lib.java.generic.DoubleReceiver;
 import com.litigy.lib.java.security.Crypto;
@@ -14,12 +16,14 @@ import org.joda.time.DateTimeZone;
 import ng.edu.aun.tina3.R;
 import ng.edu.aun.tina3.auth.Authenticator;
 import ng.edu.aun.tina3.data.EventTable;
+import ng.edu.aun.tina3.data.SmartPlugTable;
 import ng.edu.aun.tina3.gui.custom.LightSwitch;
 import ng.edu.aun.tina3.gui.custom.LightSwitchStub;
 import ng.edu.aun.tina3.gui.misc.Snackbar;
 import ng.edu.aun.tina3.rest.api.SmartPlugApi;
 import ng.edu.aun.tina3.rest.model.Event;
 import ng.edu.aun.tina3.rest.model.SmartPlug;
+import ng.edu.aun.tina3.service.ActionService;
 import ng.edu.aun.tina3.util.Log;
 
 /**
@@ -35,24 +39,17 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
     private SmartPlug smartPlug;
     private LightSwitch lightSwitch;
     private Event event;
+    AsyncTask task;
 
-    public SmartPlug getSmartPlug() {
-        return smartPlug;
-    }
-
-    public OutletControlFragment setSmartPlug(SmartPlug smartPlug) {
-        this.smartPlug = smartPlug;
-        return this;
-    }
 
     @Override
     public String[] getIntentActions() {
-        return new String[0];
+        return new String[]{ActionService.INTENT};
     }
 
     @Override
     public void onIntent(Intent intent) {
-
+        reloadSmartPlug();
     }
 
     @Override
@@ -87,6 +84,22 @@ public class OutletControlFragment extends BroadcastFragtivity implements LightS
         lightSwitch.showSettings(true);
         refreshSmartPlug();
         refreshSmartPlugAutomation();
+    }
+
+    private void reloadSmartPlug(){
+        task = new AsyncTask<String, Void, SmartPlug>(){
+            @Override
+            protected SmartPlug doInBackground(String... params) {
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(SmartPlug smartPlug) {
+                OutletControlFragment.this.smartPlug = smartPlug;
+                refreshSmartPlug();
+                refreshSmartPlugAutomation();
+            }
+        }.execute(smartPlug.getId());
     }
 
     @Override

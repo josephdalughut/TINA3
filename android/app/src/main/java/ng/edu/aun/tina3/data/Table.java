@@ -19,4 +19,13 @@ public abstract class Table {
         return database;
     }
 
+    public void release(){
+        try {
+            getDatabase().close();
+        }catch (Exception ignored){
+            ignored.printStackTrace();
+        }
+    }
+
+
 }

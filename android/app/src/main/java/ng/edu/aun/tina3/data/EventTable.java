@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 
 import com.litigy.lib.java.error.LitigyException;
 import com.litigy.lib.java.generic.DoubleReceiver;
+import com.litigy.lib.java.generic.TripleReceiver;
 import com.litigy.lib.java.util.Value;
 
 import ng.edu.aun.tina3.Application;
@@ -58,7 +59,7 @@ public class EventTable extends Table {
                 .setUserId(cursor.getInt(cursor.getColumnIndex(Constants.Columns.USER_ID)))
                 .setSmartPlugId(cursor.getString(cursor.getColumnIndex(Constants.Columns.SMART_PLUG_ID)))
                 .setDate(cursor.getString(cursor.getColumnIndex(Constants.Columns.DATE)))
-                .setStart(cursor.getInt(cursor.getColumnIndex(Constants.Columns.STATUS)))
+                .setStart(cursor.getInt(cursor.getColumnIndex(Constants.Columns.START)))
                 .setEnd(cursor.getInt(cursor.getColumnIndex(Constants.Columns.END)))
                 .setPredicted(cursor.getInt(cursor.getColumnIndex(Constants.Columns.PREDICTED)))
                 .setStatus(cursor.getInt(cursor.getColumnIndex(Constants.Columns.STATUS)))
@@ -142,7 +143,9 @@ public class EventTable extends Table {
         String sql = "select * from "+ Constants.TABLE_NAME + " where "
                 + Constants.Columns.USER_ID + "="+userId+" and "
                 + Constants.Columns.STATUS + "=" + Event.Status.SCHEDULED.ordinal() + " or "
-                + Constants.Columns.STATUS + "=" + Event.Status.ONGOING.ordinal() + " limit 1";
+                + Constants.Columns.STATUS + "=" + Event.Status.ONGOING.ordinal()
+                + " order by "+ Constants.Columns.START + " desc "+
+                " limit 1";
         Cursor cursor = getDatabase().getReadableDatabase().rawQuery(sql, null);
         if(!cursor.moveToFirst())
             return null;
@@ -173,6 +176,15 @@ public class EventTable extends Table {
         }
         cursor.close();
         return events;
+    }
+
+    public void closeAllPreviousPredictions(Integer userId, String smartPlugId, String date){
+        String sql = ""+Constants.Columns.USER_ID+"="+userId+" and "
+                + Constants.Columns.SMART_PLUG_ID+"='"+smartPlugId+"' and "
+                + Constants.Columns.DATE+"='"+date+"'";
+        getDatabase().getWritableDatabase().delete(Constants.TABLE_NAME,
+                sql
+                , null);
     }
 
     private void checkConflictingEvent(Event event) throws ConflictException{
@@ -326,14 +338,14 @@ public class EventTable extends Table {
         public EventTable eventTable;
         Integer userId;
         String smartPlugId;
-        DoubleReceiver<Cursor, LitigyException> receiver;
+        TripleReceiver<Cursor, int[], LitigyException> receiver;
         String date;
 
-        public static EventLoader getInstance(String date, User user, String smartPlugId, DoubleReceiver<Cursor, LitigyException> receiver){
+        public static EventLoader getInstance(String date, User user, String smartPlugId, TripleReceiver<Cursor, int[], LitigyException> receiver){
             return new EventLoader(date, user.getId(), smartPlugId, receiver);
         }
 
-        public EventLoader(String date, Integer userId, String smartPlugId, DoubleReceiver<Cursor, LitigyException> receiver) {
+        public EventLoader(String date, Integer userId, String smartPlugId, TripleReceiver<Cursor, int[], LitigyException> receiver) {
             eventTable = new EventTable();
             this.date = date;
             this.userId = userId;
@@ -354,7 +366,22 @@ public class EventTable extends Table {
             Log.d("SQL IS: "+sql);
             final Cursor cursor = eventTable.getDatabase().getReadableDatabase()
                     .rawQuery(sql, null);
-            publishProgress(cursor);
+            int scheduled = 0;
+            int predicted = 0;
+            if(cursor.moveToFirst()){
+                do{
+                    int j = cursor.getInt(cursor.getColumnIndex(Constants.Columns.STATUS));
+                    if(j==Event.Status.SCHEDULED.ordinal()) {
+                        int i = cursor.getInt(cursor.getColumnIndex(Constants.Columns.PREDICTED));
+                        if (i == 0) {
+                            scheduled++;
+                        } else {
+                            predicted++;
+                        }
+                    }
+                }while (cursor.moveToNext());
+            }
+            publishProgress(cursor, new int[]{scheduled, predicted});
             return null;
         }
 
@@ -364,8 +391,9 @@ public class EventTable extends Table {
                 return;
             if(values[0] instanceof Cursor){
                 receiver.onReceive1((Cursor) values[0]);
+                receiver.onReceive2((int[]) values[1]);
             }else{
-                receiver.onReceive2((LitigyException)values[0]);
+                receiver.onReceive3((LitigyException)values[0]);
             }
         }
 

@@ -127,6 +127,18 @@ public class SmartPlugTable extends Table {
         return null;
     }
 
+    public SmartPlug getSmartPlug(String smartPlugId){
+        Cursor cursor = getDatabase().getReadableDatabase().rawQuery("select * from "+
+                Constants.TABLE_NAME + " where "+Constants.Columns.ID + "='"+smartPlugId+"'", null);
+        if(cursor.moveToFirst()){
+            SmartPlug smartPlug = from(cursor);
+            cursor.close();
+            return smartPlug;
+        }
+        cursor.close();
+        return null;
+    }
+
     public AsyncTask updateSmartPlugAsync(final SmartPlug smartPlug, final boolean broadcastUpdate, final DoubleReceiver<SmartPlug, LitigyException> receiver){
         return new AsyncTask<SmartPlug, Void, Object>(){
             @Override

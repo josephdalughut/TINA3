@@ -170,13 +170,13 @@ class EventApi extends AbstractApi
     private function getOccurrenceCount($string, $find){
         $foundChars = 0; $found = 0;
         for ($i = 0; $i < strlen($string); $i++){
-            if($string[i]==$find[$foundChars]){
+            if($string[$i]==$find[$foundChars]){
                 $foundChars++;
                 if($foundChars == strlen($find)){
                     $found++;
                     $foundChars=0;
                 }
-            }else if ($string[i] == $find[0]){
+            }else if ($string[$i] == $find[0]){
                 $foundChars = 1;
             }else{
                 $foundChars = 0;
