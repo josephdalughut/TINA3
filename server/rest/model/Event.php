@@ -269,4 +269,15 @@ class Event extends Entity
         return $event;
     }
 
+    function __construct(array $data)
+    {
+        foreach($data as $key => $val)
+        {
+            if(property_exists(__CLASS__,$key))
+            {
+                $this->$key =  $val;
+            }
+        }
+    }
+
 }
