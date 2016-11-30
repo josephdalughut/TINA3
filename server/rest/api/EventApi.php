@@ -266,7 +266,7 @@ class EventApi extends AbstractApi
             /** @var Event $event */
             foreach ($eventGroup as $event){
                 $meanStart+=$event->getStart();
-                $meanDuration+=($event->getEnd() - $meanStart);
+                $meanDuration+=($event->getEnd() - $event->getStart());
             }
             $meanStart = $meanStart / sizeof($eventGroup);
             $meanDuration = $meanDuration / sizeof($eventGroup);
