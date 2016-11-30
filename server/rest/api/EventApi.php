@@ -133,8 +133,6 @@ class EventApi extends AbstractApi
             }
             array_push($mapOfEventLists[$date], $event);
         }
-        if(sizeof($mapOfEventLists) > 0)
-            return $this->_response("size of array: ".sizeof($mapOfEventLists), HTTPStatusCode::$BAD_REQUEST);
         $profile = "";
         /** @var array $criticalDays */
         $criticalDays = Array();
