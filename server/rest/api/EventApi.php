@@ -117,8 +117,6 @@ class EventApi extends AbstractApi
         $lastDay = $lastDay->sub(new DateInterval('P1D'));
         $firstDayDate = $firstDay->format("Y_m_d");
         $lastDayDate = $lastDay->format("Y_m_d");
-        if(strlen($firstDayDate)> 0)
-            return $this->_response($firstDayDate.", ".$lastDayDate, HTTPStatusCode::$BAD_REQUEST);
         $selectSQL = "select * from ".Event::$database_tableName." where ".Event::$database_tableColumn_userId."=".$userId." and "
             .Event::$database_tableColumn_smartPlugId."='".$smartPlugId."' and "
             .Event::$database_tableColumn_date."  between '".$firstDayDate."' and '".$lastDayDate."' ";
@@ -135,11 +133,15 @@ class EventApi extends AbstractApi
             }
             array_push($mapOfEventLists[$date], $event);
         }
+        if(sizeof($mapOfEventLists) > 0)
+            return $this->_response("size of array: ".sizeof($mapOfEventLists), HTTPStatusCode::$BAD_REQUEST);
         $profile = "";
         /** @var array $criticalDays */
         $criticalDays = Array();
         for ($i = $daysToConsider; $i >= 0; $i--){
-            $day = new DateTime("-".($i + 1)." days");
+            $now = new DateTime();
+            $now->setDate(intval($arr[0]), intval($arr[1]), intval($arr[2]));
+            $day = $now->sub(new DateInterval('P'.($daysToConsider+1).'D'));
             $isset =  isset($mapOfEventLists[$day->format("Y_m_d")]);
             $profile .= $isset ? "1" : "0";
             if($isset){
@@ -148,6 +150,8 @@ class EventApi extends AbstractApi
                 }
             }
         }
+        if(strlen($profile) > 0)
+            return $this->_response("profile: ".$profile, HTTPStatusCode::$BAD_REQUEST);
         if(!$this->pred($profile, "1"))
             return $this->_response(Array(), HTTPStatusCode::$OK);
 
